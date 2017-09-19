@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour {
+public class SphereMovement : MonoBehaviour, IMovement {
 
     [Header("Adding Force")]
     public float constant;
-    public bool addForce;
+    public bool triggerForce;
 
     [Header("Angular Drag")]
     public float airDrag;
@@ -31,14 +31,14 @@ public class Test : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (addForce)
+        if (triggerForce)
         {
             AddForce();
         }
 
         if (reset)
         {
-            resetPosition();
+            ResetPosition();
         }
 
         if (gravity)
@@ -60,19 +60,24 @@ public class Test : MonoBehaviour {
         }
     }
 
-    void AddForce()
+    private void AddForce()
     {
         rb.AddForce(new Vector3(-1f, 0f) * constant);
-        addForce = false;
+        triggerForce = false;
     }
 
-    void resetPosition()
+    private void AddForce(int force)
+    {
+        rb.AddForce(new Vector3(-1f, 0f) * force);
+        triggerForce = false;
+    }
+
+    void ResetPosition()
     {
         transform.position = origin;
         rb.angularVelocity = new Vector3();
         rb.velocity = new Vector3();
         reset = false;
-
     }
 
     private void OnCollisionStay(Collision collision)
@@ -88,5 +93,15 @@ public class Test : MonoBehaviour {
     private void OnCollisionExit(Collision collision)
     {
         colliding = false;
+    }
+
+    public void Hit(int force)
+    {
+        AddForce(force);
+    }
+
+    public void Reset()
+    {
+        ResetPosition();
     }
 }
