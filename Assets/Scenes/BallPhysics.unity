@@ -253,6 +253,18 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 6.4
       objectReference: {fileID: 0}
+    - target: {fileID: 4738969651884578, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738969651884578, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.2333236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738969651884578, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114599831372124622, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
@@ -270,11 +282,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1763499437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9fe8951720838d408bf5e41874ebdbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b79da4a3ab5f3a4e9ab03a9d0e91c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   constant: 1000
-  addForce: 0
+  triggerForce: 0
   airDrag: 0
   floorDrag: 0.1
   reset: 0

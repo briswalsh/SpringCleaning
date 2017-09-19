@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SphereMovement : MonoBehaviour, IMovement {
+public class SpherePhysics : MonoBehaviour, IPhysics {
 
     [Header("Adding Force")]
     public float constant;

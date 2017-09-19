@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovement {
+public interface IPhysics {
     void Hit(int force);
 
     void Reset();
