@@ -18,8 +18,18 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
     [Header("Gravity")]
     public bool gravity;
-    public float gravityValue;
+    public float gravityStr;
 
+    [Header("Vacuum")]
+    public GameObject[] vacuumObj;
+    public bool[] vacuumOn;
+
+
+    [Header("Categories")]
+    public GameObject spaced;
+
+
+    /* Private Variables */
     private Rigidbody rb;
     private bool colliding;
 
@@ -28,10 +38,17 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         rb = GetComponent<Rigidbody>();
         Physics.gravity = new Vector3(0f, -10f, 0f);
         origin = transform.position;
+
+        for(int i = 0; i < vacuumOn.Length; i++)
+        {
+            vacuumOn[i] = false;
+        }
 	}
 
 	// Update is called once per frame
 	void Update () {
+//        Debug.Log(rb.velocity);
+
         if (triggerForce)
         {
             AddForce();
@@ -49,12 +66,12 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (colliding)
             {
                 rb.angularDrag = floorDrag;
-                Physics.gravity = new Vector3(0f, -10f, 0f);
+                Physics.gravity = new Vector3(0f, -gravityStr, 0f);
             }
             else
             {
                 rb.angularDrag = airDrag;
-                Physics.gravity = new Vector3(0f, -10f, 0f);
+                Physics.gravity = new Vector3(0f, -gravityStr, 0f);
             }
         }
         else
@@ -70,8 +87,8 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 Physics.gravity = new Vector3();
             }
         }
-        gravityValue = Physics.gravity.y;
     }
+
 
     /* Helper Functions */
 
@@ -92,6 +109,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         rb.velocity = new Vector3();
     }
 
+
     /* Interface Implementation */
 
     public void Hit(float force, Vector3 dir)
@@ -109,7 +127,14 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         gravity = on;
     }
 
+    public void VacuumControl(bool on, int vacuumNum)
+    {
+        vacuumOn[vacuumNum] = on;
+    }
+
+    
     /* Collision Detectors */
+
     private void OnCollisionStay(Collision collision)
     {
         colliding = true;
@@ -130,13 +155,15 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         var mc = other.gameObject.GetComponent<MalletCollision>();
         if(mc != null)
         {
-            print("Found Mallet");
-
             Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
         }
-        else
+        else if(other.gameObject.tag == "Wicket")
         {
-            print("Could not find Mallet");
+            transform.SetParent(spaced.transform);
+            GravityControl(false);
+            Debug.Log(rb.velocity);
+
+            rb.velocity = new Vector3(rb.velocity.x, -rb.velocity.y, rb.velocity.z);
         }
     }
 }
