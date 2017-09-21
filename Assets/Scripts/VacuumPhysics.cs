@@ -41,6 +41,8 @@ public class VacuumPhysics : MonoBehaviour {
 
     void Pull(Transform obj)
     {
+        Vector3 dir = (transform.position - obj.position).normalized;
+        obj.position += dir.normalized * (t + 1);
         Vector3 newpos = Vector3.Lerp(obj.position, transform.position, t * (vacuumStr + 1));
         obj.position = newpos;
         t *= vacuumStr + 1;
