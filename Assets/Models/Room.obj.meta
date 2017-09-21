@@ -7,11 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Solid1
+    100004: Solid1:1
     400000: //RootNode
     400002: Solid1
+    400004: Solid1:1
     2300000: Solid1
+    2300002: Solid1:1
     3300000: Solid1
+    3300002: Solid1:1
     4300000: Solid1
+    4300002: Solid1:1
   materials:
     importMaterials: 1
     materialName: 0
