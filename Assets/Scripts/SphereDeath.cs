@@ -25,7 +25,6 @@ public class SphereDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(lifespan);
         if (deathRow)
         {
             lifespan -= Time.deltaTime;
@@ -59,6 +58,7 @@ public class SphereDeath : MonoBehaviour
     /* Collision Detectors */
     private void OnTriggerEnter(Collider other)
     {
+        print("dont kill me");
         deathRow = true;
     }
 }
