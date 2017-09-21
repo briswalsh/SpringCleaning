@@ -7,21 +7,22 @@ public class VacuumPhysics : MonoBehaviour {
     [Header("Vacuum")]
     public bool vacuumSwitch;
     public float vacuumStr;
+    public float margin;
+
     private bool vacuumOn;
 
-    public float t;
+    [Header("Reset")]
+    public bool reset;
 
     private GameObject movable;
 
 	// Use this for initialization
 	void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
-        t = vacuumStr;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         if (movable != null)
         {
             if(vacuumSwitch != vacuumOn)
@@ -37,28 +38,40 @@ public class VacuumPhysics : MonoBehaviour {
                 }
             }
         }
-	} 
+
+        if(reset)
+        {
+            Reset();
+            reset = false;
+        }
+	}
 
     void Pull(Transform obj)
     {
-        Vector3 dir = (transform.position - obj.position).normalized;
-        obj.position += dir.normalized * (t + 1);
-        Vector3 newpos = Vector3.Lerp(obj.position, transform.position, t * (vacuumStr + 1));
-        obj.position = newpos;
-        t *= vacuumStr + 1;
+        Vector3 dir = transform.position - obj.position;
+        print(dir.magnitude);
+        if (dir.magnitude > margin) {
+            obj.position += dir.normalized * vacuumStr / (dir.magnitude * dir.magnitude);
+        }
     }
 
     void VacuumControl(bool on)
     {
         if(on && !vacuumOn)
         {
-            t = vacuumStr;
             vacuumOn = true;
+            vacuumSwitch = true;
         }
         else if (!on && vacuumOn)
         {
-            t = 0f;
             vacuumOn = false;
+            vacuumSwitch = false;
         }
+    }
+
+    public void Reset()
+    {
+        vacuumOn = true;
+        VacuumControl(false);
     }
 }
