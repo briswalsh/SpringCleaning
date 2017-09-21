@@ -7,5 +7,7 @@ public interface IPhysics {
 
     void GravityControl(bool on);
 
+    void VacuumControl(bool on, int vacuumNum);
+
     void Reset();
 }
