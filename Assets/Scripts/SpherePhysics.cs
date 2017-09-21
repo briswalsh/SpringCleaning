@@ -18,6 +18,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
     [Header("Gravity")]
     public bool gravity;
+    public float gravityValue;
 
     private Rigidbody rb;
     private bool colliding;
@@ -25,7 +26,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0f, -5f, 0f);
+        Physics.gravity = new Vector3(0f, -10f, 0f);
         origin = transform.position;
 	}
 
@@ -34,11 +35,13 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         if (triggerForce)
         {
             AddForce();
+            triggerForce = false;
         }
 
         if (reset)
         {
             ResetPosition();
+            reset = false;
         }
 
         if (gravity)
@@ -46,7 +49,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (colliding)
             {
                 rb.angularDrag = floorDrag;
-                Physics.gravity = new Vector3(0f, -5f, 0f);
+                Physics.gravity = new Vector3(0f, -10f, 0f);
             }
             else
             {
@@ -56,20 +59,30 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         }
         else
         {
-            Physics.gravity = new Vector3();
+            if (colliding)
+            {
+                rb.angularDrag = floorDrag;
+                Physics.gravity = new Vector3();
+            }
+            else
+            {
+                rb.angularDrag = airDrag;
+                Physics.gravity = new Vector3();
+            }
         }
+        gravityValue = Physics.gravity.y;
     }
+
+    /* Helper Functions */
 
     private void AddForce()
     {
         rb.AddForce(new Vector3(-1f, 0f) * constant);
-        triggerForce = false;
     }
 
-    private void AddForce(int force)
+    private void AddForce(float force, Vector3 dir)
     {
-        rb.AddForce(new Vector3(-1f, 0f) * force);
-        triggerForce = false;
+        rb.AddForce(new Vector3(dir.x ,0, dir.z).normalized * force);
     }
 
     void ResetPosition()
@@ -77,9 +90,26 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         transform.position = origin;
         rb.angularVelocity = new Vector3();
         rb.velocity = new Vector3();
-        reset = false;
     }
 
+    /* Interface Implementation */
+
+    public void Hit(float force, Vector3 dir)
+    {
+        AddForce(force, dir);
+    }
+
+    public void Reset()
+    {
+        ResetPosition();
+    }
+
+    public void GravityControl(bool on)
+    {
+        gravity = on;
+    }
+
+    /* Collision Detectors */
     private void OnCollisionStay(Collision collision)
     {
         colliding = true;
@@ -95,13 +125,18 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         colliding = false;
     }
 
-    public void Hit(int force)
+    private void OnTriggerEnter(Collider other)
     {
-        AddForce(force);
-    }
+        var mc = other.gameObject.GetComponent<MalletCollision>();
+        if(mc != null)
+        {
+            print("Found Mallet");
 
-    public void Reset()
-    {
-        ResetPosition();
+            Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
+        }
+        else
+        {
+            print("Could not find Mallet");
+        }
     }
 }
