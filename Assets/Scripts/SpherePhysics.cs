@@ -82,7 +82,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
     private void AddForce(int force, Vector3 dir)
     {
-        rb.AddForce(dir.normalized * force);
+        rb.AddForce(new Vector3(dir.x ,0, dir.z).normalized * force);
     }
 
     void ResetPosition()
