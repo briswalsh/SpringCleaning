@@ -25,7 +25,6 @@ public class SphereDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(lifespan);
         if (deathRow)
         {
             lifespan -= Time.deltaTime;
