@@ -31,12 +31,12 @@ public class MalletCollision : MonoBehaviour {
         lastPosition = tempPos;
     }
 
-    Vector3 GetDirection (Vector3 spherePos)
+    public Vector3 GetDirection (Vector3 spherePos)
     {
         return spherePos - currentPosition;
     }
 
-    float GetSpeed ()
+    public float GetSpeed ()
     {
         var distance = Vector3.Distance(lastPosition, currentPosition);
         return (float) distance / time;

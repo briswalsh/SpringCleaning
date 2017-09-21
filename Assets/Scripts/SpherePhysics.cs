@@ -80,7 +80,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         rb.AddForce(new Vector3(-1f, 0f) * constant);
     }
 
-    private void AddForce(int force, Vector3 dir)
+    private void AddForce(float force, Vector3 dir)
     {
         rb.AddForce(new Vector3(dir.x ,0, dir.z).normalized * force);
     }
@@ -94,7 +94,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
     /* Interface Implementation */
 
-    public void Hit(int force, Vector3 dir)
+    public void Hit(float force, Vector3 dir)
     {
         AddForce(force, dir);
     }
@@ -123,5 +123,20 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     private void OnCollisionExit(Collision collision)
     {
         colliding = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var mc = other.gameObject.GetComponent<MalletCollision>();
+        if(mc != null)
+        {
+            print("Found Mallet");
+
+            Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
+        }
+        else
+        {
+            print("Could not find Mallet");
+        }
     }
 }

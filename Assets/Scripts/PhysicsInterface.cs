@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IPhysics {
-    void Hit(int force, Vector3 dir);
+    void Hit(float force, Vector3 dir);
 
     void GravityControl(bool on);
 
