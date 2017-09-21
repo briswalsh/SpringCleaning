@@ -222,8 +222,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1970206015054868, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
       propertyPath: m_Name
-      value: Gate
+      value: Vacuum
       objectReference: {fileID: 0}
+    - target: {fileID: 23487403826933952, guid: 8a2c9f3bf329cea49892d2232401d438,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ebbaa85c264a442c9a0a62fb231a488, type: 2}
+    - target: {fileID: 1429092903349628, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
+      propertyPath: m_Name
+      value: Ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 23826892608767674, guid: 8a2c9f3bf329cea49892d2232401d438,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: becd3f563e9224c3894cf6cbc5b31de8, type: 2}
+    - target: {fileID: 1961079758432000, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
+      propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 23307279194989422, guid: 8a2c9f3bf329cea49892d2232401d438,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f742d2a769b044da93dee2f9555b2ef, type: 2}
+    - target: {fileID: 23406182352140300, guid: 8a2c9f3bf329cea49892d2232401d438,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20ba0959666b14fdb98ce1acb174bccf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a2c9f3bf329cea49892d2232401d438, type: 2}
   m_IsPrefabParent: 0
