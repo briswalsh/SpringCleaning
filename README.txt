@@ -7,10 +7,10 @@ RUN DIRECTIONS:
   Open SpringCleaning.exe with SpringCleaning_Data folder in the same directory.
   
 RELEASE NOTES:
-  1. Implemented gravity on/off mechanic
+  1. Implemented gravity on/off mechanic with ramp
   2. Implemented mallets as hands, and fluid mallet collision with ball
   3. Set up basic game loop with ball spawning and destruction
-  4. Added Fire, Gravity sounds. More created but not added into scene yet.
+  4. Added Fire sounds and particle system
   5. Created basic level, ramp, wicket, mallet, balcony, skyline, crates, "compressed air", player platform assets
  
 ATTRIBUTIONS:
