@@ -58,6 +58,7 @@ public class SphereDeath : MonoBehaviour
     /* Collision Detectors */
     private void OnTriggerEnter(Collider other)
     {
+        print("dont kill me");
         deathRow = true;
     }
 }
