@@ -7,6 +7,7 @@ public class GravityControl : MonoBehaviour {
     public GameObject movable;
 
     public bool on;
+    public float gravConst;
 
     public float duration;
     private float t;
@@ -26,19 +27,26 @@ public class GravityControl : MonoBehaviour {
         {
             t = Time.time + duration;
             on = !on;
-            if (on)
+            /*if (on)
             {
                 hum.Stop();
                 hum.Play();
-            } 
+            } */
         }
 
         for(int i = 0; i < movable.transform.childCount; i++)
         {
-            var sphere = movable.transform.GetChild(i).GetComponent<SpherePhysics>();
+            var sphere = movable.transform.GetChild(i).GetComponent<IPhysics>();
             if(sphere != null)
             {
-                sphere.GravityControl(on);
+                if (on)
+                {
+                    sphere.GravityControl(on, gravConst);
+                }
+                else
+                {
+                    sphere.GravityControl(on, -0.1f);
+                }
             }
         }
 	}

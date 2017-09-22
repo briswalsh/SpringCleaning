@@ -7,7 +7,7 @@ public class SphereDeath : MonoBehaviour
     [Header("Deathiness")]
     public bool deathRow;
     public float lifespan = 5f;
-    public float deathspan = 5f;
+    public float deathspan = 2f;
     public GameObject fire;
     private bool smores;
     private MeshRenderer sphereDude;

@@ -66,12 +66,10 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (colliding)
             {
                 rb.angularDrag = floorDrag;
-                Physics.gravity = new Vector3(0f, -gravityStr, 0f);
             }
             else
             {
                 rb.angularDrag = airDrag;
-                Physics.gravity = new Vector3(0f, -gravityStr, 0f);
             }
         }
         else
@@ -79,12 +77,10 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (colliding)
             {
                 rb.angularDrag = floorDrag;
-                Physics.gravity = new Vector3();
             }
             else
             {
                 rb.angularDrag = airDrag;
-                Physics.gravity = new Vector3();
             }
         }
     }
@@ -122,9 +118,10 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         ResetPosition();
     }
 
-    public void GravityControl(bool on)
+    public void GravityControl(bool on, float gravConst)
     {
         gravity = on;
+        Physics.gravity = new Vector3(0f, -gravConst, 0f);
     }
 
     public void VacuumControl(bool on, int vacuumNum)
