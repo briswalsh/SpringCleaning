@@ -28,11 +28,9 @@ public class GravityControl : MonoBehaviour {
             on = !on;
             if (on)
             {
-                hum.Play();
-            } else
-            {
                 hum.Stop();
-            }
+                hum.Play();
+            } 
         }
 
         for(int i = 0; i < movable.transform.childCount; i++)
