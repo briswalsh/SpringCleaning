@@ -158,11 +158,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         {
             Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
         }
-<<<<<<< HEAD
-		else
-=======
         else if(other.gameObject.tag == "Wicket")
->>>>>>> 22bbd4bac41aaaeaa3815a8f7fd6e6c7eb401615
         {
             transform.SetParent(spaced.transform);
             GravityControl(false);
