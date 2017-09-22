@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IPhysics {
     void Hit(float force, Vector3 dir);
 
-    void GravityControl(bool on);
+    void GravityControl(bool on, float grav);
 
     void VacuumControl(bool on, int vacuumNum);
 
