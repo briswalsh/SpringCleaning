@@ -5,7 +5,7 @@ using UnityEngine;
 public class SphereDeath : MonoBehaviour
 {
     [Header("Deathiness")]
-    private bool deathRow;
+    public bool deathRow;
     public float lifespan = 5f;
     public float deathspan = 5f;
     public GameObject fire;

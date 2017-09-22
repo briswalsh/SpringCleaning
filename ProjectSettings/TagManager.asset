@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Movable
+  - Fire
+  - Wicket
   layers:
   - Default
   - TransparentFX
