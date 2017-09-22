@@ -153,6 +153,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     private void OnTriggerEnter(Collider other)
     {
         var mc = other.gameObject.GetComponent<MalletCollision>();
+
         if(mc != null)
         {
             Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
@@ -165,5 +166,16 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
             rb.velocity = new Vector3(rb.velocity.x, -rb.velocity.y, rb.velocity.z);
         }
+
+		var wc = other.gameObject.GetComponent<WicketCollision> ();
+
+		if (wc != null) {
+			print ("Found Wicket");
+			wc.Eject (gameObject);
+		} 
+
+		else {
+			print ("Could not find Wicket");
+		}
     }
 }
