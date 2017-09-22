@@ -128,15 +128,27 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     private void OnTriggerEnter(Collider other)
     {
         var mc = other.gameObject.GetComponent<MalletCollision>();
+
         if(mc != null)
         {
             print("Found Mallet");
 
             Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
         }
-        else
+		else
         {
             print("Could not find Mallet");
         }
+
+		var wc = other.gameObject.GetComponent<WicketCollision> ();
+
+		if (wc != null) {
+			print ("Found Wicket");
+			wc.Eject (gameObject);
+		} 
+
+		else {
+			print ("Could not find Wicket");
+		}
     }
 }

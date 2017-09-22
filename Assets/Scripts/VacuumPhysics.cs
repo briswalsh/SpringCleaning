@@ -49,7 +49,6 @@ public class VacuumPhysics : MonoBehaviour {
     void Pull(Transform obj)
     {
         Vector3 dir = transform.position - obj.position;
-        print(dir.magnitude);
         if (dir.magnitude > margin) {
             obj.position += dir.normalized * vacuumStr / (dir.magnitude * dir.magnitude);
         }
