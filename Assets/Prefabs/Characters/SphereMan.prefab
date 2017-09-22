@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54724077319792848}
   - component: {fileID: 114203789459350658}
   - component: {fileID: 114419327650650278}
-  - component: {fileID: 82091974410077950}
+  - component: {fileID: 82217538677598384}
   m_Layer: 0
   m_Name: SphereMan
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &82091974410077950
+--- !u!82 &82217538677598384
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,9 +109,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2cec8a8b08bc90499f822c1b2189e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5ff1b1d30c4cdb1418de4518fc793a2c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.73
   m_Pitch: 1
   Loop: 0
   Mute: 0
