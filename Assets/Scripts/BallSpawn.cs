@@ -9,8 +9,6 @@ public class BallSpawn : MonoBehaviour {
     public GameObject ball;
     public Vector3 origin;
 
-    public bool killTrigger;
-
     private GameObject currBall;
 
 	// Use this for initialization
@@ -24,16 +22,5 @@ public class BallSpawn : MonoBehaviour {
         {
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         }
-
-        if (killTrigger)
-        {
-            Kill();
-            killTrigger = false;
-        }
-    }
-
-    public void Kill()
-    {
-        currBall.GetComponent<SphereDeath>().deathRow = true;
     }
 }
