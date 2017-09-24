@@ -8,6 +8,4 @@ public interface IPhysics {
     void GravityControl(bool on, float grav);
 
     void VacuumControl(bool on, int vacuumNum);
-
-    void Reset();
 }

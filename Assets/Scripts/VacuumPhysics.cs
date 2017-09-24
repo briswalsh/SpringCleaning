@@ -7,6 +7,7 @@ public class VacuumPhysics : MonoBehaviour {
     [Header("Vacuum")]
     public bool vacuumSwitch;
     public float vacuumStr;
+    public float vacuumDist;
     public float margin;
 
     private bool vacuumOn;

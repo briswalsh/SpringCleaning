@@ -11,9 +11,9 @@ public class WicketCollision : MonoBehaviour {
 		
 		time = Time.time; // time when ball hits the wicket
 		sph = sphere;
-		var score = GameObject.Find ("Player").GetComponent<Score> ();
-		score.addScore ();
-		score.showScore ();
+		//var score = GameObject.Find ("Player").GetComponent<Score> ();
+		//score.addScore ();
+		//score.showScore ();
 
 	}
 		
@@ -25,7 +25,7 @@ public class WicketCollision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (sph != null) {
-			if (Time.time < (time + 5)) { // before 5 seconds pass
+			if (Time.time < (time + 2)) { // before 5 seconds pass
 				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
 				Rigidbody rb = sph.GetComponent<Rigidbody> ();
 				rb.AddForce (transform.forward);
