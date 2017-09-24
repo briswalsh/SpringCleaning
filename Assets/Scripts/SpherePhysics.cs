@@ -45,9 +45,10 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         }
 	}
 
-	// Update is called once per frame
-	void Update () {
-//        Debug.Log(rb.velocity);
+    // Update is called once per frame
+    void Update()
+    {
+        //        Debug.Log(rb.velocity);
 
         if (triggerForce)
         {
@@ -61,27 +62,48 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             reset = false;
         }
 
-        if (gravity)
+        if (colliding)
         {
-            if (colliding)
+            rb.angularDrag = floorDrag;
+        }
+        else
+        {
+            if (gravity)
             {
-                rb.angularDrag = floorDrag;
+                rb.angularDrag = 0f;
             }
             else
             {
                 rb.angularDrag = airDrag;
             }
         }
-        else
+
+        /* Vacuum movement */
+
+        Vector3 newPos = new Vector3();
+        for (int i = 0; i < vacuumObj.Length; i++)
         {
-            if (colliding)
+            if (vacuumOn[i])
             {
-                rb.angularDrag = floorDrag;
+                var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
+                if (vp != null)
+                {
+                    Vector3 dir = vacuumObj[i].transform.position - transform.position;
+                    float dist = dir.magnitude;
+                    if (dist < vp.vacuumDist)
+                    {
+                        newPos += vp.vacuumStr * dir.normalized / (dist * dist);
+                    }
+                }
             }
-            else
-            {
-                rb.angularDrag = airDrag;
-            }
+        }
+
+        RaycastHit hit;
+        Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
+        if(hit.collider)
+        {
+            //move to newPos
+            transform.position = transform.position + newPos;
         }
     }
 
@@ -98,7 +120,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         rb.AddForce(new Vector3(dir.x ,0, dir.z).normalized * force);
     }
 
-    void ResetPosition()
+    private void ResetPosition()
     {
         transform.position = origin;
         rb.angularVelocity = new Vector3();
@@ -111,11 +133,6 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     public void Hit(float force, Vector3 dir)
     {
         AddForce(force, dir);
-    }
-
-    public void Reset()
-    {
-        ResetPosition();
     }
 
     public void GravityControl(bool on, float gravConst)

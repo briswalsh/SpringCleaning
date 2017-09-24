@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundGravity : MonoBehaviour, IPhysics {
 
-    [Header("Adding Force")]
+    [Header("Force")]
     public float constant;
 
     [Header("Angular Drag")]
@@ -71,9 +71,6 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
     {
     }
 
-    public void Reset()
-    {
-    }
 
     public void GravityControl(bool on, float gravCost)
     {
