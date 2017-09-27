@@ -28,6 +28,8 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     [Header("Categories")]
     public GameObject spaced;
 
+    public GameObject malletMan;
+
     /* Private Variables */
     private Rigidbody rb;
     private bool colliding;
@@ -49,6 +51,9 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         vacuumOn = movable.GetComponent<MovablePhysics>().vacuumOn;
 
         spaced = GameObject.FindGameObjectWithTag("Spaced");
+
+        malletMan = GameObject.FindGameObjectWithTag("Player");
+        Physics.IgnoreCollision(GetComponent<Collider>(), malletMan.GetComponent<Collider>());
 	}
 
     // Update is called once per frame
