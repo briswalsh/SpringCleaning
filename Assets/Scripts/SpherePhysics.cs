@@ -124,8 +124,6 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         }
         else
         {
-            print(vel);
-            Physics.gravity = new Vector3();
             transform.position += vel * Time.deltaTime;
         }
     }
@@ -207,12 +205,9 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             {
                 physics = false;
                 transform.SetParent(spaced.transform);
-                //rb.AddForce(vp.transform.position - transform.position);
                 vel = vp.transform.position - transform.position;
-                Physics.gravity = new Vector3();
-                vel.y = 0f;
+                Physics.gravity = new Vector3(0, 0f, 0);
 
-                print(vel);
 
                 //wc.Eject(gameObject, -vel.normalized);
             }

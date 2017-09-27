@@ -8,8 +8,13 @@ public class MovablePhysics : MonoBehaviour {
     public GameObject[] vacuumObj;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+        vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
+        vacuumOn = new bool[vacuumObj.Length];
+        for(int i = 0; i < vacuumObj.Length; i++)
+        {
+            vacuumOn[i] = vacuumObj[i].GetComponent<VacuumPhysics>().vacuumSwitch;
+        }
 	}
 	
 	// Update is called once per frame
