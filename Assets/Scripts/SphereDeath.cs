@@ -56,9 +56,12 @@ public class SphereDeath : MonoBehaviour
 
 
     /* Collision Detectors */
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        print("dont kill me");
-        deathRow = true;
+        if(other.name == "Safe Area")
+        {
+            print("My time is nigh");
+            deathRow = true;
+        }
     }
 }
