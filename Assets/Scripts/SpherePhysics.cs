@@ -21,89 +21,107 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     public float gravityStr;
 
     [Header("Vacuum")]
+    public GameObject movable;
     public GameObject[] vacuumObj;
     public bool[] vacuumOn;
-
 
     [Header("Categories")]
     public GameObject spaced;
 
-
     /* Private Variables */
     private Rigidbody rb;
     private bool colliding;
+    private Vector3 prevPos;
+    private Vector3 vel;
+    private bool physics;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         Physics.gravity = new Vector3(0f, -10f, 0f);
         origin = transform.position;
+        physics = true;
+        prevPos = transform.position;
+        vel = new Vector3();
 
-        for(int i = 0; i < vacuumOn.Length; i++)
-        {
-            vacuumOn[i] = false;
-        }
+        movable = GameObject.FindGameObjectWithTag("Movable");
+        vacuumObj = movable.GetComponent<MovablePhysics>().vacuumObj;
+        vacuumOn = movable.GetComponent<MovablePhysics>().vacuumOn;
+
+        spaced = GameObject.FindGameObjectWithTag("Spaced");
 	}
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //        Debug.Log(rb.velocity);
-
-        if (triggerForce)
+        if (physics)
         {
-            AddForce();
-            triggerForce = false;
-        }
-
-        if (reset)
-        {
-            ResetPosition();
-            reset = false;
-        }
-
-        if (colliding)
-        {
-            rb.angularDrag = floorDrag;
-        }
-        else
-        {
-            if (gravity)
+            if (triggerForce)
             {
-                rb.angularDrag = 0f;
+                AddForce();
+                triggerForce = false;
+            }
+
+            if (reset)
+            {
+                ResetPosition();
+                reset = false;
+            }
+
+            if (colliding)
+            {
+                rb.angularDrag = floorDrag;
             }
             else
             {
-                rb.angularDrag = airDrag;
-            }
-        }
-
-        /* Vacuum movement */
-
-        Vector3 newPos = new Vector3();
-        for (int i = 0; i < vacuumObj.Length; i++)
-        {
-            if (vacuumOn[i])
-            {
-                var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
-                if (vp != null)
+                if (gravity)
                 {
-                    Vector3 dir = vacuumObj[i].transform.position - transform.position;
-                    float dist = dir.magnitude;
-                    if (dist < vp.vacuumDist)
+                    rb.angularDrag = 0f;
+                }
+                else
+                {
+                    rb.angularDrag = airDrag;
+                }
+            }
+
+            /* Vacuum movement */
+
+            Vector3 newPos = new Vector3();
+            for (int i = 0; i < vacuumObj.Length; i++)
+            {
+                if (vacuumOn[i])
+                {
+                    var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
+                    if (vp != null)
                     {
-                        newPos += vp.vacuumStr * dir.normalized / (dist * dist);
+                        Vector3 dir = vacuumObj[i].transform.position - transform.position;
+                        float dist = dir.magnitude;
+                        if (dist < vp.vacuumDist)
+                        {
+                            newPos += vp.vacuumStr * dir.normalized / (dist * dist);
+                        }
                     }
                 }
             }
-        }
+           // if (Mathf.FloorToInt(Time.time) % 2 == 1)
+            
+                prevPos = transform.position;
+            
 
-        RaycastHit hit;
-        Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
-        if(hit.collider)
+            RaycastHit hit;
+            Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
+            if (hit.collider == null || hit.collider.tag != "Wall")
+            {
+                //move to newPos
+                transform.position = transform.position + newPos;
+            }
+            //vel = transform.position - prevPos;
+        }
+        else
         {
-            //move to newPos
-            transform.position = transform.position + newPos;
+            print(vel);
+            Physics.gravity = new Vector3();
+            transform.position += vel * Time.deltaTime;
         }
     }
 
@@ -173,15 +191,31 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             Hit(mc.GetSpeed() * constant, mc.GetDirection(transform.position));
         }
 
-		var wc = other.gameObject.GetComponent<WicketCollision> ();
+        var vp = other.gameObject.GetComponent<VacuumPhysics>();
+        if (vp != null)
+        {
+            vp.vacuumSwitch = false;
 
-		if (wc != null) {
-			print ("Found Wicket");
-            transform.SetParent(spaced.transform);
-            wc.Eject (gameObject);
-		} 
+            var wc = other.gameObject.GetComponent<WicketCollision>();
+
+            if (wc != null)
+            {
+                physics = false;
+                transform.SetParent(spaced.transform);
+                //rb.AddForce(vp.transform.position - transform.position);
+                vel = vp.transform.position - transform.position;
+                Physics.gravity = new Vector3();
+                vel.y = 0f;
+
+                print(vel);
+
+                //wc.Eject(gameObject, -vel.normalized);
+            }
+        }
+        
 
 		else {
+            print(other.name);
 			print ("Could not find Wicket");
 		}
     }
