@@ -99,7 +99,7 @@ public class BallSpawn : MonoBehaviour {
         }
     }
 
-    void NextStage()
+    public void NextStage()
     {
         spotlights[state].SetActive(false);
         state++;
@@ -143,7 +143,7 @@ public class BallSpawn : MonoBehaviour {
     {
         for (int i = 0; i < walls.Length; i++)
         {
-            walls[i].SetActive(true);
+            walls[i].GetComponent<Collider>().enabled = true;
         }
     }
 }

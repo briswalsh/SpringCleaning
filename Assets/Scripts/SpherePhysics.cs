@@ -206,9 +206,9 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 physics = false;
                 GetComponent<SphereDeath>().deathRow = false;
                 transform.SetParent(spaced.transform);
+                //transform.SetParent(spaced.transform);
                 vel = vp.transform.position - transform.position;
                 Physics.gravity = new Vector3(0, 0f, 0);
-
 
                 wc.Eject(other.gameObject);
             }
