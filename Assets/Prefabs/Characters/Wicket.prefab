@@ -4846,7 +4846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8d31c82c5a4a743813c8e473c8b8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vacuumSwitch: 1
+  vacuumSwitch: 0
   vacuumStr: 100
   vacuumDist: 200
   movablePos: 0
