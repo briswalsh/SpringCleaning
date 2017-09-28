@@ -103,13 +103,13 @@ public class BallSpawn : MonoBehaviour {
     {
         spotlights[state].SetActive(false);
         state++;
-        spotlights[state].SetActive(true);
         if(state == 1)
         {
             alt = true;
             t = Time.time;
+            spotlights[state].SetActive(true);
         }
-        if(state == 2)
+        if (state == 2)
         {
             alt = false;
             SetGravity(true);
@@ -120,8 +120,9 @@ public class BallSpawn : MonoBehaviour {
                     vacuumOn[i] = true;
                 }
             }
+            spotlights[state].SetActive(true);
         }
-        if(state == 3)
+        if (state == 3)
         {
             for (int i = 0; i < vacuumObj.Length; i++)
             {
@@ -144,7 +145,7 @@ public class BallSpawn : MonoBehaviour {
                 }
                 else
                 {
-                    sphere.GravityControl(on, -0.1f);
+                    sphere.GravityControl(on, -0.05f);
                 }
             }
         }
