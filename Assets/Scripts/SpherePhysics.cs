@@ -204,12 +204,13 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (wc != null)
             {
                 physics = false;
+                GetComponent<SphereDeath>().deathRow = false;
                 transform.SetParent(spaced.transform);
                 vel = vp.transform.position - transform.position;
                 Physics.gravity = new Vector3(0, 0f, 0);
 
 
-                //wc.Eject(gameObject, -vel.normalized);
+                wc.Eject(gameObject, -vel.normalized);
             }
         }
         

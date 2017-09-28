@@ -13,6 +13,7 @@ public class BallSpawn : MonoBehaviour {
 
     /* Game States */
     public GameObject[] spotlights;
+    public GameObject[] walls;
 
     private int state;
     public int ballCount;
@@ -42,6 +43,9 @@ public class BallSpawn : MonoBehaviour {
             vacuumOn[i] = false;
             vacuumObj[i].GetComponent<VacuumPhysics>().vacuumSwitch = false;
         }
+
+        walls = GameObject.FindGameObjectsWithTag("Wall");
+        TurnOnWalls();
     }
 
     // Use this for initialization
@@ -72,6 +76,7 @@ public class BallSpawn : MonoBehaviour {
 		if (currBall == null)
         {
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+            TurnOnWalls();
         }
 
         if (alt)
@@ -131,6 +136,14 @@ public class BallSpawn : MonoBehaviour {
                     sphere.GravityControl(on, -0.1f);
                 }
             }
+        }
+    }
+
+    void TurnOnWalls()
+    {
+        for (int i = 0; i < walls.Length; i++)
+        {
+            walls[i].SetActive(true);
         }
     }
 }
