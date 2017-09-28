@@ -17,7 +17,7 @@ public class VacuumPhysics : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
-        var mp = movable.GetComponent<MovablePhysics>();
+        var mp = movable.GetComponent<BallSpawn>();
         for (int i = 0; i < mp.vacuumObj.Length; i++)
         {
             if (mp.vacuumObj[i] == gameObject)
@@ -26,8 +26,6 @@ public class VacuumPhysics : MonoBehaviour {
                 break;
             }
         }
-        print(movablePos);
-
 	}
 	
 	// Update is called once per frame

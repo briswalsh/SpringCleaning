@@ -47,8 +47,8 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         vel = new Vector3();
 
         movable = GameObject.FindGameObjectWithTag("Movable");
-        vacuumObj = movable.GetComponent<MovablePhysics>().vacuumObj;
-        vacuumOn = movable.GetComponent<MovablePhysics>().vacuumOn;
+        vacuumObj = movable.GetComponent<BallSpawn>().vacuumObj;
+        vacuumOn = movable.GetComponent<BallSpawn>().vacuumOn;
 
         spaced = GameObject.FindGameObjectWithTag("Spaced");
 
