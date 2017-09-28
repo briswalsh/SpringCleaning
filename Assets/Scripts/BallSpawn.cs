@@ -81,7 +81,7 @@ public class BallSpawn : MonoBehaviour {
 
         if (alt)
         {
-            if(Time.time > t + duration)
+            if(Time.time >= t + duration)
             {
                 gravOn = !gravOn;
                 SetGravity(gravOn);
@@ -113,9 +113,20 @@ public class BallSpawn : MonoBehaviour {
         {
             alt = false;
             SetGravity(true);
+            for(int i = 0; i < vacuumObj.Length; i++)
+            {
+                if(vacuumObj[i].transform.parent.name == "Wicket 8A")
+                {
+                    vacuumOn[i] = true;
+                }
+            }
         }
         if(state == 3)
         {
+            for (int i = 0; i < vacuumObj.Length; i++)
+            {
+                vacuumOn[i] = true;
+            }
             //win
         }
     }

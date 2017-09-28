@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54724077319792848}
   - component: {fileID: 114203789459350658}
   - component: {fileID: 82217538677598384}
-  - component: {fileID: 114847913504189624}
   - component: {fileID: 114093552774514486}
   m_Layer: 0
   m_Name: SphereMan
@@ -195,7 +194,7 @@ MonoBehaviour:
   deathRow: 0
   lifespan: 5
   deathspan: 2
-  fire: {fileID: 0}
+  fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
   bloodCurdling: {fileID: 0}
 --- !u!114 &114203789459350658
 MonoBehaviour:
@@ -220,21 +219,6 @@ MonoBehaviour:
   vacuumOn: 
   spaced: {fileID: 0}
   malletMan: {fileID: 0}
---- !u!114 &114847913504189624
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676124220112412}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72389e4002bf7a74e909099abcb7bf42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
-  youWillBeBaked: {fileID: 1222167660038792, guid: 604162dbc8315324590b3ae7c8fcd3cf,
-    type: 2}
-  thereWillBeCake: {fileID: 0}
 --- !u!135 &135076355786788752
 SphereCollider:
   m_ObjectHideFlags: 1
