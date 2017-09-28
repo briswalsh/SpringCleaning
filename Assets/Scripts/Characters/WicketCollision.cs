@@ -10,13 +10,15 @@ public class WicketCollision : MonoBehaviour {
 	private GameObject sph;
     private Vector3 velocity;
 
-	public void Eject(GameObject col) {
+	public void Eject(GameObject sphere, GameObject col) {
 
         GameObject wall = col.transform.parent.parent.gameObject;
         if (wall.name.Contains("Wall Collider")) {
             wall.GetComponent<Collider>().enabled = false;
         }
         movable.GetComponent<BallSpawn>().NextStage();
+        sph = sphere;
+        time = Time.time;
 
         //var score = GameObject.Find ("Player").GetComponent<Score> ();
         //score.addScore ();

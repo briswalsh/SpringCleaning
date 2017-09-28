@@ -210,13 +210,12 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 vel = vp.transform.position - transform.position;
                 Physics.gravity = new Vector3(0, 0f, 0);
 
-                wc.Eject(other.gameObject);
+                wc.Eject(gameObject, other.gameObject);
             }
         }
         
 
 		else {
-            print(other.name);
 			print ("Could not find Wicket");
 		}
     }
