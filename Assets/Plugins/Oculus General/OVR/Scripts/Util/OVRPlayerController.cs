@@ -77,6 +77,7 @@ public class OVRPlayerController : MonoBehaviour
 	/// If true, each OVRPlayerController will use the player's physical height.
 	/// </summary>
 	public bool useProfileData = true;
+    public bool joystickMovement = false;
 
 	protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
@@ -228,115 +229,121 @@ public class OVRPlayerController : MonoBehaviour
 			MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
 	}
 
-	public virtual void UpdateMovement()
-	{
-		if (HaltUpdateMovement)
-			return;
+    public virtual void UpdateMovement()
+    {
+        if (HaltUpdateMovement)
+            return;
 
-		bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-		bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-		bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
-		bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
-		bool dpad_move = false;
+        bool dpad_move = false;
 
-		if (OVRInput.Get(OVRInput.Button.DpadUp))
-		{
-			moveForward = true;
-			dpad_move   = true;
+        if (OVRInput.Get(OVRInput.Button.DpadUp))
+        {
+            moveForward = true;
+            dpad_move = true;
 
-		}
+        }
 
-		if (OVRInput.Get(OVRInput.Button.DpadDown))
-		{
-			moveBack  = true;
-			dpad_move = true;
-		}
+        if (OVRInput.Get(OVRInput.Button.DpadDown))
+        {
+            moveBack = true;
+            dpad_move = true;
+        }
 
-		MoveScale = 1.0f;
+        MoveScale = 1.0f;
 
-		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
-			 (moveBack && moveLeft)    || (moveBack && moveRight) )
-			MoveScale = 0.70710678f;
+        if ((moveForward && moveLeft) || (moveForward && moveRight) ||
+             (moveBack && moveLeft) || (moveBack && moveRight))
+            MoveScale = 0.70710678f;
 
-		// No positional movement if we are in the air
-		if (!Controller.isGrounded)
-			MoveScale = 0.0f;
+        // No positional movement if we are in the air
+        if (!Controller.isGrounded)
+            MoveScale = 0.0f;
 
-		MoveScale *= SimulationRate * Time.deltaTime;
+        MoveScale *= SimulationRate * Time.deltaTime;
 
-		// Compute this for key movement
-		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+        // Compute this for key movement
+        float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
-		// Run!
-		if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-			moveInfluence *= 2.0f;
+        // Run!
+        if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            moveInfluence *= 2.0f;
 
-		Quaternion ort = transform.rotation;
-		Vector3 ortEuler = ort.eulerAngles;
-		ortEuler.z = ortEuler.x = 0f;
-		ort = Quaternion.Euler(ortEuler);
+        Quaternion ort = transform.rotation;
+        Vector3 ortEuler = ort.eulerAngles;
+        ortEuler.z = ortEuler.x = 0f;
+        ort = Quaternion.Euler(ortEuler);
 
-		if (moveForward)
-			MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * Vector3.forward);
-		if (moveBack)
-			MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
-		if (moveLeft)
-			MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.left);
-		if (moveRight)
-			MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
+        if (moveForward)
+            MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * Vector3.forward);
+        if (moveBack)
+            MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
+        if (moveLeft)
+            MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.left);
+        if (moveRight)
+            MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
 
-		Vector3 euler = transform.rotation.eulerAngles;
+        Vector3 euler = transform.rotation.eulerAngles;
 
-		bool curHatLeft = OVRInput.Get(OVRInput.Button.PrimaryShoulder);
+        bool curHatLeft = OVRInput.Get(OVRInput.Button.PrimaryShoulder);
 
-		if (curHatLeft && !prevHatLeft)
-			euler.y -= RotationRatchet;
+        if (curHatLeft && !prevHatLeft)
+            euler.y -= RotationRatchet;
 
-		prevHatLeft = curHatLeft;
+        prevHatLeft = curHatLeft;
 
-		bool curHatRight = OVRInput.Get(OVRInput.Button.SecondaryShoulder);
+        bool curHatRight = OVRInput.Get(OVRInput.Button.SecondaryShoulder);
 
-		if(curHatRight && !prevHatRight)
-			euler.y += RotationRatchet;
+        if (curHatRight && !prevHatRight)
+            euler.y += RotationRatchet;
 
-		prevHatRight = curHatRight;
+        prevHatRight = curHatRight;
 
-		euler.y += buttonRotation;
-		buttonRotation = 0f;
+        euler.y += buttonRotation;
+        buttonRotation = 0f;
 
-		float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
+        float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
 
 #if !UNITY_ANDROID || UNITY_EDITOR
-		if (!SkipMouseRotation)
-			euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
+        if (!SkipMouseRotation)
+            euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
 #endif
 
-		moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+        moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
-		moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+        moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
 #endif
 
-		Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
-		if(primaryAxis.y > 0.0f)
-            MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z * moveInfluence * Vector3.forward);
+        if (joystickMovement)
+        {
+            if (primaryAxis.y > 0.0f)
+                MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z * moveInfluence * Vector3.forward);
 
-		if(primaryAxis.y < 0.0f)
-            MoveThrottle += ort * (Mathf.Abs(primaryAxis.y) * transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
+            if (primaryAxis.y < 0.0f)
+                MoveThrottle += ort * (Mathf.Abs(primaryAxis.y) * transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
 
-		if(primaryAxis.x < 0.0f)
-            MoveThrottle += ort * (Mathf.Abs(primaryAxis.x) * transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.left);
+            if (primaryAxis.x < 0.0f)
+                MoveThrottle += ort * (Mathf.Abs(primaryAxis.x) * transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.left);
 
-		if(primaryAxis.x > 0.0f)
-            MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
+            if (primaryAxis.x > 0.0f)
+                MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
+        }
 
 		Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
 
-		euler.y += secondaryAxis.x * rotateInfluence;
+        if (joystickMovement)
+        {
+            euler.y += secondaryAxis.x * rotateInfluence;
 
-		transform.rotation = Quaternion.Euler(euler);
+            transform.rotation = Quaternion.Euler(euler);
+        }
 	}
 
 	/// <summary>
