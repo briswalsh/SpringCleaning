@@ -13,6 +13,8 @@ public class SphereDeath : MonoBehaviour
     private MeshRenderer sphereDude;
     public AudioSource bloodCurdling;
 
+    private GameObject movable;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +22,7 @@ public class SphereDeath : MonoBehaviour
         smores = false;
         sphereDude = GetComponent<MeshRenderer>();
         bloodCurdling = GetComponent<AudioSource>();
+        movable = GameObject.FindGameObjectWithTag("Movable");
     }
 
     // Update is called once per frame
@@ -48,6 +51,7 @@ public class SphereDeath : MonoBehaviour
 
         if (lifespan <= -1*deathspan)
         {
+            movable.GetComponent<BallSpawn>().Decrement();
             Destroy(this.gameObject);
         }
 
