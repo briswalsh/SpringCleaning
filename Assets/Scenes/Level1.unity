@@ -2016,7 +2016,13 @@ Prefab:
       propertyPath: gravConst
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114977618540578076, guid: fd29beff1c5f03b44a0e1b19a9908839,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114243549236965442, guid: fd29beff1c5f03b44a0e1b19a9908839, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fd29beff1c5f03b44a0e1b19a9908839, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &731153798
@@ -2286,7 +2292,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114163391967076586, guid: 6e0a198d6057d7b43892cfe8fa97c2bc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6e0a198d6057d7b43892cfe8fa97c2bc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &827373758
