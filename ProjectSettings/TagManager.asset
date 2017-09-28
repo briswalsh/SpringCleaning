@@ -8,6 +8,8 @@ TagManager:
   - Movable
   - Fire
   - Wicket
+  - Spaced
+  - Vacuum
   layers:
   - Default
   - TransparentFX

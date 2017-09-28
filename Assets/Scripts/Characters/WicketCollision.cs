@@ -6,11 +6,14 @@ public class WicketCollision : MonoBehaviour {
 
 	private float time;
 	private GameObject sph;
+    private Vector3 velocity;
 
-	public void Eject(GameObject sphere) {
-		
+	public void Eject(GameObject sphere, Vector3 vel) {
+
 		time = Time.time; // time when ball hits the wicket
 		sph = sphere;
+        velocity = vel;
+
 		//var score = GameObject.Find ("Player").GetComponent<Score> ();
 		//score.addScore ();
 		//score.showScore ();
@@ -28,7 +31,7 @@ public class WicketCollision : MonoBehaviour {
 			if (Time.time < (time + 2)) { // before 5 seconds pass
 				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
 				Rigidbody rb = sph.GetComponent<Rigidbody> ();
-				rb.AddForce (transform.forward);
+				rb.AddForce (velocity);
 			} else {
 				// After 5 seconds, the force is not applied anymore and the ball becomes invisible
 				// sph.GetComponent<MeshRenderer> ().enabled = false;

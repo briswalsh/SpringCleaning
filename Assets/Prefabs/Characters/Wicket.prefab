@@ -985,9 +985,10 @@ GameObject:
   - component: {fileID: 4553783312397970}
   - component: {fileID: 65438052548678670}
   - component: {fileID: 114953995801013664}
+  - component: {fileID: 114712251016507976}
   m_Layer: 0
   m_Name: Wicket
-  m_TagString: Untagged
+  m_TagString: Vacuum
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1497,9 +1498,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713332197612464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 38.8, y: 14.6, z: -44.8}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_Children:
   - {fileID: 4009928271540066}
   - {fileID: 4624446097296452}
@@ -1516,7 +1517,7 @@ Transform:
   - {fileID: 4553783312397970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4235612438962706
 Transform:
   m_ObjectHideFlags: 1
@@ -1852,8 +1853,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1681597297612034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11, y: 0.02, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0.0051, z: 0.0107}
+  m_LocalScale: {x: 0.058273632, y: 0.02, z: 0.051659778}
   m_Children: []
   m_Father: {fileID: 4232129289021940}
   m_RootOrder: 12
@@ -4834,6 +4835,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114712251016507976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1681597297612034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8d31c82c5a4a743813c8e473c8b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vacuumSwitch: 1
+  vacuumStr: 100
+  vacuumDist: 200
+  movablePos: 0
 --- !u!114 &114953995801013664
 MonoBehaviour:
   m_ObjectHideFlags: 1
