@@ -4,34 +4,38 @@ using UnityEngine;
 
 public class WicketCollision : MonoBehaviour {
 
+    public GameObject movable;
+
 	private float time;
 	private GameObject sph;
     private Vector3 velocity;
 
-	public void Eject(GameObject sphere, Vector3 vel) {
+	public void Eject(GameObject col) {
 
-		time = Time.time; // time when ball hits the wicket
-		sph = sphere;
-        velocity = vel;
+        GameObject wall = col.transform.parent.parent.gameObject;
+        if (wall.name.Contains("Wall Collider")) {
+            wall.GetComponent<Collider>().enabled = false;
+        }
+        movable.GetComponent<BallSpawn>().NextStage();
 
-		//var score = GameObject.Find ("Player").GetComponent<Score> ();
-		//score.addScore ();
-		//score.showScore ();
+        //var score = GameObject.Find ("Player").GetComponent<Score> ();
+        //score.addScore ();
+        //score.showScore ();
 
-	}
+    }
 		
 
 	// Use this for initialization
 	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        movable = GameObject.FindGameObjectWithTag("Movable");
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (sph != null) {
 			if (Time.time < (time + 2)) { // before 5 seconds pass
 				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
 				Rigidbody rb = sph.GetComponent<Rigidbody> ();
-				rb.AddForce (velocity);
 			} else {
 				// After 5 seconds, the force is not applied anymore and the ball becomes invisible
 				// sph.GetComponent<MeshRenderer> ().enabled = false;
@@ -39,4 +43,14 @@ public class WicketCollision : MonoBehaviour {
 			}
 		}
 	}
+    //OnTriggerEnter, call Next stage function (movable.GetComponent<BallSpawn>().NextStage();)
+
+    /* Collision Detectors */
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Vacuum")
+        {
+            movable.GetComponent<BallSpawn>().NextStage();
+        }
+    }
 }
