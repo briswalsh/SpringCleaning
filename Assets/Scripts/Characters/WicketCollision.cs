@@ -18,6 +18,7 @@ public class WicketCollision : MonoBehaviour {
         }
         movable.GetComponent<BallSpawn>().NextStage();
         sph = sphere;
+        time = Time.time;
 
         //var score = GameObject.Find ("Player").GetComponent<Score> ();
         //score.addScore ();
