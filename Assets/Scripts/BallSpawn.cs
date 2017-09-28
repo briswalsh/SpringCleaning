@@ -13,6 +13,7 @@ public class BallSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        movable = GameObject.FindGameObjectWithTag("Movable");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
 	}
 	
