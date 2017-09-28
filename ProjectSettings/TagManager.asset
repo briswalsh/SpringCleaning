@@ -10,6 +10,7 @@ TagManager:
   - Wicket
   - Spaced
   - Vacuum
+  - Wall
   layers:
   - Default
   - TransparentFX
