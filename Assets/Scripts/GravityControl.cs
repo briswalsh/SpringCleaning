@@ -27,11 +27,11 @@ public class GravityControl : MonoBehaviour {
         {
             t = Time.time + duration;
             on = !on;
-            /*if (on)
+            if (on)
             {
                 hum.Stop();
                 hum.Play();
-            } */
+            } 
         }
 
         for(int i = 0; i < movable.transform.childCount; i++)

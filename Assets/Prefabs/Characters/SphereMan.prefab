@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 23294384773981688}
   - component: {fileID: 54724077319792848}
   - component: {fileID: 114203789459350658}
-  - component: {fileID: 114419327650650278}
   - component: {fileID: 82217538677598384}
+  - component: {fileID: 114847913504189624}
   m_Layer: 0
   m_Name: SphereMan
   m_TagString: Untagged
@@ -198,10 +198,12 @@ MonoBehaviour:
   reset: 0
   gravity: 1
   gravityStr: 10
+  movable: {fileID: 0}
   vacuumObj: []
   vacuumOn: 
   spaced: {fileID: 0}
---- !u!114 &114419327650650278
+  malletMan: {fileID: 0}
+--- !u!114 &114847913504189624
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -209,14 +211,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1676124220112412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fb4cc2e04ed924c9de2896bd8e40bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 72389e4002bf7a74e909099abcb7bf42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathRow: 0
-  lifespan: 5
-  deathspan: 5
   fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
-  bloodCurdling: {fileID: 0}
+  youWillBeBaked: {fileID: 1222167660038792, guid: 604162dbc8315324590b3ae7c8fcd3cf,
+    type: 2}
+  thereWillBeCake: {fileID: 0}
 --- !u!135 &135076355786788752
 SphereCollider:
   m_ObjectHideFlags: 1
