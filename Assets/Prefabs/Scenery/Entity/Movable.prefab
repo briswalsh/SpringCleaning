@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4111268487691828}
-  - component: {fileID: 114201569769970212}
+  - component: {fileID: 114163391967076586}
   m_Layer: 0
   m_Name: Movable
   m_TagString: Movable
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114201569769970212
+--- !u!114 &114163391967076586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,11 +48,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671780135915238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625b1d41ebbed1e4c87072046c2cf3ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 45c7450ef607c34429b0cdbd9db63d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vacuumOn: 000000
-  vacuumObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  movable: {fileID: 0}
+  ball: {fileID: 1676124220112412, guid: bd83990db2cd9854381ea59be10c2553, type: 2}
+  origin: {x: 0, y: 0, z: 0}
+  spotlights: []
+  ballCount: 0
+  alt: 0
+  gravOn: 0
+  gravConst: 0
+  duration: 0
+  vacuumOn: 
+  vacuumObj: []
