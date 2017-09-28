@@ -210,7 +210,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 Physics.gravity = new Vector3(0, 0f, 0);
 
 
-                wc.Eject(gameObject, -vel.normalized);
+                wc.Eject(other.gameObject);
             }
         }
         
