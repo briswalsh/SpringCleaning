@@ -19,7 +19,7 @@ public class BallSpawn : MonoBehaviour {
     public int ballCount;
     private int maxCount;
 
-    //private Cremetoria fire;
+    public Crematoria fire;
 
     /* Gravity */
     public bool alt;
@@ -90,12 +90,12 @@ public class BallSpawn : MonoBehaviour {
         }
     }
 
-    void Decrement()
+    public void Decrement()
     {
         ballCount--;
         if(ballCount <= 0)
         {
-            //fire.Immolate();
+            fire.Immolation();
         }
     }
 
