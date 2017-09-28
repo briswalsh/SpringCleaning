@@ -47,8 +47,8 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         vel = new Vector3();
 
         movable = GameObject.FindGameObjectWithTag("Movable");
-        vacuumObj = movable.GetComponent<MovablePhysics>().vacuumObj;
-        vacuumOn = movable.GetComponent<MovablePhysics>().vacuumOn;
+        vacuumObj = movable.GetComponent<BallSpawn>().vacuumObj;
+        vacuumOn = movable.GetComponent<BallSpawn>().vacuumOn;
 
         spaced = GameObject.FindGameObjectWithTag("Spaced");
 
@@ -204,18 +204,18 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (wc != null)
             {
                 physics = false;
-                transform.SetParent(spaced.transform);
+                GetComponent<SphereDeath>().deathRow = false;
+                //transform.SetParent(spaced.transform);
+                //transform.SetParent(spaced.transform);
                 vel = vp.transform.position - transform.position;
                 Physics.gravity = new Vector3(0, 0f, 0);
 
-
-                //wc.Eject(gameObject, -vel.normalized);
+                wc.Eject(gameObject, other.gameObject);
             }
         }
         
 
 		else {
-            print(other.name);
 			print ("Could not find Wicket");
 		}
     }

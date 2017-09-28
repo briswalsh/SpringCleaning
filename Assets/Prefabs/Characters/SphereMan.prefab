@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 23294384773981688}
   - component: {fileID: 54724077319792848}
   - component: {fileID: 114203789459350658}
-  - component: {fileID: 114419327650650278}
   - component: {fileID: 82217538677598384}
+  - component: {fileID: 114093552774514486}
   m_Layer: 0
   m_Name: SphereMan
   m_TagString: Untagged
@@ -180,6 +180,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114093552774514486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676124220112412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fb4cc2e04ed924c9de2896bd8e40bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathRow: 0
+  lifespan: 5
+  deathspan: 2
+  fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
+  bloodCurdling: {fileID: 0}
 --- !u!114 &114203789459350658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,25 +214,11 @@ MonoBehaviour:
   reset: 0
   gravity: 1
   gravityStr: 10
+  movable: {fileID: 0}
   vacuumObj: []
   vacuumOn: 
   spaced: {fileID: 0}
---- !u!114 &114419327650650278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676124220112412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fb4cc2e04ed924c9de2896bd8e40bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathRow: 0
-  lifespan: 5
-  deathspan: 5
-  fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
-  bloodCurdling: {fileID: 0}
+  malletMan: {fileID: 0}
 --- !u!135 &135076355786788752
 SphereCollider:
   m_ObjectHideFlags: 1
