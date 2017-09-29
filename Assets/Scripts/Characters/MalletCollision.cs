@@ -13,6 +13,8 @@ public class MalletCollision : MonoBehaviour {
     private float time;
     private int frame;
 
+    public AudioSource impact;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -23,6 +25,8 @@ public class MalletCollision : MonoBehaviour {
         var tempPos = transform.position;
         tempPos.y = 0.0f;
         InitializeArray(tempPos);
+
+        impact = GetComponent<AudioSource>();
 	}
 
     void InitializeArray(Vector3 pos)
@@ -72,6 +76,8 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
+        impact.Play();
+
         var distance = Vector3.Distance(positions[1], positions[0]);
         var speed = (float)distance / time;
 
