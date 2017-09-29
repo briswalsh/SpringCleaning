@@ -36,6 +36,7 @@ public class WicketCollision : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 		if (sph != null) {
+            print(time);
 			if (Time.time < (time + 2)) { // before 5 seconds pass
 				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
 				Rigidbody rb = sph.GetComponent<Rigidbody> ();
