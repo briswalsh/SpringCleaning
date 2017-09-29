@@ -35,6 +35,11 @@ public class BallSpawn : MonoBehaviour {
     public bool[] vacuumOn;
     public GameObject[] vacuumObj;
 
+    /* Sounds */
+    public AudioSource winrarSound;
+    public AudioSource lightSound;
+    public AudioSource vacuumSound;
+
     void Awake()
     {
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
@@ -109,6 +114,10 @@ public class BallSpawn : MonoBehaviour {
         wicketOrder[state].SetActive(false);
         spotlights[state].SetActive(false);
         state++;
+        if(state != 3)
+        {
+            lightSound.Play();
+        }
         if(state == 1)
         {
             alt = true;
@@ -118,6 +127,7 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 2)
         {
+            vacuumSound.Play();
             alt = false;
             SetGravity(true);
             for(int i = 0; i < vacuumObj.Length; i++)
@@ -132,11 +142,13 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 3)
         {
+            vacuumSound.Stop();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
                 vacuumOn[i] = true;
             }
             //win
+            winrarSound.Play();
         }
         return true;
     }
