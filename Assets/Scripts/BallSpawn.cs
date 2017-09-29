@@ -14,6 +14,7 @@ public class BallSpawn : MonoBehaviour {
     /* Game States */
     public GameObject[] spotlights;
     public GameObject[] walls;
+    public GameObject[] wicketOrder;
 
     private int state;
     public int ballCount;
@@ -46,6 +47,11 @@ public class BallSpawn : MonoBehaviour {
 
         walls = GameObject.FindGameObjectsWithTag("Wall");
         TurnOnWalls();
+
+        for(int i = 0; i < wicketOrder.Length; i++)
+        {
+            wicketOrder[i].SetActive(false);
+        }
     }
 
     // Use this for initialization
@@ -62,8 +68,6 @@ public class BallSpawn : MonoBehaviour {
             spotlights[i].SetActive(false);
         }
         spotlights[state].SetActive(true);
-
-//        fire = GetComponent<Cremetoria>();
 
         /* Gravity */
         SetGravity(true);
@@ -99,8 +103,9 @@ public class BallSpawn : MonoBehaviour {
         }
     }
 
-    public void NextStage()
+    public bool NextStage()
     {
+        wicketOrder[state].SetActive(false);
         spotlights[state].SetActive(false);
         state++;
         if(state == 1)
@@ -108,6 +113,7 @@ public class BallSpawn : MonoBehaviour {
             alt = true;
             t = Time.time;
             spotlights[state].SetActive(true);
+            wicketOrder[state].SetActive(true);
         }
         if (state == 2)
         {
@@ -121,6 +127,7 @@ public class BallSpawn : MonoBehaviour {
                 }
             }
             spotlights[state].SetActive(true);
+            wicketOrder[state].SetActive(true);
         }
         if (state == 3)
         {
@@ -130,6 +137,7 @@ public class BallSpawn : MonoBehaviour {
             }
             //win
         }
+        return true;
     }
 
     void SetGravity(bool on)
