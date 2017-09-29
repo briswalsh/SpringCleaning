@@ -12,8 +12,6 @@ public class WicketCollision : MonoBehaviour {
 
     public IEnumerator Eject(GameObject sphere, GameObject col) {
 
-        print(sphere);
-
         GameObject wall = col.transform.parent.parent.gameObject;
         if (wall.name.Contains("Wall Collider"))
         {
