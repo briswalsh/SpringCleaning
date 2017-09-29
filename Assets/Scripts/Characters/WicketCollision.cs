@@ -10,8 +10,9 @@ public class WicketCollision : MonoBehaviour {
 	private GameObject sph;
     private Vector3 velocity;
 
-    public void Eject(GameObject sphere, GameObject col) {
+    public IEnumerator Eject(GameObject sphere, GameObject col) {
 
+        print(sphere);
 
         GameObject wall = col.transform.parent.parent.gameObject;
         if (wall.name.Contains("Wall Collider"))
@@ -24,6 +25,8 @@ public class WicketCollision : MonoBehaviour {
         //var score = GameObject.Find ("Player").GetComponent<Score> ();
         //score.addScore ();
         //score.showScore ();
+        yield return new WaitForSeconds(0.5f);
+        Destroy(sphere);
         movable.GetComponent<BallSpawn>().NextStage();
     }
 
@@ -35,7 +38,9 @@ public class WicketCollision : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (sph != null) {
+        //print(sph);
+        if (sph != null) {
+            print(time);
 			if (Time.time < (time + 2)) { // before 5 seconds pass
 				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
 				Rigidbody rb = sph.GetComponent<Rigidbody> ();

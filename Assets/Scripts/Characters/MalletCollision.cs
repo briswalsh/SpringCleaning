@@ -64,7 +64,6 @@ public class MalletCollision : MonoBehaviour {
 
     public Vector3 GetDirection (Vector3 spherePos)
     {
-        impact.Play();
         var sumDirections = spherePos - positions[0];
         for (int i = 0; i < (positions.Length - 1); i++)
         {
@@ -77,6 +76,8 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
+        impact.Play();
+
         var distance = Vector3.Distance(positions[1], positions[0]);
         var speed = (float)distance / time;
 
