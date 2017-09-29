@@ -193,6 +193,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44784502}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &117479581 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542,
+    type: 2}
+  m_PrefabInternal: {fileID: 1901629114}
 --- !u!4 &135445424
 Transform:
   m_ObjectHideFlags: 0
@@ -694,6 +699,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 6B
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -887,6 +896,10 @@ Prefab:
     - target: {fileID: 1713332197612464, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
       propertyPath: m_Name
       value: Wicket 3A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
@@ -1309,6 +1322,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 8B
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -1715,6 +1732,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 6A
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -1868,6 +1889,10 @@ Prefab:
     - target: {fileID: 1713332197612464, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
       propertyPath: m_Name
       value: Wicket 7B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
@@ -2236,6 +2261,11 @@ Transform:
   m_Father: {fileID: 135445424}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 20, y: 180, z: 0}
+--- !u!1 &778638550 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542,
+    type: 2}
+  m_PrefabInternal: {fileID: 1032298133}
 --- !u!1001 &808497429
 Prefab:
   m_ObjectHideFlags: 0
@@ -2426,6 +2456,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 4A
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -2497,6 +2531,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 5A
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -2542,7 +2580,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  wicketOrder: []
+  wicketOrder:
+  - {fileID: 117479581}
+  - {fileID: 1261818193}
+  - {fileID: 778638550}
   ballCount: 10
   fire: {fileID: 1215317078}
   alt: 0
@@ -2738,6 +2779,10 @@ Prefab:
     - target: {fileID: 114712251016507976, guid: 3330bd1e82a2e7940968a6931bc68542,
         type: 2}
       propertyPath: vacuumSwitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3000,6 +3045,10 @@ Prefab:
       propertyPath: m_Name
       value: Wicket 7A
       objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
   m_IsPrefabParent: 0
@@ -3124,6 +3173,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1261818193 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542,
+    type: 2}
+  m_PrefabInternal: {fileID: 1741497920}
 --- !u!1 &1268917269
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,6 +3366,10 @@ Prefab:
     - target: {fileID: 1713332197612464, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
       propertyPath: m_Name
       value: Wicket 5B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
@@ -3507,6 +3565,10 @@ Prefab:
     - target: {fileID: 1713332197612464, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
       propertyPath: m_Name
       value: Wicket 3B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
@@ -3900,6 +3962,10 @@ Prefab:
     - target: {fileID: 114712251016507976, guid: 3330bd1e82a2e7940968a6931bc68542,
         type: 2}
       propertyPath: vacuumSwitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4403,6 +4469,10 @@ Prefab:
     - target: {fileID: 1713332197612464, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
       propertyPath: m_Name
       value: Wicket 4B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681597297612034, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}
