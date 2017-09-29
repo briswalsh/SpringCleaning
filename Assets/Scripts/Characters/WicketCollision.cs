@@ -10,28 +10,26 @@ public class WicketCollision : MonoBehaviour {
 	private GameObject sph;
     private Vector3 velocity;
 
-	public void Eject(GameObject sphere, GameObject col) {
+    public void Eject(GameObject sphere, GameObject col) {
 
-        if (movable.GetComponent<BallSpawn>().NextStage(col.transform.parent.gameObject))
+
+        GameObject wall = col.transform.parent.parent.gameObject;
+        if (wall.name.Contains("Wall Collider"))
         {
-
-            GameObject wall = col.transform.parent.parent.gameObject;
-            if (wall.name.Contains("Wall Collider"))
-            {
-                wall.GetComponent<Collider>().enabled = false;
-            }
-            sph = sphere;
-            time = Time.time;
-
-            //var score = GameObject.Find ("Player").GetComponent<Score> ();
-            //score.addScore ();
-            //score.showScore ();
+            wall.GetComponent<Collider>().enabled = false;
         }
-    }
-		
+        sph = sphere;
+        time = Time.time;
 
-	// Use this for initialization
-	void Start () {
+        //var score = GameObject.Find ("Player").GetComponent<Score> ();
+        //score.addScore ();
+        //score.showScore ();
+        movable.GetComponent<BallSpawn>().NextStage();
+    }
+
+
+    // Use this for initialization
+    void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
     }
 
