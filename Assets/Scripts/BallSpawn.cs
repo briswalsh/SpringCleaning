@@ -68,6 +68,7 @@ public class BallSpawn : MonoBehaviour {
             spotlights[i].SetActive(false);
         }
         spotlights[state].SetActive(true);
+        wicketOrder[state].SetActive(true);
 
         /* Gravity */
         SetGravity(true);
