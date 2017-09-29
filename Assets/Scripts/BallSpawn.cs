@@ -41,6 +41,11 @@ public class BallSpawn : MonoBehaviour {
     public AudioSource vacuumSound;
     public AudioSource gravConstant;
     public AudioSource gravOscillate;
+    public AudioSource gravOnSound;
+    public AudioSource gravOffSound;
+
+    /* Ground */
+    public GameObject roomFloor;
 
     void Awake()
     {
@@ -100,9 +105,13 @@ public class BallSpawn : MonoBehaviour {
                 gravOn = !gravOn;
                 if (gravOn)
                 {
-                    gravOscillate.Stop();
-                    gravOscillate.Play();
+                    gravOnSound.Play();
                 }
+                else
+                {
+                    gravOffSound.Play();
+                }
+
                 SetGravity(gravOn);
                 t = Time.time + duration;
             }
@@ -129,8 +138,7 @@ public class BallSpawn : MonoBehaviour {
         }
         if(state == 1)
         {
-            gravConstant.Stop();
-            gravOscillate.Play();
+
             alt = true;
             t = Time.time;
             spotlights[state].SetActive(true);
@@ -138,8 +146,6 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 2)
         {
-            gravOscillate.Stop();
-            gravConstant.Play();
             vacuumSound.Play();
             alt = false;
             SetGravity(true);
@@ -163,6 +169,7 @@ public class BallSpawn : MonoBehaviour {
             }
             //win
             winrarSound.Play();
+            Destroy(roomFloor);
         }
         return true;
     }

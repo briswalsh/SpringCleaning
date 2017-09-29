@@ -1884,6 +1884,11 @@ Prefab:
       propertyPath: fire
       value: 
       objectReference: {fileID: 1215317078}
+    - target: {fileID: 114735319996330092, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
+        type: 2}
+      propertyPath: roomFloor
+      value: 
+      objectReference: {fileID: 897985421}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e0a198d6057d7b43892cfe8fa97c2bc, type: 2}
   m_IsPrefabParent: 0
