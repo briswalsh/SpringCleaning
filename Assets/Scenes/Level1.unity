@@ -2542,7 +2542,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ballCount: 1
+  wicketOrder: []
+  ballCount: 10
   fire: {fileID: 1215317078}
   alt: 0
   gravOn: 1
