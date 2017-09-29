@@ -2201,7 +2201,7 @@ Prefab:
     - target: {fileID: 114712251016507976, guid: 3330bd1e82a2e7940968a6931bc68542,
         type: 2}
       propertyPath: vacuumDist
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3330bd1e82a2e7940968a6931bc68542, type: 2}

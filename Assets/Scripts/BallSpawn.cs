@@ -39,6 +39,8 @@ public class BallSpawn : MonoBehaviour {
     public AudioSource winrarSound;
     public AudioSource lightSound;
     public AudioSource vacuumSound;
+    public AudioSource gravConstant;
+    public AudioSource gravOscillate;
 
     void Awake()
     {
@@ -79,6 +81,7 @@ public class BallSpawn : MonoBehaviour {
         SetGravity(true);
         t = Time.time;
         hum = GetComponent<AudioSource>();
+        gravConstant.Play();
     }
 
     // Update is called once per frame
@@ -87,6 +90,7 @@ public class BallSpawn : MonoBehaviour {
         {
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
             TurnOnWalls();
+            SetGravity(gravOn);
         }
 
         if (alt)
@@ -94,6 +98,11 @@ public class BallSpawn : MonoBehaviour {
             if(Time.time >= t + duration)
             {
                 gravOn = !gravOn;
+                if (gravOn)
+                {
+                    gravOscillate.Stop();
+                    gravOscillate.Play();
+                }
                 SetGravity(gravOn);
                 t = Time.time + duration;
             }
@@ -120,6 +129,8 @@ public class BallSpawn : MonoBehaviour {
         }
         if(state == 1)
         {
+            gravConstant.Stop();
+            gravOscillate.Play();
             alt = true;
             t = Time.time;
             spotlights[state].SetActive(true);
@@ -127,6 +138,8 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 2)
         {
+            gravOscillate.Stop();
+            gravConstant.Play();
             vacuumSound.Play();
             alt = false;
             SetGravity(true);
@@ -142,10 +155,11 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 3)
         {
+            gravConstant.Stop();
             vacuumSound.Stop();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
-                vacuumOn[i] = true;
+                vacuumOn[i] = false;
             }
             //win
             winrarSound.Play();
