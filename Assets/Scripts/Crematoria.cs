@@ -56,12 +56,12 @@ public class Crematoria : MonoBehaviour
         */
         if(flaming)
         {
-            black.color = Color.Lerp(transparent, solid, t);
-            t += Time.deltaTime / duration;
-            if(t > 1)
+            if (t > 1)
             {
                 flaming = false;
             }
+            black.color = Color.Lerp(transparent, solid, t);
+            t += Time.deltaTime / duration;
         }
     }
 

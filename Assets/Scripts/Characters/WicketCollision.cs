@@ -12,18 +12,21 @@ public class WicketCollision : MonoBehaviour {
 
 	public void Eject(GameObject sphere, GameObject col) {
 
-        GameObject wall = col.transform.parent.parent.gameObject;
-        if (wall.name.Contains("Wall Collider")) {
-            wall.GetComponent<Collider>().enabled = false;
+        if (movable.GetComponent<BallSpawn>().NextStage(col.transform.parent.gameObject))
+        {
+
+            GameObject wall = col.transform.parent.parent.gameObject;
+            if (wall.name.Contains("Wall Collider"))
+            {
+                wall.GetComponent<Collider>().enabled = false;
+            }
+            sph = sphere;
+            time = Time.time;
+
+            //var score = GameObject.Find ("Player").GetComponent<Score> ();
+            //score.addScore ();
+            //score.showScore ();
         }
-        movable.GetComponent<BallSpawn>().NextStage();
-        sph = sphere;
-        time = Time.time;
-
-        //var score = GameObject.Find ("Player").GetComponent<Score> ();
-        //score.addScore ();
-        //score.showScore ();
-
     }
 		
 
@@ -52,7 +55,7 @@ public class WicketCollision : MonoBehaviour {
     {
         if (other.tag == "Vacuum")
         {
-            movable.GetComponent<BallSpawn>().NextStage();
+            //movable.GetComponent<BallSpawn>().NextStage();
         }
     }
 }
