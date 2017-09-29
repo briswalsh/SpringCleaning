@@ -14,6 +14,7 @@ public class BallSpawn : MonoBehaviour {
     /* Game States */
     public GameObject[] spotlights;
     public GameObject[] walls;
+    public GameObject[] wicketOrder;
 
     private int state;
     public int ballCount;
@@ -99,8 +100,12 @@ public class BallSpawn : MonoBehaviour {
         }
     }
 
-    public void NextStage()
+    public bool NextStage(GameObject wicket)
     {
+        if(wicket != wicketOrder[state])
+        {
+            return false;
+        }
         spotlights[state].SetActive(false);
         state++;
         if(state == 1)
@@ -130,6 +135,7 @@ public class BallSpawn : MonoBehaviour {
             }
             //win
         }
+        return true;
     }
 
     void SetGravity(bool on)
