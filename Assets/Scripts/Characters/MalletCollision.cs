@@ -13,6 +13,8 @@ public class MalletCollision : MonoBehaviour {
     private float time;
     private int frame;
 
+    public AudioSource impact;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -23,6 +25,8 @@ public class MalletCollision : MonoBehaviour {
         var tempPos = transform.position;
         tempPos.y = 0.0f;
         InitializeArray(tempPos);
+
+        impact = GetComponent<AudioSource>();
 	}
 
     void InitializeArray(Vector3 pos)
@@ -60,6 +64,7 @@ public class MalletCollision : MonoBehaviour {
 
     public Vector3 GetDirection (Vector3 spherePos)
     {
+        impact.Play();
         var sumDirections = spherePos - positions[0];
         for (int i = 0; i < (positions.Length - 1); i++)
         {
