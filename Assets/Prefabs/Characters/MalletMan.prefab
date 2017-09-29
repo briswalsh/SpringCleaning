@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 4267451766753830}
   - component: {fileID: 114005442647187552}
   - component: {fileID: 114935125121781050}
+  - component: {fileID: 114377427134324536}
   m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: Untagged
@@ -591,15 +592,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1222167660038792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.55}
+  m_LocalRotation: {x: -0, y: -0.9966274, z: -0, w: 0.08206077}
+  m_LocalPosition: {x: 0, y: 2.63, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988429268038778}
   - {fileID: 4267451766753830}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -170.58601, z: 0}
 --- !u!4 &4809318341800082
 Transform:
   m_ObjectHideFlags: 1
@@ -1088,6 +1089,7 @@ MonoBehaviour:
   HmdRotatesY: 1
   GravityModifier: 1
   useProfileData: 1
+  joystickMovement: 0
 --- !u!114 &114255919955100994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,6 +1125,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1748ed86e7331954ba69dcf6f54857b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114377427134324536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392756111087960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72389e4002bf7a74e909099abcb7bf42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 100000, guid: 2c32987c2bc01844a94adfb917dd677d, type: 2}
+  youWillBeBaked: {fileID: 1392756111087960}
+  thereWillBeCake: {fileID: 0}
+  flaming: 0
+  black: {fileID: 0}
+  duration: 1
 --- !u!114 &114468856061765774
 MonoBehaviour:
   m_ObjectHideFlags: 1
