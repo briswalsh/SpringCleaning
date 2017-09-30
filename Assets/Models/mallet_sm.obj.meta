@@ -7,11 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Default
     100002: //RootNode
+    100004: mallet_sm:Default
     400000: Default
     400002: //RootNode
+    400004: mallet_sm:Default
     2300000: Default
+    2300002: mallet_sm:Default
     3300000: Default
+    3300002: mallet_sm:Default
     4300000: Default
+    4300002: mallet_sm:Default
   materials:
     importMaterials: 1
     materialName: 0
