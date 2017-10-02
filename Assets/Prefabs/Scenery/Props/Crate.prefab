@@ -2326,10 +2326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682165f8442f41a48a428e19658c375f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constant: 0
   airDrag: 0.1
   floorDrag: 0.2
   gravity: 0
   vacuumObj: []
   vacuumOn: 
+  vacuumMinDist: 0
   spaced: {fileID: 0}
