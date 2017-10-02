@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Movable
+  - Fire
+  - Wicket
+  - Spaced
+  - Vacuum
+  - Wall
   layers:
   - Default
   - TransparentFX
