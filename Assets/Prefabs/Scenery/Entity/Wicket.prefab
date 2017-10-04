@@ -4847,8 +4847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vacuumSwitch: 0
-  vacuumStr: 100
-  vacuumDist: 200
+  vacuumStr: 10
+  vacuumDist: 15
   movablePos: 0
 --- !u!114 &114953995801013664
 MonoBehaviour:
@@ -4861,3 +4861,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0da603ee6f6f4dbd90d02e812db573e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movable: {fileID: 0}

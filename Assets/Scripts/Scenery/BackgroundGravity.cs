@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class BackgroundGravity : MonoBehaviour, IPhysics {
 
-    [Header("Force")]
-    public float constant;
-
     [Header("Angular Drag")]
     public float airDrag;
     public float floorDrag;
 
     [Header("Gravity")]
     public bool gravity;
+    public bool canGrav;
 
     [Header("Vacuum")]
     public GameObject[] vacuumObj;
     public bool[] vacuumOn;
-
-
-    [Header("Categories")]
-    public GameObject spaced;
-
+    public float vacuumMinDist;
 
     /* Private Variables */
     private Rigidbody rb;
     private bool colliding;
+    private Vector3 prevPos;
 
     void Start()
     {
@@ -35,6 +30,11 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
         for (int i = 0; i < vacuumOn.Length; i++)
         {
             vacuumOn[i] = false;
+        }
+
+        if(!canGrav)
+        {
+            Invoke("DisableGravity", 0.5f);
         }
     }
 
@@ -63,6 +63,8 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
                 rb.angularDrag = airDrag;
             }
         }
+
+        Move();
     }
 
     /* Interface Implementation */
@@ -72,21 +74,53 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
     }
 
 
-    public void GravityControl(bool on, float gravCost)
+    public void GravityControl(bool on, float gravConst)
     {
-        gravity = on;
-        if (!on)
+        if (canGrav)
         {
-            Physics.gravity = new Vector3(0f, 0.3f, 0f);
-        }
-
-        else
-        {
-            Physics.gravity = new Vector3(0f, -gravCost, 0f);
+            gravity = on;
+            Physics.gravity = new Vector3(0f, -gravConst, 0f);
+            if (!on)
+            {
+                rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized);
+            }
         }
     }
 
-    public void VacuumControl(bool on, int vacuumNum)
+    public void Move()
     {
+        Vector3 newPos = new Vector3();
+        for (int i = 0; i < vacuumObj.Length; i++)
+        {
+            if (vacuumOn[i])
+            {
+                var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
+                if (vp != null)
+                {
+                    Vector3 dir = vacuumObj[i].transform.position - transform.position;
+                    float dist = dir.magnitude;
+                    if (dist < vp.vacuumDist)
+                    {
+                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist));
+                    }
+                }
+            }
+        }
+
+        prevPos = transform.position;
+
+
+        RaycastHit hit;
+        Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
+        if (hit.collider == null || hit.collider.tag != "Wall")
+        {
+            //move to newPos
+            transform.position = transform.position + newPos;
+        }
+    }
+
+    private void DisableGravity ()
+    {
+        rb.useGravity = false;
     }
 }

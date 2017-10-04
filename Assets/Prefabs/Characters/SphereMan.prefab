@@ -214,10 +214,10 @@ MonoBehaviour:
   reset: 0
   gravity: 1
   gravityStr: 10
-  movable: {fileID: 0}
   vacuumObj: []
   vacuumOn: 
-  spaced: {fileID: 0}
+  vacuumMinDist: 0
+  movable: {fileID: 0}
   malletMan: {fileID: 0}
 --- !u!135 &135076355786788752
 SphereCollider:

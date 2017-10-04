@@ -21,13 +21,12 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     public float gravityStr;
 
     [Header("Vacuum")]
-    public GameObject movable;
     public GameObject[] vacuumObj;
     public bool[] vacuumOn;
+    public float vacuumMinDist;
 
     [Header("Categories")]
-    public GameObject spaced;
-
+    public GameObject movable;
     public GameObject malletMan;
 
     /* Private Variables */
@@ -49,8 +48,6 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         movable = GameObject.FindGameObjectWithTag("Movable");
         vacuumObj = movable.GetComponent<BallSpawn>().vacuumObj;
         vacuumOn = movable.GetComponent<BallSpawn>().vacuumOn;
-
-        spaced = GameObject.FindGameObjectWithTag("Spaced");
 
         malletMan = GameObject.FindGameObjectWithTag("Player");
         Physics.IgnoreCollision(GetComponent<Collider>(), malletMan.GetComponent<Collider>());
@@ -89,38 +86,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 }
             }
 
-            /* Vacuum movement */
-
-            Vector3 newPos = new Vector3();
-            for (int i = 0; i < vacuumObj.Length; i++)
-            {
-                if (vacuumOn[i])
-                {
-                    var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
-                    if (vp != null)
-                    {
-                        Vector3 dir = vacuumObj[i].transform.position - transform.position;
-                        float dist = dir.magnitude;
-                        if (dist < vp.vacuumDist)
-                        {
-                            newPos += vp.vacuumStr * dir.normalized / (dist * dist);
-                        }
-                    }
-                }
-            }
-           // if (Mathf.FloorToInt(Time.time) % 2 == 1)
-            
-                prevPos = transform.position;
-            
-
-            RaycastHit hit;
-            Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
-            if (hit.collider == null || hit.collider.tag != "Wall")
-            {
-                //move to newPos
-                transform.position = transform.position + newPos;
-            }
-            //vel = transform.position - prevPos;
+            Move();
         }
         else
         {
@@ -133,7 +99,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 
     private void AddForce()
     {
-        rb.AddForce(new Vector3(-1f, 0f) * constant);
+        rb.AddForce(new Vector3(0f, 0f, -1f) * constant);
     }
 
     private void AddForce(float force, Vector3 dir)
@@ -162,12 +128,39 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
         Physics.gravity = new Vector3(0f, -gravConst, 0f);
     }
 
-    public void VacuumControl(bool on, int vacuumNum)
+    public void Move()
     {
-        vacuumOn[vacuumNum] = on;
+        Vector3 newPos = new Vector3();
+        for (int i = 0; i < vacuumObj.Length; i++)
+        {
+            if (vacuumOn[i])
+            {
+                var vp = vacuumObj[i].GetComponent<VacuumPhysics>();
+                if (vp != null)
+                {
+                    Vector3 dir = vacuumObj[i].transform.position - transform.position;
+                    float dist = dir.magnitude;
+                    if (dist < vp.vacuumDist)
+                    {
+                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist));
+                    }
+                }
+            }
+        }
+
+        prevPos = transform.position;
+
+
+        RaycastHit hit;
+        Physics.Raycast(transform.position, newPos, out hit, newPos.magnitude);
+        if (hit.collider == null || hit.collider.tag != "Wall")
+        {
+            //move to newPos
+            transform.position = transform.position + newPos;
+        }
     }
 
-    
+
     /* Collision Detectors */
 
     private void OnCollisionStay(Collision collision)
@@ -204,11 +197,8 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             if (wc != null)
             {
                 physics = false;
-                GetComponent<SphereDeath>().deathRow = false;
-                //transform.SetParent(spaced.transform);
-                //transform.SetParent(spaced.transform);
                 vel = vp.transform.position - transform.position;
-                Physics.gravity = new Vector3(0, 0f, 0);
+                rb.useGravity = false;
 
                 StartCoroutine(wc.Eject(gameObject, other.gameObject));
             }

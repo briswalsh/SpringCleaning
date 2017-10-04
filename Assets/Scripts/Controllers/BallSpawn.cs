@@ -187,6 +187,7 @@ public class BallSpawn : MonoBehaviour {
                 }
                 else
                 {
+                    print(sphere);
                     sphere.GravityControl(on, -0.05f);
                 }
             }
