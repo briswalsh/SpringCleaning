@@ -19,4 +19,17 @@ public class HapticController : MonoBehaviour
             clips.Add(new OVRHapticsClip(clip, 1));
         }
     }
+
+    public void PlaySound(string id, Controller controller)
+    {
+        var channel = 0;
+        if (controller == Controller.Right) channel = 1;
+        var clip = LocateClip(id);
+        OVRHaptics.Channels[channel].Mix(clip);
+    }
+
+    public OVRHapticsClip LocateClip(string id)
+    {
+        return null;
+    }
 }
