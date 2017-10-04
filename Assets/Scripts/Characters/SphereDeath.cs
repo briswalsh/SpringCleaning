@@ -35,12 +35,9 @@ public class SphereDeath : MonoBehaviour
 
         if (lifespan <= 0)
         {
-            //Destroy(this.gameObject);
             if (smores == false)
             {
                 Vector3 firePosn = transform.position;
-                //firePosn.x += -10.3f;
-                //firePosn.z += 20f;
                 smores = true;
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
@@ -54,12 +51,20 @@ public class SphereDeath : MonoBehaviour
             movable.GetComponent<BallSpawn>().Decrement();
             Destroy(this.gameObject);
         }
-
-        //Debug.Log(lifespan + " " + deathRow);
     }
 
 
     /* Collision Detectors */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var wc = other.gameObject.GetComponent<WicketCollision>();
+        if(wc != null)
+        {
+            deathRow = false;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if(other.name == "Safe Area")
