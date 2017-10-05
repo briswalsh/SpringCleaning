@@ -26,8 +26,15 @@ public class MalletCollision : MonoBehaviour {
         var tempPos = transform.position;
         tempPos.y = 0.0f;
         InitializeArray(tempPos);
-        
-        sfx = soundManager.GetComponent<SoundsController>();
+
+        try
+        {
+            sfx = soundManager.GetComponent<SoundsController>();
+        }
+        catch
+        {
+            print("Could not load sounds controller: is sound manager set to an instance in the ball spawn script?");
+        }
     }
 
     void InitializeArray(Vector3 pos)
@@ -77,8 +84,15 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
-        sfx.PlaySound("ball-mallet");
-		sfx.Vibrate ("ball-mallet");
+        try
+        {
+            sfx.PlaySound("ball-mallet");
+            sfx.Vibrate("ball-mallet");
+        }
+        catch
+        {
+            print("Could not create mallet collision sound: check MalletCollision.cs function GetSpeed");
+        }
 
         var distance = Vector3.Distance(positions[1], positions[0]);
         var speed = (float)distance / time;
