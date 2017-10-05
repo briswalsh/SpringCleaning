@@ -101,7 +101,7 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
                     float dist = dir.magnitude;
                     if (dist < vp.vacuumDist)
                     {
-                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist));
+                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist * vacuumMinDist));
                     }
                 }
             }

@@ -37504,7 +37504,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114015733224318232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37522,7 +37522,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114075436018991498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37540,7 +37540,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114136720959780206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37558,7 +37558,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114222204353118382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37576,7 +37576,7 @@ MonoBehaviour:
   canGrav: 0
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114262390700709980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37594,7 +37594,7 @@ MonoBehaviour:
   canGrav: 0
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114349663849976388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37612,7 +37612,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114354457430252328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37630,7 +37630,7 @@ MonoBehaviour:
   canGrav: 0
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114363628275926044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37648,7 +37648,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114373186353108622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37666,7 +37666,7 @@ MonoBehaviour:
   canGrav: 0
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114459199635712224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37684,7 +37684,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114481815267947806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37702,7 +37702,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114557564544175114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37720,7 +37720,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114581955181295634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37738,7 +37738,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114660048498717128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37756,7 +37756,7 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
 --- !u!114 &114735319996330092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37821,4 +37821,4 @@ MonoBehaviour:
   canGrav: 1
   vacuumObj: []
   vacuumOn: 
-  vacuumMinDist: 1
+  vacuumMinDist: 5
