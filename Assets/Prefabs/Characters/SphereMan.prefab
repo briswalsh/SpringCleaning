@@ -219,7 +219,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7794118, g: 0.7966047, b: 0.7966047, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -282,7 +282,7 @@ MonoBehaviour:
   gravityStr: 10
   vacuumObj: []
   vacuumOn: 
-  vacuumMaxDist: 10
+  vacuumMinDist: 5
   movable: {fileID: 0}
   malletMan: {fileID: 0}
 --- !u!135 &135076355786788752
