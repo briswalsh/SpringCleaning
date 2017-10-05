@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65644021643926148}
   - component: {fileID: 23681617470253696}
   - component: {fileID: 222350909094121370}
-  - component: {fileID: 132238459439501474}
   m_Layer: 0
   m_Name: TV Screen
   m_TagString: Untagged
@@ -59,6 +58,7 @@ GameObject:
   - component: {fileID: 224216864368376204}
   - component: {fileID: 222231264105730660}
   - component: {fileID: 114943647593862558}
+  - component: {fileID: 114486043380856902}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -133,6 +133,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114486043380856902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696962051659740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e0cedc75162402a9beda91fe2aa6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114709673551920146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,32 +197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Balls Remaining: 5
-
-    Score: 90'
---- !u!132 &132238459439501474
-GUIText:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1429286172466518}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Text: Text
-  m_Anchor: 4
-  m_Alignment: 1
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 0}
-  m_Material: {fileID: 0}
-  m_FontSize: 2
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_PixelCorrect: 1
-  m_RichText: 1
+  m_Text: 
 --- !u!222 &222231264105730660
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -1,26 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-	private float score;
-
-	public void addScore() {
-		score += 10;
-	}
-
-	public float showScore() {
-		return score;
-	}
+	private int ballsRemaining;
+	Text ballsRemainingText;
+	private int ballCount;
 
 	// Use this for initialization
 	void Start () {
-		score = 0;
+		ballsRemainingText = GetComponent<Text> ();
+
+		ballCount = GetComponent<BallSpawn>().ballCount;
+		ballsRemainingText.text = "Balls Remaining : " + ballCount;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		ballCount = GetComponent<BallSpawn>().ballCount;
+		ballsRemainingText.text = "Balls Remaining : " + ballCount; 
 	}
 }
