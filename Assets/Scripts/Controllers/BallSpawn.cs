@@ -65,7 +65,14 @@ public class BallSpawn : MonoBehaviour {
     void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-        sfx = soundManager.GetComponent<SoundsController>();
+        try
+        {
+            sfx = soundManager.GetComponent<SoundsController>();
+        }
+        catch
+        {
+            print("Could not load sounds controller: is sound manager set to an instance in the ball spawn script?");
+        }
 
         /* Initial Game State */
         state = 0;
