@@ -261,7 +261,8 @@ MonoBehaviour:
   lifespan: 5
   deathspan: 2
   fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
-  audioController: {fileID: 0}
+  soundManager: {fileID: 1367486550204230, guid: b2db43e446a9cf14385bb7eee919504d,
+    type: 2}
 --- !u!114 &114203789459350658
 MonoBehaviour:
   m_ObjectHideFlags: 1
