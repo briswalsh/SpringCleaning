@@ -13,7 +13,8 @@ public class MalletCollision : MonoBehaviour {
     private float time;
     private int frame;
 
-	public SoundsController impact;
+    public GameObject soundManager;
+	private SoundsController sfx;
 
 	// Use this for initialization
 	void Start ()
@@ -25,9 +26,9 @@ public class MalletCollision : MonoBehaviour {
         var tempPos = transform.position;
         tempPos.y = 0.0f;
         InitializeArray(tempPos);
-
-        //impact = GetComponent<AudioSource>();
-	}
+        
+        sfx = soundManager.GetComponent<SoundsController>();
+    }
 
     void InitializeArray(Vector3 pos)
     {
@@ -76,8 +77,8 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
-        impact.PlaySound("ball-mallet");
-		impact.Vibrate ("ball-mallet");
+        sfx.PlaySound("ball-mallet");
+		sfx.Vibrate ("ball-mallet");
 
         var distance = Vector3.Distance(positions[1], positions[0]);
         var speed = (float)distance / time;
