@@ -83,6 +83,68 @@ ModelImporter:
     100150: transform8
     100152: //RootNode
     100154: Wicket_Outline
+    100156: Base1
+    100158: transform10
+    100160: transform11
+    100162: transform12
+    100164: transform13
+    100166: transform14
+    100168: transform15
+    100170: transform16
+    100172: transform17
+    100174: transform18
+    100176: transform19
+    100178: transform20
+    100180: transform21
+    100182: transform22
+    100184: transform23
+    100186: transform24
+    100188: transform25
+    100190: transform26
+    100192: transform27
+    100194: transform28
+    100196: transform29
+    100198: transform30
+    100200: transform31
+    100202: transform32
+    100204: transform33
+    100206: transform34
+    100208: transform35
+    100210: transform36
+    100212: transform37
+    100214: transform38
+    100216: transform39
+    100218: transform40
+    100220: transform41
+    100222: transform42
+    100224: transform43
+    100226: transform44
+    100228: transform45
+    100230: transform46
+    100232: transform47
+    100234: transform48
+    100236: transform49
+    100238: transform50
+    100240: transform51
+    100242: transform52
+    100244: transform53
+    100246: transform54
+    100248: transform55
+    100250: transform56
+    100252: transform57
+    100254: transform58
+    100256: transform59
+    100258: transform60
+    100260: transform61
+    100262: transform62
+    100264: transform63
+    100266: transform64
+    100268: transform65
+    100270: transform66
+    100272: transform67
+    100274: transform68
+    100276: transform69
+    100278: transform9
     400000: Base
     400002: Inner_Rim_Bolts
     400004: Outer_Rim_Bolts
@@ -161,6 +223,68 @@ ModelImporter:
     400150: transform8
     400152: //RootNode
     400154: Wicket_Outline
+    400156: Base1
+    400158: transform10
+    400160: transform11
+    400162: transform12
+    400164: transform13
+    400166: transform14
+    400168: transform15
+    400170: transform16
+    400172: transform17
+    400174: transform18
+    400176: transform19
+    400178: transform20
+    400180: transform21
+    400182: transform22
+    400184: transform23
+    400186: transform24
+    400188: transform25
+    400190: transform26
+    400192: transform27
+    400194: transform28
+    400196: transform29
+    400198: transform30
+    400200: transform31
+    400202: transform32
+    400204: transform33
+    400206: transform34
+    400208: transform35
+    400210: transform36
+    400212: transform37
+    400214: transform38
+    400216: transform39
+    400218: transform40
+    400220: transform41
+    400222: transform42
+    400224: transform43
+    400226: transform44
+    400228: transform45
+    400230: transform46
+    400232: transform47
+    400234: transform48
+    400236: transform49
+    400238: transform50
+    400240: transform51
+    400242: transform52
+    400244: transform53
+    400246: transform54
+    400248: transform55
+    400250: transform56
+    400252: transform57
+    400254: transform58
+    400256: transform59
+    400258: transform60
+    400260: transform61
+    400262: transform62
+    400264: transform63
+    400266: transform64
+    400268: transform65
+    400270: transform66
+    400272: transform67
+    400274: transform68
+    400276: transform69
+    400278: transform9
     2300000: Base
     2300002: Inner_Rim_Bolts
     2300004: Outer_Rim_Bolts
@@ -222,6 +346,7 @@ ModelImporter:
     2300116: pSphere8
     2300118: pSphere9
     2300120: Wicket_Outline
+    2300122: Base1
     3300000: Base
     3300002: Inner_Rim_Bolts
     3300004: Outer_Rim_Bolts
@@ -283,6 +408,7 @@ ModelImporter:
     3300116: pSphere8
     3300118: pSphere9
     3300120: Wicket_Outline
+    3300122: Base1
     4300000: Base
     4300002: Wicket_Outline
     4300004: Inner_Rim_Bolts
@@ -344,6 +470,7 @@ ModelImporter:
     4300116: pSphere73
     4300118: pSphere72
     4300120: pSphere71
+    4300122: Base1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -372,7 +499,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -389,7 +516,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

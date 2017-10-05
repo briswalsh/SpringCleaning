@@ -36,7 +36,8 @@ public class BallSpawn : MonoBehaviour {
     public GameObject[] vacuumObj;
 
     /* Sounds */
-	public SoundsController sfx;
+    public GameObject soundManager;
+	private SoundsController sfx;
 
     /* Ground */
     public GameObject roomFloor;
@@ -54,7 +55,7 @@ public class BallSpawn : MonoBehaviour {
         walls = GameObject.FindGameObjectsWithTag("Wall");
         TurnOnWalls();
 
-        for(int i = 0; i < wicketOrder.Length; i++)
+        for (int i = 0; i < wicketOrder.Length; i++)
         {
             wicketOrder[i].SetActive(false);
         }
@@ -64,6 +65,14 @@ public class BallSpawn : MonoBehaviour {
     void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        try
+        {
+            sfx = soundManager.GetComponent<SoundsController>();
+        }
+        catch
+        {
+            print("Could not load sounds controller: is sound manager set to an instance in the ball spawn script?");
+        }
 
         /* Initial Game State */
         state = 0;

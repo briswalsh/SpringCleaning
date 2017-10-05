@@ -11,9 +11,12 @@ public class SphereDeath : MonoBehaviour
     public GameObject fire;
     private bool smores;
     private MeshRenderer sphereDude;
-	public  SoundsController audioController;
+
+    public GameObject soundManager;
+	private SoundsController sfx;
 
     private GameObject movable;
+    
 
     // Use this for initialization
     void Start()
@@ -22,8 +25,8 @@ public class SphereDeath : MonoBehaviour
         smores = false;
         sphereDude = GetComponent<MeshRenderer>();
         movable = GameObject.FindGameObjectWithTag("Movable");
-
-
+		soundManager = GameObject.Find ("SoundManager");
+        sfx = soundManager.GetComponent<SoundsController>();
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class SphereDeath : MonoBehaviour
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
-				audioController.PlayDirectionalSound ("torch", transform.position);
+				sfx.PlayDirectionalSound ("torch", transform.position);
             }
         }
 
