@@ -7,7 +7,8 @@ public class MalletCollision : MonoBehaviour {
     private const float medium = 10.0f;
     private const float fast = 15.0f;
 
-
+    // Mallet related variables
+    public int channel;
     private Vector3[] positions;
 
     private float time;
@@ -87,7 +88,7 @@ public class MalletCollision : MonoBehaviour {
         try
         {
             sfx.PlaySound("ball-mallet");
-            sfx.Vibrate("ball-mallet");
+            sfx.Vibrate("ball-mallet", channel);
         }
         catch
         {
