@@ -25,6 +25,7 @@ public class SphereDeath : MonoBehaviour
         smores = false;
         sphereDude = GetComponent<MeshRenderer>();
         movable = GameObject.FindGameObjectWithTag("Movable");
+		soundManager = GameObject.Find ("SoundManager");
         sfx = soundManager.GetComponent<SoundsController>();
     }
 
