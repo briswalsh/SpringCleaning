@@ -22,7 +22,9 @@ public class SoundsController : MonoBehaviour {
     {
         sounds = new Dictionary<string, AudioClip>();
         oneOffManager = GetComponents<AudioSource>()[0];
+        oneOffManager.loop = false;
         ambient = GetComponents<AudioSource>()[1];
+        ambient.loop = true;
 
         var boxHit = Resources.Load("ball-box", typeof(AudioClip)) as AudioClip;
         var malletHit = Resources.Load("ball-mallet", typeof(AudioClip)) as AudioClip;
