@@ -25,6 +25,8 @@ public class SoundsController : MonoBehaviour {
         oneOffManager.loop = false;
         ambient = GetComponents<AudioSource>()[1];
         ambient.loop = true;
+		loop = false;
+		ambient.Play ();
 
         var boxHit = Resources.Load("ball-box", typeof(AudioClip)) as AudioClip;
         var malletHit = Resources.Load("ball-mallet", typeof(AudioClip)) as AudioClip;
@@ -52,7 +54,7 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("gravity-down", gravityDown);
         sounds.Add("impact", impact);
         sounds.Add("pneumatic", pneumatic);
-        sounds.Add("engine-start", gravUp);
+        sounds.Add("grav-up", gravUp);
         sounds.Add("torch", torch);
         sounds.Add("vacuum", vacuum);
         sounds.Add("vacuum-start", vacIntro);
@@ -61,7 +63,7 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("wicket-open", wicketOpen);
         sounds.Add("win-music", winMusic);
 
-		loop = false;
+
     }
 	
 	// Update is called once per frame

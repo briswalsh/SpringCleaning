@@ -97,11 +97,11 @@ public class BallSpawn : MonoBehaviour {
                 gravOn = !gravOn;
                 if (gravOn)
                 {
-					sfx.PlaySound ("gravUp");
+					sfx.PlaySound ("grav-up");
                 }
                 else
                 {
-					sfx.PlaySound ("gravDown");
+					sfx.PlaySound ("grav-down");
                 }
 
                 SetGravity(gravOn);
@@ -126,11 +126,10 @@ public class BallSpawn : MonoBehaviour {
         state++;
         if(state != 3)
         {
-			sfx.PlaySound("wicketDing");
+			sfx.PlayDirectionalSound("wicket-ding",wicketOrder[state].transform.position);
         }
         if(state == 1)
         {
-			sfx.PlayDirectionalSound ("wicketDing",wicketOrder[state].transform.position);
             alt = true;
             t = Time.time;
             spotlights[state].SetActive(true);
@@ -138,7 +137,6 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 2)
         {
-			sfx.PlayDirectionalSound ("wicketDing",wicketOrder[state].transform.position);
 			sfx.PlayDirectionalLoop ("vacuum",wicketOrder[2].transform.position);
             alt = false;
             SetGravity(true);
