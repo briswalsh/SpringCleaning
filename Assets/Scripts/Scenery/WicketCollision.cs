@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WicketCollision : MonoBehaviour {
 
-    public GameObject movable;
+    private GameObject movable;
 
 	private float time;
 	private GameObject sph;
