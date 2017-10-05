@@ -76,8 +76,8 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
-        impact.PlaySound("malletHit");
-		impact.Vibrate ("malletHit");
+        impact.PlaySound("ball-mallet");
+		impact.Vibrate ("ball-mallet");
 
         var distance = Vector3.Distance(positions[1], positions[0]);
         var speed = (float)distance / time;
