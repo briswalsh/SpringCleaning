@@ -4847,7 +4847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vacuumSwitch: 0
-  vacuumStr: 10
+  vacuumStr: 1
   vacuumDist: 15
   movablePos: 0
 --- !u!114 &114953995801013664

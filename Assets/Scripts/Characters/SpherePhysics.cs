@@ -23,7 +23,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     [Header("Vacuum")]
     public GameObject[] vacuumObj;
     public bool[] vacuumOn;
-    public float vacuumMinDist;
+    public float vacuumMaxDist;
 
     [Header("Categories")]
     public GameObject movable;
@@ -142,7 +142,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                     float dist = dir.magnitude;
                     if (dist < vp.vacuumDist)
                     {
-                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist));
+                        newPos += vp.vacuumStr * dir.normalized / (Mathf.Min(dist * dist, vacuumMaxDist));
                     }
                 }
             }
