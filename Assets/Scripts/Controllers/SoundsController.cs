@@ -8,7 +8,6 @@ public class SoundsController : MonoBehaviour {
     private AudioSource oneOffManager;
 
     private Dictionary<string, AudioClip> sounds;
-    private bool playBackground = true;
 
 	// Use this for initialization
 	void Start ()
@@ -27,7 +26,7 @@ public class SoundsController : MonoBehaviour {
         var pneumatic = Resources.Load("pneumatics-2", typeof(AudioClip)) as AudioClip;
         var engineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
-        var vacuum = Resources.Load("Vaccumn", typeof(AudioClip)) as AudioClip;
+        var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
         var vacIntro = Resources.Load("vacumn intro", typeof(AudioClip)) as AudioClip;
         var whiteNoise = Resources.Load("White noise", typeof(AudioClip)) as AudioClip;
         var wicketDing = Resources.Load("Wicket ding", typeof(AudioClip)) as AudioClip;
@@ -68,8 +67,15 @@ public class SoundsController : MonoBehaviour {
         }
         catch
         {
-            throw new System.Exception("Could not locate sound " + soundId);
+            throw new System.Exception("Could not locate sound - " + soundId);
         }
+    }
+
+    public void Vibrate(string soundId, int channel)
+    {
+        var clip = sounds[soundId];
+        var hapClip = new OVRHapticsClip(clip, 0);
+        OVRHaptics.Channels[channel].Mix(hapClip);
     }
 
     void StopSound(string soundId)
