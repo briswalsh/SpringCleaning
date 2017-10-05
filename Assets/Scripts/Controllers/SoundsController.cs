@@ -132,10 +132,10 @@ public class SoundsController : MonoBehaviour {
 		oneOffManager.Stop ();
 	}
 
-    public void Vibrate(string soundId)
+    public void Vibrate(string soundId, int channel)
     {
         var clip = sounds[soundId];
-        var hapClip = new OVRHapticsClip(clip, 0);
+        var hapClip = new OVRHapticsClip(clip, channel);
         OVRHaptics.Channels[channel].Mix(hapClip);
     }
 		
