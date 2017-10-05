@@ -11,7 +11,7 @@ public class SphereDeath : MonoBehaviour
     public GameObject fire;
     private bool smores;
     private MeshRenderer sphereDude;
-    public AudioSource bloodCurdling;
+	public  SoundsController audioController;
 
     private GameObject movable;
 
@@ -21,8 +21,9 @@ public class SphereDeath : MonoBehaviour
         deathRow = false;
         smores = false;
         sphereDude = GetComponent<MeshRenderer>();
-        bloodCurdling = GetComponent<AudioSource>();
         movable = GameObject.FindGameObjectWithTag("Movable");
+
+
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class SphereDeath : MonoBehaviour
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
-                bloodCurdling.Play();
+				audioController.PlayDirectionalSound ("torch");
             }
         }
 
