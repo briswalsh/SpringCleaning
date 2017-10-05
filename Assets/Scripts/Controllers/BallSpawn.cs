@@ -36,13 +36,7 @@ public class BallSpawn : MonoBehaviour {
     public GameObject[] vacuumObj;
 
     /* Sounds */
-    public AudioSource winrarSound;
-    public AudioSource lightSound;
-    public AudioSource vacuumSound;
-    public AudioSource gravConstant;
-    public AudioSource gravOscillate;
-    public AudioSource gravOnSound;
-    public AudioSource gravOffSound;
+	public SoundsController sfx;
 
     /* Ground */
     public GameObject roomFloor;
@@ -85,8 +79,6 @@ public class BallSpawn : MonoBehaviour {
         /* Gravity */
         SetGravity(true);
         t = Time.time;
-        hum = GetComponent<AudioSource>();
-        gravConstant.Play();
     }
 
     // Update is called once per frame
@@ -105,11 +97,11 @@ public class BallSpawn : MonoBehaviour {
                 gravOn = !gravOn;
                 if (gravOn)
                 {
-                    gravOnSound.Play();
+					sfx.PlaySound ("gravUp");
                 }
                 else
                 {
-                    gravOffSound.Play();
+					sfx.PlaySound ("gravDown");
                 }
 
                 SetGravity(gravOn);
@@ -134,11 +126,11 @@ public class BallSpawn : MonoBehaviour {
         state++;
         if(state != 3)
         {
-            lightSound.Play();
+			sfx.PlaySound("wicketDing");
         }
         if(state == 1)
         {
-
+			sfx.PlayDirectionalSound ("wicketDing",wicketOrder[state].transform.position);
             alt = true;
             t = Time.time;
             spotlights[state].SetActive(true);
@@ -146,7 +138,8 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 2)
         {
-            vacuumSound.Play();
+			sfx.PlayDirectionalSound ("wicketDing",wicketOrder[state].transform.position);
+			sfx.PlayDirectionalLoop ("vacuum",wicketOrder[2].transform.position);
             alt = false;
             SetGravity(true);
             for(int i = 0; i < vacuumObj.Length; i++)
@@ -161,14 +154,12 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 3)
         {
-            gravConstant.Stop();
-            vacuumSound.Stop();
+			sfx.Win ();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
                 vacuumOn[i] = false;
             }
             //win
-            winrarSound.Play();
             Destroy(roomFloor);
         }
         return true;
