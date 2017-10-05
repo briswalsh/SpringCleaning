@@ -12,6 +12,8 @@ public class SoundsController : MonoBehaviour {
 	private bool loop;
 	private Vector3 loopLocation;
 	private AudioClip distantLoop;
+	private float loopTimer;
+	private float loopTime;
 
 	public int channel;
 
@@ -20,7 +22,7 @@ public class SoundsController : MonoBehaviour {
     {
         sounds = new Dictionary<string, AudioClip>();
         oneOffManager = GetComponents<AudioSource>()[0];
-        ambient = GetComponents<AudioSource>[1]();
+        ambient = GetComponents<AudioSource>()[1];
 
         var boxHit = Resources.Load("ball-box", typeof(AudioClip)) as AudioClip;
         var malletHit = Resources.Load("ball-mallet", typeof(AudioClip)) as AudioClip;
@@ -65,10 +67,13 @@ public class SoundsController : MonoBehaviour {
     {
 		if(loop)
 		{
-			if(!oneOffManager.isPlaying)
+			loopTime -= Time.time;
+			if(loopTime < 0)
 			{
-				oneOffManager.PlayClipAtPoint (distantLoop, loopLocation);
+				AudioSource.PlayClipAtPoint (distantLoop, loopLocation);
+				loopTime = loopTimer;
 			}
+
 		}
 	}
 
@@ -90,7 +95,7 @@ public class SoundsController : MonoBehaviour {
 		try
 		{
 			var sound = sounds[soundId];
-			oneOffManager.PlayClipAtPoint(sound, location);
+			AudioSource.PlayClipAtPoint(sound, location);
 		}
 		catch
 		{
@@ -108,6 +113,8 @@ public class SoundsController : MonoBehaviour {
 			loopLocation = location;
 			loop = true;
 			distantLoop = sound;
+			loopTimer = sound.length;
+			loopTime = sound.length;
 
 		}
 		catch

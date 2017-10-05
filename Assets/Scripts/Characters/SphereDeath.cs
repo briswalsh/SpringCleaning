@@ -43,7 +43,7 @@ public class SphereDeath : MonoBehaviour
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
-				audioController.PlayDirectionalSound ("torch");
+				audioController.PlayDirectionalSound ("torch", transform.position);
             }
         }
 
