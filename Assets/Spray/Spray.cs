@@ -12,6 +12,8 @@ namespace Kvant
     {
         #region Basic Properties
 
+        GameObject movable;
+
         [SerializeField]
         int _maxParticles = 000;
 
@@ -454,10 +456,15 @@ namespace Kvant
             if (_debugMaterial)   DestroyImmediate(_debugMaterial);
         }
 
+        void Start()
+        {
+            movable = GameObject.FindGameObjectWithTag("Movable");
+        }
+
         void Update()
         {
 			// Alter 1)throttle and 2)Turbulent Noise - Amplitude based on gravity
-			if (GetComponent<GravityControl> ().gravOn == true) {
+			if (movable.GetComponent<GravityControl> ().gravOn == true) {
 				_throttle = 0f;
 			} else {
 				_throttle = 1.0f;
