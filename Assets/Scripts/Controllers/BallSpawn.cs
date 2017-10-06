@@ -23,13 +23,7 @@ public class BallSpawn : MonoBehaviour {
     public Crematoria fire;
 
     /* Gravity */
-    public bool alt;
-    public bool gravOn;
-    public float gravConst;
-    public float duration;
-
-    private float t;
-    private AudioSource hum;
+    public GravityControl gc;
 
     /* Vacuum */
     public bool[] vacuumOn;
@@ -53,7 +47,7 @@ public class BallSpawn : MonoBehaviour {
         }
 
         walls = GameObject.FindGameObjectsWithTag("Wall");
-        TurnOnWalls();
+       // TurnOnWalls();
 
         for (int i = 0; i < wicketOrder.Length; i++)
         {
@@ -84,42 +78,20 @@ public class BallSpawn : MonoBehaviour {
         }
         spotlights[state].SetActive(true);
         wicketOrder[state].SetActive(true);
-
-        /* Gravity */
-        SetGravity(true);
-        t = Time.time;
     }
 
     // Update is called once per frame
     void Update () {
-		if (currBall == null)
+        print("I'm updating");
+        if (currBall == null)
         {
 			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
             TurnOnWalls();
-            SetGravity(gravOn);
         }
-
-        if (alt)
-        {
-            if(Time.time >= t + duration)
-            {
-                gravOn = !gravOn;
-                if (gravOn)
-                {
-					sfx.PlaySound ("grav-up");
-                }
-                else
-                {
-					sfx.PlaySound ("grav-down");
-                }
-
-                SetGravity(gravOn);
-                t = Time.time + duration;
-            }
-        }
+        print("I finished updating");
     }
-
+    
     public void Decrement()
     {
         ballCount--;
@@ -140,16 +112,14 @@ public class BallSpawn : MonoBehaviour {
         }
         if(state == 1)
         {
-            alt = true;
-            t = Time.time;
+            gc.EnableAltGrav();
             spotlights[state].SetActive(true);
             wicketOrder[state].SetActive(true);
         }
         if (state == 2)
         {
+            gc.DisableAltGrav();
 			sfx.PlayDirectionalLoop ("vacuum",wicketOrder[2].transform.position);
-            alt = false;
-            SetGravity(true);
             for(int i = 0; i < vacuumObj.Length; i++)
             {
                 if(vacuumObj[i].transform.parent.name == "Wicket 8A")
@@ -173,26 +143,6 @@ public class BallSpawn : MonoBehaviour {
         return true;
     }
 
-    void SetGravity(bool on)
-    {
-        for (int i = 0; i < movable.transform.childCount; i++)
-        {
-            var sphere = movable.transform.GetChild(i).GetComponent<IPhysics>();
-            if (sphere != null)
-            {
-                if (on)
-                {
-                    sphere.GravityControl(on, gravConst);
-                }
-                else
-                {
-                    print(sphere);
-                    sphere.GravityControl(on, -0.05f);
-                }
-            }
-        }
-    }
-
     void TurnOnWalls()
     {
         for (int i = 0; i < walls.Length; i++)
@@ -200,4 +150,5 @@ public class BallSpawn : MonoBehaviour {
             walls[i].GetComponent<Collider>().enabled = true;
         }
     }
+    
 }

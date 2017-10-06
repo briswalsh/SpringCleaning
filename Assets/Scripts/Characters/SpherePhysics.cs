@@ -125,7 +125,6 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
     public void GravityControl(bool on, float gravConst)
     {
         gravity = on;
-        Physics.gravity = new Vector3(0f, -gravConst, 0f);
     }
 
     public void Move()

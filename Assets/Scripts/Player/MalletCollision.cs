@@ -73,6 +73,7 @@ public class MalletCollision : MonoBehaviour {
 
     public Vector3 GetDirection (Vector3 spherePos)
     {
+        return new Vector3();
         var sumDirections = spherePos - positions[0];
         for (int i = 0; i < (positions.Length - 1); i++)
         {

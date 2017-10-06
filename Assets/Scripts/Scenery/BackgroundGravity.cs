@@ -34,7 +34,7 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
 
         if(!canGrav)
         {
-            Invoke("DisableGravity", 0.5f);
+            Invoke("DisableGravity", 0.2f);
         }
     }
 
@@ -79,7 +79,6 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
         if (canGrav)
         {
             gravity = on;
-            Physics.gravity = new Vector3(0f, -gravConst, 0f);
             if (!on)
             {
                 rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized);

@@ -457,7 +457,7 @@ namespace Kvant
         void Update()
         {
 			// Alter 1)throttle and 2)Turbulent Noise - Amplitude based on gravity
-			if (GetComponent<BallSpawn> ().gravOn == true) {
+			if (GetComponent<GravityControl> ().gravOn == true) {
 				_throttle = 0f;
 			} else {
 				_throttle = 1.0f;
