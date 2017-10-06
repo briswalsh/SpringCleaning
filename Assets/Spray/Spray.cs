@@ -46,7 +46,7 @@ namespace Kvant
         }
 
         [SerializeField, Range(0, 1)]
-        float _throttle = 0f; //1.0f
+		float _throttle = 1.0f;
 
         public float throttle {
             get { return _throttle; }
@@ -465,9 +465,9 @@ namespace Kvant
         {
 			// Alter 1)throttle and 2)Turbulent Noise - Amplitude based on gravity
 			if (movable.GetComponent<GravityControl> ().gravOn == true) {
-				_throttle = 0f;
+				
 			} else {
-				_throttle = 1.0f;
+				
 			}
 
 

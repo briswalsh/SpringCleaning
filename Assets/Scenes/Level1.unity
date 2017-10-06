@@ -27491,7 +27491,47 @@ Prefab:
     - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
         type: 2}
       propertyPath: _throttle
-      value: 0.171
+      value: 0.065
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _initialVelocity.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _speedRandomness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _noiseAmplitude
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _scaleRandomness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _acceleration.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _spin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454343737297004, guid: a87619a8739cc4d04b585ebcbcbc11bf,
+        type: 2}
+      propertyPath: _noiseFrequency
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a87619a8739cc4d04b585ebcbcbc11bf, type: 2}
