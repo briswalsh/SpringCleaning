@@ -11796,9 +11796,37 @@ Prefab:
       propertyPath: roomFloor
       value: 
       objectReference: {fileID: 897985421}
+    - target: {fileID: 114735319996330092, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
+        type: 2}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 808497431}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e0a198d6057d7b43892cfe8fa97c2bc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &808497430 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1671780135915238, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 808497429}
+--- !u!114 &808497431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 808497430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c0146ed19dff24291d2654deb61159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravOn: 1
+  grav: -10
+  noGrav: 0.1
+  alt: 0
+  duration: 2
+  movable: {fileID: 808497430}
+  soundManager: {fileID: 321846986}
 --- !u!1 &808826666
 GameObject:
   m_ObjectHideFlags: 0
