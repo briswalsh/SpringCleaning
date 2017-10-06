@@ -35,6 +35,7 @@ public class BallSpawn : MonoBehaviour {
 
     /* Ground */
     public GameObject roomFloor;
+    private bool win;
 
     void Awake()
     {
@@ -78,12 +79,14 @@ public class BallSpawn : MonoBehaviour {
         }
         spotlights[state].SetActive(true);
         wicketOrder[state].SetActive(true);
+
+        win = false;
     }
 
     // Update is called once per frame
     void Update () {
         print("I'm updating");
-        if (currBall == null)
+        if (currBall == null && win == false)
         {
 			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
@@ -138,9 +141,16 @@ public class BallSpawn : MonoBehaviour {
                 vacuumOn[i] = false;
             }
             //win
-            Destroy(roomFloor);
+            win = true;
+            StartCoroutine(DestroyRoomFloor());
         }
         return true;
+    }
+
+    IEnumerator DestroyRoomFloor()
+    {
+        yield return new WaitForSeconds(8);
+        Destroy(roomFloor);
     }
 
     void TurnOnWalls()
