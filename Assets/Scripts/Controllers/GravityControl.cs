@@ -74,7 +74,7 @@ public class GravityControl : MonoBehaviour {
     private void SetGravity(bool on)
     {
         Physics.gravity = new Vector3(0, on ? grav : noGrav, 0);
-        /*
+        
         for (int i = 0; i < movable.transform.childCount; i++)
         {
             var sphere = movable.transform.GetChild(i).GetComponent<IPhysics>();
@@ -85,7 +85,7 @@ public class GravityControl : MonoBehaviour {
                     sphere.GravityControl(on, on ? grav : noGrav);
                 }
             }
-        }*/
+        }
 
     }
 }
