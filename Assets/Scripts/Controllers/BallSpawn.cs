@@ -84,6 +84,7 @@ public class BallSpawn : MonoBehaviour {
     void Update () {
 		if (currBall == null)
         {
+			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
             TurnOnWalls();
         }

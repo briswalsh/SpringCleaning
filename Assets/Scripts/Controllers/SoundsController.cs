@@ -33,10 +33,11 @@ public class SoundsController : MonoBehaviour {
         var boilerHum = Resources.Load("Boiler Hum", typeof(AudioClip)) as AudioClip;
         var boilerHumRedo = Resources.Load("Boiler Hum redone", typeof(AudioClip)) as AudioClip;
         var gravDown = Resources.Load("Grav Down", typeof(AudioClip)) as AudioClip;
+		var gravUp = Resources.Load("Grav Up", typeof(AudioClip)) as AudioClip;
         var gravityDown = Resources.Load("Gravity Down", typeof(AudioClip)) as AudioClip;
         var impact = Resources.Load("Impact", typeof(AudioClip)) as AudioClip;
         var pneumatic = Resources.Load("pneumatics-2", typeof(AudioClip)) as AudioClip;
-        var gravUp = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
+        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
         var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
         var vacIntro = Resources.Load("vacumn intro", typeof(AudioClip)) as AudioClip;
@@ -51,10 +52,11 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("boiler-hum1", boilerHum);
         sounds.Add("boiler-hum2", boilerHumRedo);
         sounds.Add("grav-down", gravDown);
+		sounds.Add("grav-up", gravUp);
         sounds.Add("gravity-down", gravityDown);
         sounds.Add("impact", impact);
         sounds.Add("pneumatic", pneumatic);
-        sounds.Add("grav-up", gravUp);
+		sounds.Add("space-engine-start", SpaceEngineStart);
         sounds.Add("torch", torch);
         sounds.Add("vacuum", vacuum);
         sounds.Add("vacuum-start", vacIntro);
@@ -132,10 +134,10 @@ public class SoundsController : MonoBehaviour {
 		oneOffManager.Stop ();
 	}
 
-    public void Vibrate(string soundId)
+    public void Vibrate(string soundId, int channel)
     {
         var clip = sounds[soundId];
-        var hapClip = new OVRHapticsClip(clip, 0);
+        var hapClip = new OVRHapticsClip(clip, channel);
         OVRHaptics.Channels[channel].Mix(hapClip);
     }
 		
