@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4433470013369096}
   - component: {fileID: 33715535954435418}
   - component: {fileID: 23989731498077644}
+  - component: {fileID: 65474284122785674}
   m_Layer: 0
   m_Name: pCube56
   m_TagString: Untagged
@@ -3184,6 +3185,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095551848696514}
   m_Mesh: {fileID: 4300000, guid: 8144f0cfa72268147b4e5c061e48c5a9, type: 3}
+--- !u!65 &65474284122785674
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095551848696514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.507656, y: 0.875, z: 10}
+  m_Center: {x: 0, y: 0.00000047683716, z: 0}
 --- !u!95 &95095221878633846
 Animator:
   serializedVersion: 3
