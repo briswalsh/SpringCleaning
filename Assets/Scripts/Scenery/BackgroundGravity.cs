@@ -34,7 +34,7 @@ public class BackgroundGravity : MonoBehaviour, IPhysics {
 
         if(!canGrav)
         {
-            Invoke("DisableGravity", 0.5f);
+            Invoke("DisableGravity", 0.2f);
         }
     }
 

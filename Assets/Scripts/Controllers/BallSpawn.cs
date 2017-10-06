@@ -47,7 +47,7 @@ public class BallSpawn : MonoBehaviour {
         }
 
         walls = GameObject.FindGameObjectsWithTag("Wall");
-        TurnOnWalls();
+       // TurnOnWalls();
 
         for (int i = 0; i < wicketOrder.Length; i++)
         {
@@ -82,14 +82,16 @@ public class BallSpawn : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (currBall == null)
+        print("I'm updating");
+        if (currBall == null)
         {
 			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
             TurnOnWalls();
         }
+        print("I finished updating");
     }
-
+    
     public void Decrement()
     {
         ballCount--;
@@ -148,4 +150,5 @@ public class BallSpawn : MonoBehaviour {
             walls[i].GetComponent<Collider>().enabled = true;
         }
     }
+    
 }
