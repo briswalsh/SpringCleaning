@@ -8,6 +8,7 @@ Revisions from v2.0:
 	Haptic feedback on ball collision
 	Fixed frame dip
 	Added remaining ball count to TV screen in screen
+	Added particle effects to the gravity portion of the scene
 
 Issues with current version:
 	Ball affected by gravity in the player platform area
