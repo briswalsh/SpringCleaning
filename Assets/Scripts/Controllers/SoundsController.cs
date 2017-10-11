@@ -11,13 +11,11 @@ public class SoundsController : MonoBehaviour {
 
 	private bool loop;
 	private Vector3 loopLocation;
-    private Vector3 findLocation;
 	private AudioClip distantLoop;
 	private float loopTimer;
 	private float loopTime;
 
 	public int channel;
-    public GameObject player;
 
 	// Use this for initialization
 	void Start ()
@@ -103,9 +101,7 @@ public class SoundsController : MonoBehaviour {
 		try
 		{
 			var sound = sounds[soundId];
-            findLocation = location - player.transform.position;
-            findLocation.normalize();
-			AudioSource.PlayClipAtPoint(sound, findLocation);
+			AudioSource.PlayClipAtPoint(sound, location);
 		}
 		catch
 		{
@@ -120,9 +116,7 @@ public class SoundsController : MonoBehaviour {
 			var sound = sounds[soundId];
 
 			oneOffManager.clip = sound;
-            findLocation = location - player.transform.position;
-            findLocation.normalize();
-			loopLocation = findLocation;
+			loopLocation = location;
 			loop = true;
 			distantLoop = sound;
 			loopTimer = sound.length;
