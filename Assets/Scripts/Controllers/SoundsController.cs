@@ -103,8 +103,8 @@ public class SoundsController : MonoBehaviour {
 		try
 		{
 			var sound = sounds[soundId];
-            findLocation = location - player.transform.position;
-			Vector3.Normalize(findLocation);
+            findLocation = location;// - player.transform.position;
+            //findLocation.Normalize();
 			AudioSource.PlayClipAtPoint(sound, findLocation);
 		}
 		catch
@@ -120,8 +120,8 @@ public class SoundsController : MonoBehaviour {
 			var sound = sounds[soundId];
 
 			oneOffManager.clip = sound;
-            findLocation = location - player.transform.position;
-			Vector3.Normalize(findLocation);
+            findLocation = location;// - player.transform.position;
+			//Vector3.Normalize(findLocation);
 			loopLocation = findLocation;
 			loop = true;
 			distantLoop = sound;
