@@ -85,14 +85,14 @@ public class BallSpawn : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        print("I'm updating");
+        //print("I'm updating");
         if (currBall == null && win == false)
         {
 			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
             TurnOnWalls();
         }
-        print("I finished updating");
+        //print("I finished updating");
     }
     
     public void Decrement()
