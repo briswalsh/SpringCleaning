@@ -2373,7 +2373,7 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 225
       objectReference: {fileID: 0}
-    - target: {fileID: 1514322565723004, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -4446,6 +4446,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268917269}
+--- !u!1001 &1301578876
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 135445424}
+    m_Modifications:
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -122.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 209
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -109.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086221820863058, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+      propertyPath: m_Name
+      value: Hybrid Wall Panel (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1325176820
 Prefab:
   m_ObjectHideFlags: 0
@@ -4582,73 +4628,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1357124921
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 135445424}
-    m_Modifications:
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -122.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 209
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -109.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.38268343
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.92387956
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086221820863058, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_Name
-      value: Hybrid Wall Panel (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1357124922 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4611908578538380, guid: 0f8293c4821f9124bb57ef2cda8b60c5,
     type: 2}
-  m_PrefabInternal: {fileID: 1357124921}
+  m_PrefabInternal: {fileID: 1301578876}
 --- !u!1 &1371562969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,7 +5237,7 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 1514322565723004, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -5659,7 +5643,7 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 315
       objectReference: {fileID: 0}
-    - target: {fileID: 1514322565723004, guid: 0f8293c4821f9124bb57ef2cda8b60c5, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
