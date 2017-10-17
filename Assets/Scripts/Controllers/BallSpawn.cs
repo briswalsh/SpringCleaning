@@ -81,6 +81,14 @@ public class BallSpawn : MonoBehaviour {
         wicketOrder[state].SetActive(true);
 
         win = false;
+
+        for (int i = 0; i < vacuumObj.Length; i++)
+        {
+            if (vacuumObj[i].transform.parent.name == "Wicket 1A")
+            {
+                vacuumOn[i] = true;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -118,6 +126,13 @@ public class BallSpawn : MonoBehaviour {
             gc.EnableAltGrav();
             spotlights[state].SetActive(true);
             wicketOrder[state].SetActive(true);
+            for (int i = 0; i < vacuumObj.Length; i++)
+            {
+                if (vacuumObj[i].transform.parent.name == "Wicket 2B")
+                {
+                    vacuumOn[i] = true;
+                }
+            }
         }
         if (state == 2)
         {
