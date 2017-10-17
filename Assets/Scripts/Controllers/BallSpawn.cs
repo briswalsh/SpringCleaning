@@ -125,7 +125,7 @@ public class BallSpawn : MonoBehaviour {
 			sfx.PlayDirectionalLoop ("vacuum",wicketOrder[2].transform.position);
             for(int i = 0; i < vacuumObj.Length; i++)
             {
-                if(vacuumObj[i].transform.parent.name == "Wicket 8A")
+                if(vacuumObj[i].transform.parent.name == "Wicket 3A")
                 {
                     vacuumOn[i] = true;
                 }
