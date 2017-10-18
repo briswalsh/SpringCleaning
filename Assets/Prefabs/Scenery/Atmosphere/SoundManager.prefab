@@ -214,3 +214,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel: 1
+  player: {fileID: 0}
