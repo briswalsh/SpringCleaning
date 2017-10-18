@@ -50,7 +50,7 @@ public class SoundsController : MonoBehaviour {
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
 
 		//Narration Lines
-//		var narIntroOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narIntroOne = Resources.Load("Voiceover_Narration_1_Intro_Combined", typeof(AudioClip)) as AudioClip;
 //		var narIntroTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
 //		var narFirstFail= Resources.Load("", typeof(AudioClip)) as AudioClip;
 //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
@@ -81,7 +81,7 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("wicket-open", wicketOpen);
         sounds.Add("win-music", winMusic);
 
-//		sounds.Add ("intro1", narIntroOne);
+		sounds.Add ("intro1", narIntroOne);
 //		sounds.Add ("intro2", narIntroTwo);
 //		sounds.Add ("firstFail", narFirstFail);
 //		sounds.Add ("fail1", narFailOne);
@@ -129,8 +129,8 @@ public class SoundsController : MonoBehaviour {
 		try
 		{
 			var sound = sounds[soundId];
-            findLocation = location;// - player.transform.position;
-            //findLocation.Normalize();
+            findLocation = location - player.transform.position;
+            findLocation.Normalize();
 			AudioSource.PlayClipAtPoint(sound, findLocation);
 		}
 		catch
@@ -146,8 +146,8 @@ public class SoundsController : MonoBehaviour {
 			var sound = sounds[soundId];
 
 			oneOffManager.clip = sound;
-            findLocation = location;// - player.transform.position;
-			//Vector3.Normalize(findLocation);
+            findLocation = location - player.transform.position;
+			Vector3.Normalize(findLocation);
 			loopLocation = findLocation;
 			loop = true;
 			distantLoop = sound;
