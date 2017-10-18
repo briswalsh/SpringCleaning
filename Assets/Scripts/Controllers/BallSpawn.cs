@@ -89,9 +89,6 @@ public class BallSpawn : MonoBehaviour {
                 vacuumOn[i] = true;
             }
         }
-
-		//Playes first narration after 5 seconds
-		sfx.Narrate ("intro1");
     }
 
     // Update is called once per frame
