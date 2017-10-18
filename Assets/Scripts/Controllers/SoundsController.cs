@@ -30,6 +30,7 @@ public class SoundsController : MonoBehaviour {
 		loop = false;
 		ambient.Play ();
 
+		//Sound Effects
         var boxHit = Resources.Load("ball-box", typeof(AudioClip)) as AudioClip;
         var malletHit = Resources.Load("ball-mallet", typeof(AudioClip)) as AudioClip;
         var boilerHum = Resources.Load("Boiler Hum", typeof(AudioClip)) as AudioClip;
@@ -47,6 +48,19 @@ public class SoundsController : MonoBehaviour {
         var wicketDing = Resources.Load("Wicket ding", typeof(AudioClip)) as AudioClip;
         var wicketOpen = Resources.Load("Wicket open", typeof(AudioClip)) as AudioClip;
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
+
+		//Narration Lines
+//		var narIntroOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narIntroTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narFirstFail= Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narFailTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narGravOn = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narGravFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narSuckOn = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narSuckFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narLose = Resources.Load("", typeof(AudioClip)) as AudioClip;
+//		var narWin = Resources.Load("", typeof(AudioClip)) as AudioClip;
 
         // add the sounds to a dictionary
         sounds.Add("ball-box", boxHit);
@@ -66,6 +80,18 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("wicket-ding", wicketDing);
         sounds.Add("wicket-open", wicketOpen);
         sounds.Add("win-music", winMusic);
+
+//		sounds.Add ("intro1", narIntroOne);
+//		sounds.Add ("intro2", narIntroTwo);
+//		sounds.Add ("firstFail", narFirstFail);
+//		sounds.Add ("fail1", narFailOne);
+//		sounds.Add ("fail2", narFailTwo);
+//		sounds.Add ("gravOn", narGravOn);
+//		sounds.Add ("gravFail", narGravFail);
+//		sounds.Add ("suckOn", narSuckOn);
+//		sounds.Add ("suckFail", narSuckFail);
+//		sounds.Add ("loseGame", narLose);
+//		sounds.Add ("winGame", narWin);
 
 
     }
@@ -146,6 +172,19 @@ public class SoundsController : MonoBehaviour {
         var hapClip = new OVRHapticsClip(clip, channel);
         OVRHaptics.Channels[channel].Mix(hapClip);
     }
+
+	public void Narrate(string soundId)
+	{
+		try
+		{
+			var sound = sounds[soundId];
+			oneOffManager.PlayOneShot(sound);
+		}
+		catch
+		{
+			throw new System.Exception("Could not locate sound - " + soundId);
+		}
+	}
 		
     public void Win()
     {
