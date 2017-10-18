@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CustomizationController : MonoBehaviour {
+public class LeftCustomizationController : MonoBehaviour {
     public bool isActive = true;
     public bool rightDominant;
 
@@ -81,11 +81,11 @@ public class CustomizationController : MonoBehaviour {
 
     void TriggerChecks()
     {
-        float rightPalmClench = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch);
-        float rightFingerClench = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch);
-
-        float leftPalmClench = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch);
-        float leftFingerClench = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
+        float leftPalmClench = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch);
+        float leftFingerClench = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch);
+        
+        float rightPalmClench = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch);
+        float rightFingerClench = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
 
         if (rightPalmClench > 0.2f)
         {
@@ -145,26 +145,21 @@ public class CustomizationController : MonoBehaviour {
             return true;
         }
 
-        float rightPalmClench = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch);
-        float rightFingerClench = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch);
+        float leftPalmClench = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch);
+        float leftFingerClench = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch);
 
-        float leftHandClench = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch);
-        float leftFingerClench = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
+        float rightPalmClench = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch);
+        float rightFingerClench = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
 
         if (rightPalmClench > 0.2f && rightFingerClench > 0.2f)
         {
-            print("player has chosen right hand");
-            transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
-
             rightDominant = true;
             handSet = true;
-            Confirm();
         }
         
-        if (leftHandClench > 0.2f && leftFingerClench > 0.2f)
+        if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
         {
-            print("player has chosen left hand");
-            transform.GetChild(currentRightMallet).gameObject.SetActive(true);
+            transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
 
             rightDominant = false;
             handSet = true;
@@ -185,20 +180,10 @@ public class CustomizationController : MonoBehaviour {
         {
             if (rightFingerDown) // toggle up
             {
-                gameObject.transform.GetChild(currentRightMallet).gameObject.SetActive(false);
-                currentRightMallet = (currentRightMallet + 1) % 3;
-                gameObject.transform.GetChild(currentRightMallet).gameObject.SetActive(true);
                 rightFingerDown = false;
             }
             else if (rightPalmDown) // toggle down
             {
-                gameObject.transform.GetChild(currentRightMallet).gameObject.SetActive(false);
-                currentRightMallet--;
-                if (currentRightMallet < 0)
-                {
-                    currentRightMallet = 2;
-                }
-                gameObject.transform.GetChild(currentRightMallet).gameObject.SetActive(true);
                 rightPalmDown = false;
             }
         }
@@ -224,8 +209,7 @@ public class CustomizationController : MonoBehaviour {
             }
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two) ||
-            OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
         {
             lenSet = true;
             return true;
@@ -242,17 +226,22 @@ public class CustomizationController : MonoBehaviour {
         }
 
         // 90Deg (there will always only be 2 types of rotation)
-        /*if (rightFingerClench > 0.2f && rightDominant || rightHandClench > 0.2f && rightDominant)
+        if (rightFingerDown && rightDominant || rightPalmDown && rightDominant)
         {
-
+            rightFingerDown = false;
+            rightPalmDown = false;
         }
-        if (leftFingerClench > 0.2f && !rightDominant || leftHandClench > 0.2f && !rightDominant) // Toggle down 
+        if (leftFingerDown && !rightDominant || leftPalmDown && !rightDominant) // Toggle down 
         {
+            gameObject.transform.GetChild(currentLeftMallet).gameObject.SetActive(false);
+            currentLeftMallet = (currentLeftMallet + 3) % 6;
+            gameObject.transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
 
-        }*/
+            leftFingerDown = false;
+            leftPalmDown = false;
+        }
 
-        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two) ||
-            OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four))
         {
             rotSet = true;
             return true;

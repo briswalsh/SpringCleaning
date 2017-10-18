@@ -34,7 +34,7 @@ public class MalletCollision : MonoBehaviour {
         }
         catch
         {
-            print("Could not load sounds controller: is sound manager set to an instance in the ball spawn script?");
+            print("Could not load sounds controller: is sound manager set to an instance in the mallet collision script?");
         }
     }
 
