@@ -89,6 +89,7 @@ public class BallSpawn : MonoBehaviour {
                 vacuumOn[i] = true;
             }
         }
+        sfx.Narrate("intro1");
     }
 
     // Update is called once per frame
