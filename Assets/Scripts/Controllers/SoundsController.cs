@@ -47,7 +47,7 @@ public class SoundsController : MonoBehaviour {
 		var gravUp = Resources.Load("Grav Up", typeof(AudioClip)) as AudioClip;
 //        var gravityDown = Resources.Load("Gravity Down", typeof(AudioClip)) as AudioClip;
         var impact = Resources.Load("Impact", typeof(AudioClip)) as AudioClip;
-        var pneumatic = Resources.Load("pneumatics2", typeof(AudioClip)) as AudioClip;
+        var pneumatic = Resources.Load("pneumatics_up", typeof(AudioClip)) as AudioClip;
 //        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
         var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
