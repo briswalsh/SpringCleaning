@@ -7885,6 +7885,7 @@ GameObject:
   - component: {fileID: 4111268487691828}
   - component: {fileID: 114735319996330092}
   - component: {fileID: 114664120380963820}
+  - component: {fileID: 114662895013836340}
   m_Layer: 0
   m_Name: Movable
   m_TagString: Movable
@@ -24125,6 +24126,24 @@ MonoBehaviour:
   vacuumObj: []
   vacuumOn: 
   vacuumMinDist: 0
+--- !u!114 &114662895013836340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671780135915238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c0146ed19dff24291d2654deb61159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravOn: 1
+  grav: -10
+  noGrav: 0.1
+  alt: 0
+  duration: 2
+  movable: {fileID: 1671780135915238}
+  soundManager: {fileID: 0}
 --- !u!114 &114664120380963820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24194,7 +24213,7 @@ MonoBehaviour:
   - {fileID: 0}
   ballCount: 10
   fire: {fileID: 0}
-  gc: {fileID: 114664120380963820}
+  gc: {fileID: 114662895013836340}
   vacuumOn: 
   vacuumObj: []
   soundManager: {fileID: 0}
