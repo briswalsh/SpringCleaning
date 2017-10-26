@@ -109,6 +109,7 @@ public class BallSpawn : MonoBehaviour {
         ballCount--;
         if(ballCount <= 0)
         {
+			sfx.Cut ();
 			sfx.Narrate ("loseGame");
             fire.Immolation();
         }

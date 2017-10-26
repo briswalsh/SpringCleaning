@@ -193,6 +193,7 @@ public class SoundsController : MonoBehaviour {
 		ambient.Stop ();
 		narrator.Stop ();
 		oneOffManager.Stop ();
+		oneOffManager.enabled = false;
 	}
 
     public void Narrate(string soundId)
