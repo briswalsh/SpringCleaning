@@ -63,12 +63,12 @@ public class SoundsController : MonoBehaviour {
  //		var narFirstFail= Resources.Load("", typeof(AudioClip)) as AudioClip;
  //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
  //		var narFailTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
- //		var narGravOn = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narGravOn = Resources.Load("Voiceover Narration 3 Gravity IntroB", typeof(AudioClip)) as AudioClip;
  //		var narGravFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
- //		var narSuckOn = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narSuckOn = Resources.Load("Voiceover Narration 4 Vacuum IntroB", typeof(AudioClip)) as AudioClip;
  //		var narSuckFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
- //		var narLose = Resources.Load("", typeof(AudioClip)) as AudioClip;
- //		var narWin = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narLose = Resources.Load("Voiceover Narration 6 LossB", typeof(AudioClip)) as AudioClip;
+		var narWin = Resources.Load("Voiceover Narration 5 WinB", typeof(AudioClip)) as AudioClip;
 
         // add the sounds to a dictionary
 //        sounds.Add("ball-box", boxHit);
@@ -95,12 +95,12 @@ public class SoundsController : MonoBehaviour {
  //		sounds.Add ("firstFail", narFirstFail);
 //		sounds.Add ("fail1", narFailOne);
 //		sounds.Add ("fail2", narFailTwo);
-//		sounds.Add ("gravOn", narGravOn);
+		sounds.Add ("gravOn", narGravOn);
 //		sounds.Add ("gravFail", narGravFail);
-//		sounds.Add ("suckOn", narSuckOn);
+		sounds.Add ("suckOn", narSuckOn);
 //		sounds.Add ("suckFail", narSuckFail);
-//		sounds.Add ("loseGame", narLose);
-//		sounds.Add ("winGame", narWin);
+		sounds.Add ("loseGame", narLose);
+		sounds.Add ("winGame", narWin);
 
 
     }
