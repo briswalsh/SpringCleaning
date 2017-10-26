@@ -70,14 +70,18 @@ public class BallSpawn : MonoBehaviour {
         }
 
         /* Initial Game State */
-        state = 0;
+        state = -1;
         maxCount = ballCount;
 
         for (int i = 0; i < spotlights.Length; i++)
         {
             spotlights[i].SetActive(false);
         }
-        spotlights[state].SetActive(true);
+        //spotlights[state].SetActive(true);
+        for(int i = 0; i < wicketOrder.Length; i++)
+        {
+            wicketOrder[i].SetActive(true);
+        }
         wicketOrder[state].SetActive(true);
 
         win = false;
@@ -116,8 +120,12 @@ public class BallSpawn : MonoBehaviour {
 
     public bool NextStage()
     {
-        wicketOrder[state].SetActive(false);
-        spotlights[state].SetActive(false);
+        if (state >= 0)
+        {
+            wicketOrder[state].SetActive(false);
+            spotlights[state].SetActive(false);
+        }
+        
         state++;
         if(state != 3)
         {
