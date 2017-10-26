@@ -169,7 +169,7 @@ public class BallSpawn : MonoBehaviour {
 
     IEnumerator DestroyRoomFloor()
     {
-        yield return new WaitForSeconds(8.7f);
+        yield return new WaitForSeconds(14 + 8.7f);
         Destroy(roomFloor);
     }
 

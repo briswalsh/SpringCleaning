@@ -185,13 +185,18 @@ public class SoundsController : MonoBehaviour {
     public void Win()
     {
         ambient.Stop();
-        oneOffManager.PlayOneShot(sounds["win-music"]);
+        ambient.clip = sounds["win-music"];
+        ambient.PlayDelayed(14f);
     }
 
     public void Narrate(string soundId)
     {
         try
         {
+            if (narrator.isPlaying)
+            {
+                narrator.Stop();
+            }
             var sound = sounds[soundId];
             narrator.PlayOneShot(sound);
         }
