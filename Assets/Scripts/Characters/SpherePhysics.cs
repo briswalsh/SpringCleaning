@@ -39,7 +39,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0f, -10f, 0f);
+        //Physics.gravity = new Vector3(0f, -10f, 0f);
         origin = transform.position;
         physics = true;
         prevPos = transform.position;
