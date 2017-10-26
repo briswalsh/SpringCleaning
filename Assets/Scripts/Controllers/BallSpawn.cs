@@ -154,6 +154,7 @@ public class BallSpawn : MonoBehaviour {
         }
         if (state == 3)
         {
+			sfx.Cut ();
 			sfx.Win ();
             for (int i = 0; i < vacuumObj.Length; i++)
             {

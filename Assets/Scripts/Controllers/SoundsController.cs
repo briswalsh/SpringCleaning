@@ -189,6 +189,12 @@ public class SoundsController : MonoBehaviour {
         ambient.PlayDelayed(14f);
     }
 
+	public void Cut() {
+		ambient.Stop ();
+		narrator.Stop ();
+		oneOffManager.Stop ();
+	}
+
     public void Narrate(string soundId)
     {
         try
