@@ -32,15 +32,21 @@ public class BallSpawn : MonoBehaviour {
     /* Sounds */
     public GameObject soundManager;
 	private SoundsController sfx;
+	bool fail1played;
 
     /* Ground */
     public GameObject roomFloor;
     private bool win;
 
+    /* Particles */
+    public GameObject gravParticles;
+    public GameObject vacuumParticles;
+
     void Awake()
     {
         gc = GetComponent<GravityControl>();
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
+		fail1played = false;
         vacuumOn = new bool[vacuumObj.Length];
         for (int i = 0; i < vacuumObj.Length; i++)
         {
@@ -73,6 +79,7 @@ public class BallSpawn : MonoBehaviour {
         /* Initial Game State */
         state = 0;
         maxCount = ballCount;
+        vacuumParticles.SetActive(false);
 
         for (int i = 0; i < spotlights.Length; i++)
         {
@@ -113,7 +120,12 @@ public class BallSpawn : MonoBehaviour {
 			sfx.Cut ();
 			sfx.Narrate ("loseGame");
             fire.Immolation();
-        }
+		} else {
+			if (!(sfx.IsNarrating ())&& !(fail1played)){
+				sfx.Narrate ("firstFail");
+				fail1played = true;
+			}
+		}
     }
 
     public bool NextStage()
@@ -152,11 +164,14 @@ public class BallSpawn : MonoBehaviour {
             }
             spotlights[state].SetActive(true);
             wicketOrder[state].SetActive(true);
-			sfx.Narrate ("suckOn");
+            gravParticles.SetActive(false);
+            vacuumParticles.SetActive(true);
+            sfx.Narrate ("suckOn");
         }
         if (state == 3)
         {
-			sfx.Cut ();
+            vacuumParticles.SetActive(false);
+            sfx.Cut ();
 			sfx.Win ();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
