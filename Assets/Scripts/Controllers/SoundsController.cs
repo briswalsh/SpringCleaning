@@ -196,6 +196,10 @@ public class SoundsController : MonoBehaviour {
 		oneOffManager.enabled = false;
 	}
 
+	public bool IsNarrating() {
+		return narrator.isPlaying;
+	}
+
     public void Narrate(string soundId)
     {
         try
