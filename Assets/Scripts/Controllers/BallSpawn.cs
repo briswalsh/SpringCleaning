@@ -41,6 +41,7 @@ public class BallSpawn : MonoBehaviour {
 
     void Awake()
     {
+        gc = GetComponent<GravityControl>();
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
 		fail1played = false;
         vacuumOn = new bool[vacuumObj.Length];
