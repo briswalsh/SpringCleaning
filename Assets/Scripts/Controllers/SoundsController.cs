@@ -21,9 +21,11 @@ public class SoundsController : MonoBehaviour {
 
 	public int channel;
     public GameObject player;
+  
+   
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Awake ()
     {
         sounds = new Dictionary<string, AudioClip>();
         oneOffManager = GetComponents<AudioSource>()[0];
@@ -209,7 +211,10 @@ public class SoundsController : MonoBehaviour {
             {
                 narrator.Stop();
             }
+
             var sound = sounds[soundId];
+
+            
             narrator.PlayOneShot(sound);
         }
         catch

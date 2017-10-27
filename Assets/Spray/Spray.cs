@@ -465,11 +465,11 @@ namespace Kvant
         {
 			// Alter 1)throttle and 2)Turbulent Noise - Amplitude based on gravity
 			if (movable.GetComponent<GravityControl> ().gravOn) {
-                print("on");
+                //print("on");
                 _acceleration.y = -0.08f;
 
             } else {
-                print("off");
+                //print("off");
                 _acceleration.y = 0.08f;
 
             }
