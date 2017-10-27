@@ -39,6 +39,7 @@ public class BallSpawn : MonoBehaviour {
 
     void Awake()
     {
+        gc = GetComponent<GravityControl>();
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
         vacuumOn = new bool[vacuumObj.Length];
         for (int i = 0; i < vacuumObj.Length; i++)
@@ -109,6 +110,8 @@ public class BallSpawn : MonoBehaviour {
         ballCount--;
         if(ballCount <= 0)
         {
+			sfx.Cut ();
+			sfx.Narrate ("loseGame");
             fire.Immolation();
         }
     }
@@ -134,6 +137,7 @@ public class BallSpawn : MonoBehaviour {
                     vacuumOn[i] = true;
                 }
             }
+			sfx.Narrate ("gravOn");
         }
         if (state == 2)
         {
@@ -148,9 +152,11 @@ public class BallSpawn : MonoBehaviour {
             }
             spotlights[state].SetActive(true);
             wicketOrder[state].SetActive(true);
+			sfx.Narrate ("suckOn");
         }
         if (state == 3)
         {
+			sfx.Cut ();
 			sfx.Win ();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
@@ -159,13 +165,14 @@ public class BallSpawn : MonoBehaviour {
             //win
             win = true;
             StartCoroutine(DestroyRoomFloor());
+			sfx.Narrate ("winGame");
         }
         return true;
     }
 
     IEnumerator DestroyRoomFloor()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(14 + 8.7f);
         Destroy(roomFloor);
     }
 

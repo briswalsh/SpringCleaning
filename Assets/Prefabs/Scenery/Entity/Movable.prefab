@@ -24194,7 +24194,7 @@ MonoBehaviour:
   - {fileID: 0}
   ballCount: 10
   fire: {fileID: 0}
-  gc: {fileID: 114664120380963820}
+  gc: {fileID: 0}
   vacuumOn: 
   vacuumObj: []
   soundManager: {fileID: 0}
