@@ -37,6 +37,10 @@ public class BallSpawn : MonoBehaviour {
     public GameObject roomFloor;
     private bool win;
 
+    /* Particles */
+    public GameObject gravParticles;
+    public GameObject vacuumParticles;
+
     void Awake()
     {
         gc = GetComponent<GravityControl>();
@@ -73,6 +77,7 @@ public class BallSpawn : MonoBehaviour {
         /* Initial Game State */
         state = 0;
         maxCount = ballCount;
+        vacuumParticles.SetActive(false);
 
         for (int i = 0; i < spotlights.Length; i++)
         {
@@ -152,11 +157,14 @@ public class BallSpawn : MonoBehaviour {
             }
             spotlights[state].SetActive(true);
             wicketOrder[state].SetActive(true);
-			sfx.Narrate ("suckOn");
+            gravParticles.SetActive(false);
+            vacuumParticles.SetActive(true);
+            sfx.Narrate ("suckOn");
         }
         if (state == 3)
         {
-			sfx.Cut ();
+            vacuumParticles.SetActive(false);
+            sfx.Cut ();
 			sfx.Win ();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
