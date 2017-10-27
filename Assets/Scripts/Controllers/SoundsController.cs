@@ -187,6 +187,7 @@ public class SoundsController : MonoBehaviour {
         ambient.Stop();
         ambient.clip = sounds["win-music"];
         ambient.PlayDelayed(14f);
+		ambient.volume = .9f;
     }
 
 	public void Cut() {
