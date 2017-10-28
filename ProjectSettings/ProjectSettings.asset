@@ -46,8 +46,8 @@ PlayerSettings:
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 1
-  m_ActiveColorSpace: 1
+  m_StereoRenderingPath: 0
+  m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_MobileMTRendering: 0
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
@@ -141,6 +141,7 @@ PlayerSettings:
   targetPixelDensity: 0
   resolutionScalingMode: 0
   applicationIdentifier:
+    Metro: com.oculus.UnitySample
     Standalone: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 1
@@ -237,6 +238,10 @@ PlayerSettings:
     m_Devices:
     - Oculus
     - OpenVR
+  - m_BuildTarget: Metro
+    m_Enabled: 1
+    m_Devices:
+    - HoloLens
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   webPlayerTemplate: APPLICATION:Default
@@ -523,7 +528,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Spring Cleaning
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Spring Cleaning
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
