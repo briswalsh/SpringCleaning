@@ -210,4 +210,17 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
 			print ("Could not find Wicket");
 		}
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Safe Area")
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        rb.useGravity = true;
+    }
 }
