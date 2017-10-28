@@ -142,7 +142,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                     if (dist < vp.vacuumDist)
                     {
                         newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist * vacuumMinDist));
-                        print(newPos);
+                        //print(newPos);
                     }
                 }
             }
