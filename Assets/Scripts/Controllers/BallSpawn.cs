@@ -42,6 +42,10 @@ public class BallSpawn : MonoBehaviour {
     public GameObject gravParticles;
     public GameObject vacuumParticles;
 
+    /* Sphere Color Coding */
+    public Material[] sphereColor;
+    public Color[] lightColor;
+
     void Awake()
     {
         gc = GetComponent<GravityControl>();
@@ -67,6 +71,7 @@ public class BallSpawn : MonoBehaviour {
     void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        currBall.GetComponent<Renderer>().material = sphereColor[state];
         try
         {
             sfx = soundManager.GetComponent<SoundsController>();
@@ -103,10 +108,12 @@ public class BallSpawn : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //print("I'm updating");
-        if (currBall == null && win == false)
+        if (currBall == null && win == false && ballCount > 0)
         {
 			sfx.PlaySound ("pneumatic");
             currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+            currBall.GetComponent<Renderer>().material = sphereColor[state];
+            currBall.GetComponentInChildren<Light>().color = lightColor[state];
             TurnOnWalls();
         }
         //print("I finished updating");
@@ -115,12 +122,15 @@ public class BallSpawn : MonoBehaviour {
     public void Decrement()
     {
         ballCount--;
-        if(ballCount <= 0)
+        if(ballCount == 0)
         {
-			sfx.Cut ();
+            gc.DisableAltGrav();
+            spotlights[state].SetActive(false);
+            sfx.Cut ();
 			sfx.Narrate ("loseGame");
-            fire.Immolation();
-		} else {
+            vacuumParticles.SetActive(false);
+            StartCoroutine(PainfulDeath());
+        } else {
 			if (!(sfx.IsNarrating ())&& !(fail1played)){
 				sfx.Narrate ("firstFail");
 				fail1played = true;
@@ -189,6 +199,14 @@ public class BallSpawn : MonoBehaviour {
     {
         yield return new WaitForSeconds(14 + 8.7f);
         Destroy(roomFloor);
+    }
+
+    IEnumerator PainfulDeath()
+    {
+        yield return new WaitForSeconds(10);
+        sfx.StopSoundLoop();
+        sfx.PlaySound("torch");
+        fire.Immolation();
     }
 
     void TurnOnWalls()

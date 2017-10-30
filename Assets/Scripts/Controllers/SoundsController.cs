@@ -110,7 +110,7 @@ public class SoundsController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(loop)
+		if(loop && oneOffManager.enabled)
 		{
 			loopTime -= Time.time;
 			if(loopTime < 0)
@@ -118,7 +118,6 @@ public class SoundsController : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (distantLoop, loopLocation);
 				loopTime = loopTimer;
 			}
-
 		}
 	}
 
@@ -126,6 +125,7 @@ public class SoundsController : MonoBehaviour {
     {
         try
         {
+            oneOffManager.enabled = true;
             var sound = sounds[soundId];
             oneOffManager.PlayOneShot(sound);
         }
@@ -177,6 +177,11 @@ public class SoundsController : MonoBehaviour {
 		oneOffManager.Stop ();
 	}
 
+    public void StopSoundLoop()
+    {
+        loop = false;
+    }
+
     public void Vibrate(string soundId, int channel)
     {
         var clip = sounds[soundId];
@@ -192,14 +197,15 @@ public class SoundsController : MonoBehaviour {
 		ambient.volume = .9f;
     }
 
-	public void Cut() {
-		ambient.Stop ();
-		narrator.Stop ();
-		oneOffManager.Stop ();
-		oneOffManager.enabled = false;
-	}
+    public void Cut()
+    {
+        ambient.Stop();
+        narrator.Stop();
+        oneOffManager.Stop();
+        oneOffManager.enabled = false;
+    }
 
-	public bool IsNarrating() {
+    public bool IsNarrating() {
 		return narrator.isPlaying;
 	}
 
