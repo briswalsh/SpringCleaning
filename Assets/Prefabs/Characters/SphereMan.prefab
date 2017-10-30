@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114203789459350658}
   - component: {fileID: 82217538677598384}
   - component: {fileID: 114093552774514486}
+  - component: {fileID: 95853342366922068}
   m_Layer: 0
   m_Name: SphereMan
   m_TagString: Untagged
@@ -210,6 +211,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95853342366922068
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676124220112412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18acbc85db3d81c4a8bdd4f045bb028c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108729895338451436
 Light:
   m_ObjectHideFlags: 1

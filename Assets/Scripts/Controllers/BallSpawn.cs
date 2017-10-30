@@ -110,13 +110,24 @@ public class BallSpawn : MonoBehaviour {
         //print("I'm updating");
         if (currBall == null && win == false && ballCount > 0)
         {
-			sfx.PlaySound ("pneumatic");
-            currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-            currBall.GetComponent<Renderer>().material = sphereColor[state];
-            currBall.GetComponentInChildren<Light>().color = lightColor[state];
-            TurnOnWalls();
+            SpawnBall();
         }
         //print("I finished updating");
+    }
+
+    public void SpawnBall()
+    {
+	sfx.PlaySound ("pneumatic");
+        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        currBall.GetComponent<Renderer>().material = sphereColor[state];
+        currBall.GetComponentInChildren<Light>().color = lightColor[state];
+        TurnOnWalls();
+    }
+
+    public IEnumerator SpawnBall(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpawnBall();
     }
     
     public void Decrement()
