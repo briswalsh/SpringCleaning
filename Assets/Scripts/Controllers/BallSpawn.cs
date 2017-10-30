@@ -121,6 +121,7 @@ public class BallSpawn : MonoBehaviour {
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
+        //currBall.GetComponent<Animation>().Play();
         TurnOnWalls();
     }
 
