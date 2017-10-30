@@ -105,11 +105,22 @@ public class BallSpawn : MonoBehaviour {
         //print("I'm updating");
         if (currBall == null && win == false)
         {
-			sfx.PlaySound ("pneumatic");
-            currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-            TurnOnWalls();
+            SpawnBall();
         }
         //print("I finished updating");
+    }
+
+    public void SpawnBall()
+    {
+        sfx.PlaySound("pneumatic");
+        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        TurnOnWalls();
+    }
+
+    public IEnumerator SpawnBall(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpawnBall();
     }
     
     public void Decrement()
