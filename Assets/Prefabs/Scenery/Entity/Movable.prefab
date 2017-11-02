@@ -24192,7 +24192,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ballCount: 3
+  ballCount: 15
   fire: {fileID: 0}
   gc: {fileID: 114664120380963820}
   vacuumOn: 
