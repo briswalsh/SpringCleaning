@@ -65,7 +65,7 @@ public class SoundsController : MonoBehaviour {
 		var narFirstFail= Resources.Load("Voiceover Narration 7 Missed Hit WarningB", typeof(AudioClip)) as AudioClip;
  //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
  //		var narFailTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
-		var narGravOn = Resources.Load("Improved Grav Intro Correct", typeof(AudioClip)) as AudioClip;
+		var narGravOn = Resources.Load("Improved Grav Intro Correct Space", typeof(AudioClip)) as AudioClip;
 		var narGravFail = Resources.Load("Improved Grav Fail", typeof(AudioClip)) as AudioClip;
 		var narSuckOn = Resources.Load("Improved Vacum Intro", typeof(AudioClip)) as AudioClip;
 		var narSuckFail = Resources.Load("Improve Vacum loose", typeof(AudioClip)) as AudioClip;
