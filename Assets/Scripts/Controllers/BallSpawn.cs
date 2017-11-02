@@ -257,21 +257,17 @@ public class BallSpawn : MonoBehaviour
         fire.Immolation();
     }
 
-    IEnumerator SpaceTrash()
-    {
-        yield return new WaitForSeconds(3);
-    }
-
     IEnumerator DelayStartSpawn()
     {
-        yield return SpawnBall(10);
+        yield return SpawnBall(18);
     }
 
     IEnumerator EnableRenderer(int delay)
     {
         yield return new WaitForSeconds(delay);
         currBall.GetComponent<MeshRenderer>().enabled = true;
-        currBall.GetComponent<SphereCollider>().enabled = true;
+        currBall.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
+
     }
 
     void TurnOnWalls()
