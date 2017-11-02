@@ -19,6 +19,7 @@ public class BallSpawn : MonoBehaviour {
     private int state;
     public int ballCount;
     private int maxCount;
+    private bool delay;
 
     public Crematoria fire;
 
@@ -107,19 +108,19 @@ public class BallSpawn : MonoBehaviour {
             }
         }
         sfx.Narrate("intro1");
-        DelayStartSpawn();
-        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-        currBall.GetComponent<Renderer>().material = sphereColor[state];
+        StartCoroutine(DelayStartSpawn());
     }
 
     // Update is called once per frame
     void Update () {
+        /*
         //print("I'm updating");
         if (currBall == null && win == false && ballCount > 0)
         {
             SpawnBall();
         }
         //print("I finished updating");
+        */
     }
 
     public void SpawnBall()
@@ -128,11 +129,7 @@ public class BallSpawn : MonoBehaviour {
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
-        SpaceTrash();
-
-        currBall.GetComponent<MeshRenderer>().enabled = true;
-        currBall.GetComponent<SphereCollider>().enabled = true;
-        //currBall.GetComponent<Animation>().Play();
+        StartCoroutine(EnableRenderer(3));
         TurnOnWalls();
     }
 
@@ -253,7 +250,14 @@ public class BallSpawn : MonoBehaviour {
 
     IEnumerator DelayStartSpawn()
     {
-        yield return new WaitForSeconds(10);
+        yield return SpawnBall(10);
+    }
+
+    IEnumerator EnableRenderer(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currBall.GetComponent<MeshRenderer>().enabled = true;
+        currBall.GetComponent<SphereCollider>().enabled = true;
     }
 
     void TurnOnWalls()
