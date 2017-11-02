@@ -131,8 +131,10 @@ public class BallSpawn : MonoBehaviour {
 
     public IEnumerator SpawnBall(float delay)
     {
-        yield return new WaitForSeconds(delay);
-        SpawnBall();
+		if (currBall == null && win == false && ballCount > 0) {
+			yield return new WaitForSeconds (delay);
+			SpawnBall ();
+		}
     }
     
     public void Decrement()
@@ -225,7 +227,7 @@ public class BallSpawn : MonoBehaviour {
 
     IEnumerator DestroyRoomFloor()
     {
-        yield return new WaitForSeconds(14 + 8.7f);
+        yield return new WaitForSeconds(9.5f + 8.7f);
         Destroy(roomFloor);
     }
 
