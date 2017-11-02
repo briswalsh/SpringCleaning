@@ -11946,7 +11946,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691986555262712}
   m_LocalRotation: {x: 0, y: 0.42261845, z: -0, w: -0.9063077}
-  m_LocalPosition: {x: -214.4, y: 38.500004, z: -71.6}
+  m_LocalPosition: {x: -159.2, y: 38.500004, z: -71.2}
   m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
   m_Children:
   - {fileID: 4292654572866558}
@@ -24192,13 +24192,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ballCount: 10
+  ballCount: 3
   fire: {fileID: 0}
-  gc: {fileID: 0}
+  gc: {fileID: 114664120380963820}
   vacuumOn: 
   vacuumObj: []
   soundManager: {fileID: 0}
   roomFloor: {fileID: 0}
+  gravParticles: {fileID: 0}
+  vacuumParticles: {fileID: 0}
+  sphereColor:
+  - {fileID: 2100000, guid: 7dcf8bf77d2cf6e41b997bd7f90821e2, type: 2}
+  - {fileID: 2100000, guid: d27c3eb40ce07954c8fb942534e5f5e3, type: 2}
+  - {fileID: 2100000, guid: b2e5d98a86abf1f418b49a8c8f706411, type: 2}
+  lightColor:
+  - {r: 0.77205884, g: 0, b: 0, a: 0}
+  - {r: 0.19301468, g: 0.875, b: 0.3670384, a: 0}
+  - {r: 0.20436849, g: 0.2691085, b: 0.9264706, a: 0}
 --- !u!114 &114830168958824910
 MonoBehaviour:
   m_ObjectHideFlags: 1
