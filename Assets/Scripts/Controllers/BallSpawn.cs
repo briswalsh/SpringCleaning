@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSpawn : MonoBehaviour {
+public class BallSpawn : MonoBehaviour
+{
 
     public GameObject movable;
 
@@ -19,6 +20,7 @@ public class BallSpawn : MonoBehaviour {
     private int state;
     public int ballCount;
     private int maxCount;
+    private bool delay;
 
     public Crematoria fire;
 
@@ -31,10 +33,10 @@ public class BallSpawn : MonoBehaviour {
 
     /* Sounds */
     public GameObject soundManager;
-	private SoundsController sfx;
-	bool fail1played;
-	bool failGravPlayed;
-	bool failVacPlayed;
+    private SoundsController sfx;
+    bool fail1played;
+    bool failGravPlayed;
+    bool failVacPlayed;
 
     /* Ground */
     public GameObject roomFloor;
@@ -52,9 +54,9 @@ public class BallSpawn : MonoBehaviour {
     {
         gc = GetComponent<GravityControl>();
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
-		fail1played = false;
-		failGravPlayed = false;
-		failVacPlayed = false;
+        fail1played = false;
+        failGravPlayed = false;
+        failVacPlayed = false;
         vacuumOn = new bool[vacuumObj.Length];
         for (int i = 0; i < vacuumObj.Length; i++)
         {
@@ -63,7 +65,7 @@ public class BallSpawn : MonoBehaviour {
         }
 
         walls = GameObject.FindGameObjectsWithTag("Wall");
-       // TurnOnWalls();
+        // TurnOnWalls();
 
         for (int i = 0; i < wicketOrder.Length; i++)
         {
@@ -72,10 +74,11 @@ public class BallSpawn : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         movable = GameObject.FindGameObjectWithTag("Movable");
-        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-        currBall.GetComponent<Renderer>().material = sphereColor[state];
+        //currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        //currBall.GetComponent<Renderer>().material = sphereColor[state];
         try
         {
             sfx = soundManager.GetComponent<SoundsController>();
@@ -107,16 +110,20 @@ public class BallSpawn : MonoBehaviour {
             }
         }
         sfx.Narrate("intro1");
+        StartCoroutine(DelayStartSpawn());
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
+        /*
         //print("I'm updating");
         if (currBall == null && win == false && ballCount > 0)
         {
             SpawnBall();
         }
         //print("I finished updating");
+        */
     }
 
     public void SpawnBall()
@@ -125,47 +132,58 @@ public class BallSpawn : MonoBehaviour {
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
-        //currBall.GetComponent<Animation>().Play();
+        StartCoroutine(EnableRenderer(3));
         TurnOnWalls();
     }
 
     public IEnumerator SpawnBall(float delay)
     {
-        if (currBall == null && win == false && ballCount > 0) {
-            yield return new WaitForSeconds (delay);
-			SpawnBall ();
-		}
+        if (currBall == null && win == false && ballCount > 0)
+        {
+            yield return new WaitForSeconds(delay);
+            SpawnBall();
+        }
     }
-    
+
     public void Decrement()
     {
         ballCount--;
-        if(ballCount == 0)
+        if (ballCount == 0)
         {
             gc.DisableAltGrav();
             spotlights[state].SetActive(false);
-            sfx.Cut ();
-			sfx.Narrate ("loseGame");
+            sfx.Cut();
+            sfx.Narrate("loseGame");
             vacuumParticles.SetActive(false);
             StartCoroutine(PainfulDeath());
-        } else {
-			if (!(sfx.IsNarrating ())){
-				if (!(fail1played)) {
-					sfx.Narrate ("firstFail");
-					fail1played = true;
-				} else if (state == 1) {
-					if ( !failGravPlayed) {
-						sfx.Narrate ("gravFail");
-						failGravPlayed = true;
-					}
-				} else if (state == 2) {
-					if (!failVacPlayed) {
-						sfx.Narrate ("suckFail");
-						failVacPlayed = true;
-					}
-				}
-			}
-		}
+        }
+        else
+        {
+            if (!(sfx.IsNarrating()))
+            {
+                if (!(fail1played))
+                {
+                    sfx.Narrate("firstFail");
+                    fail1played = true;
+                }
+                else if (state == 1)
+                {
+                    if (!failGravPlayed)
+                    {
+                        sfx.Narrate("gravFail");
+                        failGravPlayed = true;
+                    }
+                }
+                else if (state == 2)
+                {
+                    if (!failVacPlayed)
+                    {
+                        sfx.Narrate("suckFail");
+                        failVacPlayed = true;
+                    }
+                }
+            }
+        }
     }
 
     public bool NextStage()
@@ -173,11 +191,11 @@ public class BallSpawn : MonoBehaviour {
         wicketOrder[state].SetActive(false);
         spotlights[state].SetActive(false);
         state++;
-        if(state != 3)
+        if (state != 3)
         {
-			sfx.PlayDirectionalSound("wicket-ding",wicketOrder[state].transform.position);
+            sfx.PlayDirectionalSound("wicket-ding", wicketOrder[state].transform.position);
         }
-        if(state == 1)
+        if (state == 1)
         {
             gc.EnableAltGrav();
             spotlights[state].SetActive(true);
@@ -189,15 +207,15 @@ public class BallSpawn : MonoBehaviour {
                     vacuumOn[i] = true;
                 }
             }
-			sfx.Narrate ("gravOn");
+            sfx.Narrate("gravOn");
         }
         if (state == 2)
         {
             gc.DisableAltGrav();
-			sfx.PlayDirectionalLoop ("vacuum",wicketOrder[2].transform.position);
-            for(int i = 0; i < vacuumObj.Length; i++)
+            sfx.PlayDirectionalLoop("vacuum", wicketOrder[2].transform.position);
+            for (int i = 0; i < vacuumObj.Length; i++)
             {
-                if(vacuumObj[i].transform.parent.name == "Wicket 3A")
+                if (vacuumObj[i].transform.parent.name == "Wicket 3A")
                 {
                     vacuumOn[i] = true;
                 }
@@ -206,13 +224,13 @@ public class BallSpawn : MonoBehaviour {
             wicketOrder[state].SetActive(true);
             gravParticles.SetActive(false);
             vacuumParticles.SetActive(true);
-            sfx.Narrate ("suckOn");
+            sfx.Narrate("suckOn");
         }
         if (state == 3)
         {
             vacuumParticles.SetActive(false);
-            sfx.Cut ();
-			sfx.Win ();
+            sfx.Cut();
+            sfx.Win();
             for (int i = 0; i < vacuumObj.Length; i++)
             {
                 vacuumOn[i] = false;
@@ -220,7 +238,7 @@ public class BallSpawn : MonoBehaviour {
             //win
             win = true;
             StartCoroutine(DestroyRoomFloor());
-			sfx.Narrate ("winGame");
+            sfx.Narrate("winGame");
         }
         return true;
     }
@@ -239,6 +257,19 @@ public class BallSpawn : MonoBehaviour {
         fire.Immolation();
     }
 
+    IEnumerator DelayStartSpawn()
+    {
+        yield return SpawnBall(18);
+    }
+
+    IEnumerator EnableRenderer(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currBall.GetComponent<MeshRenderer>().enabled = true;
+        currBall.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
+
+    }
+
     void TurnOnWalls()
     {
         for (int i = 0; i < walls.Length; i++)
@@ -246,5 +277,5 @@ public class BallSpawn : MonoBehaviour {
             walls[i].GetComponent<Collider>().enabled = true;
         }
     }
-    
+
 }
