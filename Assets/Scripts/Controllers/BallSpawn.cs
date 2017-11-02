@@ -86,7 +86,7 @@ public class BallSpawn : MonoBehaviour {
         }
 
         /* Initial Game State */
-        state = -1;
+        state = 0;
         maxCount = ballCount;
         vacuumParticles.SetActive(false);
 
@@ -94,11 +94,7 @@ public class BallSpawn : MonoBehaviour {
         {
             spotlights[i].SetActive(false);
         }
-        //spotlights[state].SetActive(true);
-        for(int i = 0; i < wicketOrder.Length; i++)
-        {
-            wicketOrder[i].SetActive(true);
-        }
+        spotlights[state].SetActive(true);
         wicketOrder[state].SetActive(true);
 
         win = false;
@@ -174,12 +170,8 @@ public class BallSpawn : MonoBehaviour {
 
     public bool NextStage()
     {
-        if (state >= 0)
-        {
-            wicketOrder[state].SetActive(false);
-            spotlights[state].SetActive(false);
-        }
-        
+        wicketOrder[state].SetActive(false);
+        spotlights[state].SetActive(false);
         state++;
         if(state != 3)
         {
