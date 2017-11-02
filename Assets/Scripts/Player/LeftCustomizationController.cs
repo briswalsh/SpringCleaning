@@ -5,6 +5,9 @@ public class LeftCustomizationController : MonoBehaviour {
 	public GameObject eye;
 	public float eyeHeight;
 
+    public float lgHeight;
+    public float midHeight;
+
     public bool isActive = true;
     public bool rightDominant;
 
@@ -271,9 +274,9 @@ public class LeftCustomizationController : MonoBehaviour {
 		yield return new WaitForSeconds (0.25f);
 		eyeHeight = eye.transform.position.y;
 		print (eyeHeight);
-		if (eyeHeight > 3.1) {
+		if (eyeHeight > lgHeight) {
 			currentLeftMallet = 2;
-		} else if (eyeHeight > 2.8) {
+		} else if (eyeHeight > midHeight) {
 			currentLeftMallet = 1;
 		} else {
 			currentLeftMallet = 0;

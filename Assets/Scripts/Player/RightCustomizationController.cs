@@ -1,6 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class RightCustomizationController : MonoBehaviour {
+    public GameObject eye;
+    public float eyeHeight;
+
+    public float lgHeight;
+    public float midHeight;
+
     public bool isActive = true;
     public bool rightDominant;
 
@@ -156,6 +163,7 @@ public class RightCustomizationController : MonoBehaviour {
             print("player has chosen right hand");
             transform.GetChild(currentRightMallet).gameObject.SetActive(true);
 
+            lenSet = true;
             rightDominant = true;
             handSet = true;
         }
@@ -165,6 +173,7 @@ public class RightCustomizationController : MonoBehaviour {
             print("player has chosen left hand");
             rightDominant = false;
             handSet = true;
+            lenSet = true;
         }
 
         return false;
@@ -268,5 +277,24 @@ public class RightCustomizationController : MonoBehaviour {
 
         // user has not yet indicated they are finished
         return false;
+    }
+
+    IEnumerator SetEyeHeight()
+    {
+        yield return new WaitForSeconds(0.25f);
+        eyeHeight = eye.transform.position.y;
+        print(eyeHeight);
+        if (eyeHeight > lgHeight)
+        {
+            currentLeftMallet = 2;
+        }
+        else if (eyeHeight > midHeight)
+        {
+            currentLeftMallet = 1;
+        }
+        else
+        {
+            currentLeftMallet = 0;
+        }
     }
 }
