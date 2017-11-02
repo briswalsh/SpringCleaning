@@ -24,6 +24,7 @@ public class Crematoria : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		print (gameObject);
         thereWillBeCake = GetComponent<AudioSource>();
         wildfire = Instantiate(fire);
         flaming = false;
