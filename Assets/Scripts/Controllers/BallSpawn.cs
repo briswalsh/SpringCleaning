@@ -33,6 +33,8 @@ public class BallSpawn : MonoBehaviour {
     public GameObject soundManager;
 	private SoundsController sfx;
 	bool fail1played;
+	bool failGravPlayed;
+	bool failVacPlayed;
 
     /* Ground */
     public GameObject roomFloor;
@@ -51,6 +53,8 @@ public class BallSpawn : MonoBehaviour {
         gc = GetComponent<GravityControl>();
         vacuumObj = GameObject.FindGameObjectsWithTag("Vacuum");
 		fail1played = false;
+		failGravPlayed = false;
+		failVacPlayed = false;
         vacuumOn = new bool[vacuumObj.Length];
         for (int i = 0; i < vacuumObj.Length; i++)
         {
@@ -143,9 +147,21 @@ public class BallSpawn : MonoBehaviour {
             vacuumParticles.SetActive(false);
             StartCoroutine(PainfulDeath());
         } else {
-			if (!(sfx.IsNarrating ())&& !(fail1played)){
-				sfx.Narrate ("firstFail");
-				fail1played = true;
+			if (!(sfx.IsNarrating ())){
+				if (!(fail1played)) {
+					sfx.Narrate ("firstFail");
+					fail1played = true;
+				} else if (state == 1) {
+					if ( !failGravPlayed) {
+						sfx.Narrate ("gravFail");
+						failGravPlayed = true;
+					}
+				} else if (state == 2) {
+					if (!failVacPlayed) {
+						sfx.Narrate ("suckFail");
+						failVacPlayed = true;
+					}
+				}
 			}
 		}
     }
