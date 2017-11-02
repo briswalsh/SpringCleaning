@@ -121,7 +121,7 @@ public class BallSpawn : MonoBehaviour {
 
     public void SpawnBall()
     {
-	sfx.PlaySound ("pneumatic");
+        //sfx.PlaySound ("pneumatic");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
@@ -131,8 +131,8 @@ public class BallSpawn : MonoBehaviour {
 
     public IEnumerator SpawnBall(float delay)
     {
-		if (currBall == null && win == false && ballCount > 0) {
-			yield return new WaitForSeconds (delay);
+        if (currBall == null && win == false && ballCount > 0) {
+            yield return new WaitForSeconds (delay);
 			SpawnBall ();
 		}
     }
