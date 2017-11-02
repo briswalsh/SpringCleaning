@@ -162,7 +162,9 @@ public class LeftCustomizationController : MonoBehaviour {
         {
             rightDominant = true;
             handSet = true;
-			gameObject.transform.GetChild (currentLeftMallet).gameObject.SetActive (true);
+			transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
+            lenSet = true;
+            rotSet = true;
         }
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
@@ -171,6 +173,8 @@ public class LeftCustomizationController : MonoBehaviour {
 
             rightDominant = false;
             handSet = true;
+            lenSet = true;
+            rotSet = true;
         }
 
         return false;
