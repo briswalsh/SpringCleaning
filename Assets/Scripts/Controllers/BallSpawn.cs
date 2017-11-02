@@ -74,8 +74,8 @@ public class BallSpawn : MonoBehaviour {
     // Use this for initialization
     void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
-        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-        currBall.GetComponent<Renderer>().material = sphereColor[state];
+        //currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        //currBall.GetComponent<Renderer>().material = sphereColor[state];
         try
         {
             sfx = soundManager.GetComponent<SoundsController>();
@@ -107,6 +107,9 @@ public class BallSpawn : MonoBehaviour {
             }
         }
         sfx.Narrate("intro1");
+        DelayStartSpawn();
+        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+        currBall.GetComponent<Renderer>().material = sphereColor[state];
     }
 
     // Update is called once per frame
@@ -125,6 +128,10 @@ public class BallSpawn : MonoBehaviour {
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
+        SpaceTrash();
+
+        currBall.GetComponent<MeshRenderer>().enabled = true;
+        currBall.GetComponent<SphereCollider>().enabled = true;
         //currBall.GetComponent<Animation>().Play();
         TurnOnWalls();
     }
@@ -237,6 +244,16 @@ public class BallSpawn : MonoBehaviour {
         sfx.StopSoundLoop();
         sfx.PlaySound("torch");
         fire.Immolation();
+    }
+
+    IEnumerator SpaceTrash()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
+    IEnumerator DelayStartSpawn()
+    {
+        yield return new WaitForSeconds(10);
     }
 
     void TurnOnWalls()
