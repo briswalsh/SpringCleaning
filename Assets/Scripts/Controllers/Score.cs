@@ -18,12 +18,14 @@ public class Score : MonoBehaviour {
 		ballsRemainingText = GetComponent<Text> ();
 
 		ballCount = movable.GetComponent<BallSpawn>().ballCount;
-		ballsRemainingText.text = "Balls Remaining : " + ballCount;
-	}
+        //ballsRemainingText.text = "Balls Left   " + ballCount;
+        ballsRemainingText.text = "" + ballCount;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		ballCount = movable.GetComponent<BallSpawn>().ballCount;
-		ballsRemainingText.text = "Balls Remaining : " + ballCount; 
-	}
+		//ballsRemainingText.text = "Balls Left   " + ballCount;
+        ballsRemainingText.text = "" + ballCount;
+    }
 }

@@ -21,9 +21,11 @@ public class SoundsController : MonoBehaviour {
 
 	public int channel;
     public GameObject player;
+  
+   
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Awake ()
     {
         sounds = new Dictionary<string, AudioClip>();
         oneOffManager = GetComponents<AudioSource>()[0];
@@ -47,7 +49,7 @@ public class SoundsController : MonoBehaviour {
 		var gravUp = Resources.Load("Grav Up", typeof(AudioClip)) as AudioClip;
 //        var gravityDown = Resources.Load("Gravity Down", typeof(AudioClip)) as AudioClip;
         var impact = Resources.Load("Impact", typeof(AudioClip)) as AudioClip;
-        var pneumatic = Resources.Load("pneumatics_up", typeof(AudioClip)) as AudioClip;
+        var pneumatic = Resources.Load("pneumatics_up-loud", typeof(AudioClip)) as AudioClip;
 //        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
         var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
@@ -58,15 +60,15 @@ public class SoundsController : MonoBehaviour {
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
 
    		//Narration Lines
- 		var narIntroOne = Resources.Load("Voiceover_Narration_1_Intro_Combined", typeof(AudioClip)) as AudioClip;
- //		var narIntroTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
- //		var narFirstFail= Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narIntroOne = Resources.Load("Improved Combined Intro Voiceover Less Delay", typeof(AudioClip)) as AudioClip;
+		var narIntroTwo = Resources.Load("Improved Intro Voiceover P2", typeof(AudioClip)) as AudioClip;
+		var narFirstFail= Resources.Load("Voiceover Narration 7 Missed Hit WarningB", typeof(AudioClip)) as AudioClip;
  //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
  //		var narFailTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
-		var narGravOn = Resources.Load("Voiceover Narration 3 Gravity IntroB", typeof(AudioClip)) as AudioClip;
- //		var narGravFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
-		var narSuckOn = Resources.Load("Voiceover Narration 4 Vacuum IntroB", typeof(AudioClip)) as AudioClip;
- //		var narSuckFail = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narGravOn = Resources.Load("Improved Grav Intro Correct Space", typeof(AudioClip)) as AudioClip;
+		var narGravFail = Resources.Load("Improved Grav Fail", typeof(AudioClip)) as AudioClip;
+		var narSuckOn = Resources.Load("Improved Vacum Intro", typeof(AudioClip)) as AudioClip;
+		var narSuckFail = Resources.Load("Improve Vacum loose", typeof(AudioClip)) as AudioClip;
 		var narLose = Resources.Load("Voiceover Narration 6 LossB", typeof(AudioClip)) as AudioClip;
 		var narWin = Resources.Load("Voiceover Narration 5 WinB", typeof(AudioClip)) as AudioClip;
 
@@ -91,14 +93,14 @@ public class SoundsController : MonoBehaviour {
 
 
 		sounds.Add ("intro1", narIntroOne);
- //		sounds.Add ("intro2", narIntroTwo);
- //		sounds.Add ("firstFail", narFirstFail);
+ 		sounds.Add ("intro2", narIntroTwo);
+ 		sounds.Add ("firstFail", narFirstFail);
 //		sounds.Add ("fail1", narFailOne);
 //		sounds.Add ("fail2", narFailTwo);
 		sounds.Add ("gravOn", narGravOn);
-//		sounds.Add ("gravFail", narGravFail);
+		sounds.Add ("gravFail", narGravFail);
 		sounds.Add ("suckOn", narSuckOn);
-//		sounds.Add ("suckFail", narSuckFail);
+		sounds.Add ("suckFail", narSuckFail);
 		sounds.Add ("loseGame", narLose);
 		sounds.Add ("winGame", narWin);
 
@@ -108,7 +110,7 @@ public class SoundsController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(loop)
+		if(loop && oneOffManager.enabled)
 		{
 			loopTime -= Time.time;
 			if(loopTime < 0)
@@ -116,7 +118,6 @@ public class SoundsController : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (distantLoop, loopLocation);
 				loopTime = loopTimer;
 			}
-
 		}
 	}
 
@@ -124,6 +125,7 @@ public class SoundsController : MonoBehaviour {
     {
         try
         {
+            oneOffManager.enabled = true;
             var sound = sounds[soundId];
             oneOffManager.PlayOneShot(sound);
         }
@@ -175,6 +177,11 @@ public class SoundsController : MonoBehaviour {
 		oneOffManager.Stop ();
 	}
 
+    public void StopSoundLoop()
+    {
+        loop = false;
+    }
+
     public void Vibrate(string soundId, int channel)
     {
         var clip = sounds[soundId];
@@ -186,8 +193,21 @@ public class SoundsController : MonoBehaviour {
     {
         ambient.Stop();
         ambient.clip = sounds["win-music"];
-        ambient.PlayDelayed(14f);
+        ambient.PlayDelayed(9.5f);
+		ambient.volume = .8f;
     }
+
+    public void Cut()
+    {
+        ambient.Stop();
+        narrator.Stop();
+        oneOffManager.Stop();
+        oneOffManager.enabled = false;
+    }
+
+    public bool IsNarrating() {
+		return narrator.isPlaying;
+	}
 
     public void Narrate(string soundId)
     {
@@ -197,7 +217,10 @@ public class SoundsController : MonoBehaviour {
             {
                 narrator.Stop();
             }
+
             var sound = sounds[soundId];
+
+            
             narrator.PlayOneShot(sound);
         }
         catch

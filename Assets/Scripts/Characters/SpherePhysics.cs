@@ -142,7 +142,7 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                     if (dist < vp.vacuumDist)
                     {
                         newPos += vp.vacuumStr * dir.normalized / (Mathf.Max(dist * dist, vacuumMinDist * vacuumMinDist));
-                        print(newPos);
+                        //print(newPos);
                     }
                 }
             }
@@ -209,5 +209,18 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
             print(other.name);
 			print ("Could not find Wicket");
 		}
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Safe Area")
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        rb.useGravity = true;
     }
 }

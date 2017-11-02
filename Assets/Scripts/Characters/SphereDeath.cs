@@ -48,6 +48,7 @@ public class SphereDeath : MonoBehaviour
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
 				sfx.PlayDirectionalSound ("torch", transform.position);
+                StartCoroutine(movable.GetComponent<BallSpawn>().SpawnBall(0.5f));
             }
             else
             {

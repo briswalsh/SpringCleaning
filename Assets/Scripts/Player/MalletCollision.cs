@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MalletCollision : MonoBehaviour {
-    private const float slow = 6.0f;
+    /*private const float slow = 6.0f;
     private const float medium = 10.0f;
-    private const float fast = 15.0f;
+    private const float fast = 15.0f;*/
+
+    private const float slow = 8.0f;
+    private const float medium = 10.0f;
+    private const float fast = 10.0f;
 
     // Mallet related variables
     public int channel;
@@ -13,6 +17,7 @@ public class MalletCollision : MonoBehaviour {
 
     private float time;
     private int frame;
+    private float timeSinceLastHit;
 
     public GameObject soundManager;
 	private SoundsController sfx;
@@ -22,6 +27,7 @@ public class MalletCollision : MonoBehaviour {
     {
         frame = 0;
         time = 0.0f;
+        timeSinceLastHit = 0.0f;
         positions = new Vector3[10];
 
         var tempPos = transform.position;
@@ -65,6 +71,7 @@ public class MalletCollision : MonoBehaviour {
 	void Update ()
     {
         time = Time.deltaTime;
+        timeSinceLastHit += time;
         var tempPos = transform.position;
         tempPos.y = 0.0f;
         // adjust to new mallet position
@@ -85,30 +92,37 @@ public class MalletCollision : MonoBehaviour {
 
     public float GetSpeed ()
     {
-        try
-        {
-            sfx.PlaySound("ball-mallet");
-            sfx.Vibrate("ball-mallet", channel);
-        }
-        catch
-        {
-            print("Could not create mallet collision sound: check MalletCollision.cs function GetSpeed");
-        }
+        var speed = 0f;
 
-        var distance = Vector3.Distance(positions[1], positions[0]);
-        var speed = (float)distance / time;
+        if (timeSinceLastHit >= 0.5)
+        {
+            timeSinceLastHit = 0;
 
-        if (speed >= 14f)
-        {
-            speed = fast;
-        }
-        else if (speed >= 9f)
-        {
-            speed = medium;
-        }
-        else if (speed >= 6f)
-        {
-            speed = slow;
+            try
+            {
+                sfx.PlaySound("ball-mallet");
+                sfx.Vibrate("ball-mallet", channel);
+            }
+            catch
+            {
+                print("Could not create mallet collision sound: check MalletCollision.cs function GetSpeed");
+            }
+
+            var distance = Vector3.Distance(positions[1], positions[0]);
+            speed = (float)distance / time;
+
+            if (speed >= fast)
+            {
+                speed = fast;
+            }
+            /*else if (speed >= medium)
+            {
+                speed = medium;
+            }
+            else if (speed >= slow)
+            {
+                speed = slow;
+            }*/
         }
         print("speed: " + speed);
         return speed;
