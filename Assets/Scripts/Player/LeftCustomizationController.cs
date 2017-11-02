@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class LeftCustomizationController : MonoBehaviour {
+	public GameObject eye;
+	public float eyeHeight;
+
     public bool isActive = true;
     public bool rightDominant;
 
@@ -26,9 +30,9 @@ public class LeftCustomizationController : MonoBehaviour {
     private bool leftPalmDown = false;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
-
+		StartCoroutine (SetEyeHeight());
     }
 	
 	// Update is called once per frame
@@ -155,6 +159,7 @@ public class LeftCustomizationController : MonoBehaviour {
         {
             rightDominant = true;
             handSet = true;
+			gameObject.transform.GetChild (currentLeftMallet).gameObject.SetActive (true);
         }
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
@@ -261,4 +266,17 @@ public class LeftCustomizationController : MonoBehaviour {
         // user has not yet indicated they are finished
         return false;
     }
+
+	IEnumerator SetEyeHeight() {
+		yield return new WaitForSeconds (0.25f);
+		eyeHeight = eye.transform.position.y;
+		print (eyeHeight);
+		if (eyeHeight > 3.1) {
+			currentLeftMallet = 2;
+		} else if (eyeHeight > 2.8) {
+			currentLeftMallet = 1;
+		} else {
+			currentLeftMallet = 0;
+		}
+	}
 }
