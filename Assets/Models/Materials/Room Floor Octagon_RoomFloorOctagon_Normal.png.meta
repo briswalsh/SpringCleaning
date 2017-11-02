@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1244409b693fa2e40b9138e33e6131c4
-timeCreated: 1507692596
+guid: e39039b66e738134b9bb05ce1ba3e0c7
+timeCreated: 1507940700
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -56,9 +56,17 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0

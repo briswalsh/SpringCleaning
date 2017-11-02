@@ -11,6 +11,7 @@ public class SphereDeath : MonoBehaviour
     public GameObject fire;
     private bool smores;
     private MeshRenderer sphereDude;
+    private Vector3 firePosn;
 
     public GameObject soundManager;
 	private SoundsController sfx;
@@ -41,12 +42,17 @@ public class SphereDeath : MonoBehaviour
         {
             if (smores == false)
             {
-                Vector3 firePosn = transform.position;
+                firePosn = transform.position;
                 smores = true;
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
 				sfx.PlayDirectionalSound ("torch", transform.position);
+                StartCoroutine(movable.GetComponent<BallSpawn>().SpawnBall(0.5f));
+            }
+            else
+            {
+                sphereDude.transform.position = firePosn;
             }
         }
 

@@ -7884,6 +7884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4111268487691828}
   - component: {fileID: 114735319996330092}
+  - component: {fileID: 114664120380963820}
   m_Layer: 0
   m_Name: Movable
   m_TagString: Movable
@@ -11945,7 +11946,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691986555262712}
   m_LocalRotation: {x: 0, y: 0.42261845, z: -0, w: -0.9063077}
-  m_LocalPosition: {x: -214.4, y: 38.500004, z: -71.6}
+  m_LocalPosition: {x: -159.2, y: 38.500004, z: -71.2}
   m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
   m_Children:
   - {fileID: 4292654572866558}
@@ -13183,7 +13184,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402003803490944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 182.1, z: -266.2}
+  m_LocalPosition: {x: 1, y: 182.1, z: -280.96}
   m_LocalScale: {x: 249.99997, y: 250.00002, z: 249.99997}
   m_Children:
   - {fileID: 4204307182871606}
@@ -15704,7 +15705,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1853182216820862}
   m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 107.4, y: 182, z: -267.7}
+  m_LocalPosition: {x: 118.96, y: 182, z: -268.86}
   m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
   m_Children:
   - {fileID: 4099979513431404}
@@ -20584,7 +20585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076658558390340}
   m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -152.2, y: 182.8, z: -221}
+  m_LocalPosition: {x: -159, y: 182.8, z: -232.8}
   m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
   m_Children:
   - {fileID: 4962367474120622}
@@ -24124,6 +24125,24 @@ MonoBehaviour:
   vacuumObj: []
   vacuumOn: 
   vacuumMinDist: 0
+--- !u!114 &114664120380963820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671780135915238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c0146ed19dff24291d2654deb61159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravOn: 1
+  grav: -10
+  noGrav: 0.1
+  alt: 0
+  duration: 2
+  movable: {fileID: 1671780135915238}
+  soundManager: {fileID: 0}
 --- !u!114 &114728115678399864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24155,7 +24174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movable: {fileID: 0}
   ball: {fileID: 1676124220112412, guid: bd83990db2cd9854381ea59be10c2553, type: 2}
-  origin: {x: 0, y: 0, z: 0}
+  origin: {x: 0, y: 1, z: 0}
   spotlights:
   - {fileID: 0}
   - {fileID: 0}
@@ -24173,16 +24192,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ballCount: 10
+  ballCount: 15
   fire: {fileID: 0}
-  alt: 0
-  gravOn: 1
-  gravConst: 10
-  duration: 2
+  gc: {fileID: 114664120380963820}
   vacuumOn: 
   vacuumObj: []
   soundManager: {fileID: 0}
   roomFloor: {fileID: 0}
+  gravParticles: {fileID: 0}
+  vacuumParticles: {fileID: 0}
+  sphereColor:
+  - {fileID: 2100000, guid: 7dcf8bf77d2cf6e41b997bd7f90821e2, type: 2}
+  - {fileID: 2100000, guid: d27c3eb40ce07954c8fb942534e5f5e3, type: 2}
+  - {fileID: 2100000, guid: b2e5d98a86abf1f418b49a8c8f706411, type: 2}
+  lightColor:
+  - {r: 0.77205884, g: 0, b: 0, a: 0}
+  - {r: 0.19301468, g: 0.875, b: 0.3670384, a: 0}
+  - {r: 0.20436849, g: 0.2691085, b: 0.9264706, a: 0}
 --- !u!114 &114830168958824910
 MonoBehaviour:
   m_ObjectHideFlags: 1
