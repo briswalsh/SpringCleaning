@@ -10,8 +10,6 @@ public class WicketCollision : MonoBehaviour {
 	private GameObject sph;
     private Vector3 velocity;
 
-    private bool stageProgress;
-
     public IEnumerator Eject(GameObject sphere, GameObject col) {
 
         GameObject wall = col.transform.parent.parent.gameObject;
@@ -27,48 +25,28 @@ public class WicketCollision : MonoBehaviour {
         //score.showScore ();
         yield return new WaitForSeconds(0.5f);
         Destroy(sphere);
-        if (stageProgress)
-        {
-            movable.GetComponent<BallSpawn>().NextStage();
-        }
+        movable.GetComponent<BallSpawn>().NextStage();
     }
 
-    public void EnableWicketProgression()
-    {
-        stageProgress = true;
-    }
-
-    public void DisableWicketProgression()
-    {
-        stageProgress = false;
-    }
 
     // Use this for initialization
     void Start () {
         movable = GameObject.FindGameObjectWithTag("Movable");
-        stageProgress = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (sph != null)
-        {
-            if (Time.time < (time + 2))
-            { // before 5 seconds pass
-              // Once the ball hits the wicket, force is applied to the ball for 5 seconds
-                Rigidbody rb = sph.GetComponent<Rigidbody>();
-            }
-            else
-            {
-                // After 5 seconds, the force is not applied anymore and the ball becomes invisible
-                // sph.GetComponent<MeshRenderer> ().enabled = false;
-                Destroy(sph);
-            }
-        }
-    }
-
-
+    void Update () {
+        if (sph != null) {
+			if (Time.time < (time + 2)) { // before 5 seconds pass
+				// Once the ball hits the wicket, force is applied to the ball for 5 seconds
+				Rigidbody rb = sph.GetComponent<Rigidbody> ();
+			} else {
+				// After 5 seconds, the force is not applied anymore and the ball becomes invisible
+				// sph.GetComponent<MeshRenderer> ().enabled = false;
+				Destroy(sph);
+			}
+		}
+	}
     //OnTriggerEnter, call Next stage function (movable.GetComponent<BallSpawn>().NextStage();)
 
     /* Collision Detectors */
