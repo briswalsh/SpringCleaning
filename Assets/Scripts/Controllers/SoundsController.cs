@@ -60,12 +60,12 @@ public class SoundsController : MonoBehaviour {
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
 
    		//Narration Lines
-		var narIntroOne = Resources.Load("Improved Combined Intro Voiceover", typeof(AudioClip)) as AudioClip;
- //		var narIntroTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
+		var narIntroOne = Resources.Load("Improved Intro Voiceover P1", typeof(AudioClip)) as AudioClip;
+		var narIntroTwo = Resources.Load("Improved Intro Voiceover P2", typeof(AudioClip)) as AudioClip;
 		var narFirstFail= Resources.Load("Voiceover Narration 7 Missed Hit WarningB", typeof(AudioClip)) as AudioClip;
  //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
  //		var narFailTwo = Resources.Load("", typeof(AudioClip)) as AudioClip;
-		var narGravOn = Resources.Load("Improved Grav Intro", typeof(AudioClip)) as AudioClip;
+		var narGravOn = Resources.Load("Improved Grav Intro Correct", typeof(AudioClip)) as AudioClip;
 		var narGravFail = Resources.Load("Improved Grav Fail", typeof(AudioClip)) as AudioClip;
 		var narSuckOn = Resources.Load("Improved Vacum Intro", typeof(AudioClip)) as AudioClip;
 		var narSuckFail = Resources.Load("Improve Vacum loose", typeof(AudioClip)) as AudioClip;
@@ -93,7 +93,7 @@ public class SoundsController : MonoBehaviour {
 
 
 		sounds.Add ("intro1", narIntroOne);
- //		sounds.Add ("intro2", narIntroTwo);
+ 		sounds.Add ("intro2", narIntroTwo);
  		sounds.Add ("firstFail", narFirstFail);
 //		sounds.Add ("fail1", narFailOne);
 //		sounds.Add ("fail2", narFailTwo);
