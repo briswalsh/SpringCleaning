@@ -166,6 +166,7 @@ public class RightCustomizationController : MonoBehaviour {
             lenSet = true;
             rightDominant = true;
             handSet = true;
+            rotSet = true;
         }
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
@@ -174,6 +175,7 @@ public class RightCustomizationController : MonoBehaviour {
             rightDominant = false;
             handSet = true;
             lenSet = true;
+            rotSet = true;
         }
 
         return false;
