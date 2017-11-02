@@ -7,11 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Group07
     100002: //RootNode
+    100004: mallet_mini:Group07
     400000: Group07
     400002: //RootNode
+    400004: mallet_mini:Group07
     2300000: Group07
+    2300002: mallet_mini:Group07
     3300000: Group07
+    3300002: mallet_mini:Group07
     4300000: Group07
+    4300002: mallet_mini:Group07
   materials:
     importMaterials: 1
     materialName: 0
