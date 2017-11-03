@@ -50,6 +50,8 @@ public class SphereDeath : MonoBehaviour
                 myFire.transform.position = firePosn;
 				if (state == 2) {
 					sfx.PlayDirectionalSound ("torch-scream", transform.position);
+				} else if (state == 1) {
+					sfx.PlayDirectionalSound ("torch-muffled", transform.position);
 				} else {
 					sfx.PlayDirectionalSound ("torch", transform.position);
 				}

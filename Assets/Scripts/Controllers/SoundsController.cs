@@ -9,6 +9,8 @@ public class SoundsController : MonoBehaviour {
 
     private AudioSource narrator;
 
+	private AudioSource bgm;
+
     private Dictionary<string, AudioClip> sounds;
 
 	private bool loop;
@@ -37,6 +39,10 @@ public class SoundsController : MonoBehaviour {
         narrator = GetComponents<AudioSource>()[2];
         narrator.playOnAwake = false;
         narrator.loop = false;
+		bgm = GetComponents<AudioSource> () [3];
+		bgm.loop = true;
+		bgm.volume = 0.15f;
+		bgm.Play ();
 
         sfxVol = 0.5f;
         oneOffManager.volume = sfxVol;
@@ -53,7 +59,7 @@ public class SoundsController : MonoBehaviour {
 		var comet = Resources.Load ("comet v1", typeof(AudioClip)) as AudioClip;
 //        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
-
+		var torchMuffled = Resources.Load("torch scream muffled", typeof(AudioClip)) as AudioClip;
 		var torchScream = Resources.Load("torch scream full", typeof(AudioClip)) as AudioClip;
         var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
         var vacIntro = Resources.Load("vacumn intro", typeof(AudioClip)) as AudioClip;
@@ -61,6 +67,7 @@ public class SoundsController : MonoBehaviour {
         var wicketDing = Resources.Load("Wicket ding", typeof(AudioClip)) as AudioClip;
         var wicketOpen = Resources.Load("Wicket open", typeof(AudioClip)) as AudioClip;
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
+		var elevator = Resources.Load ("elevator_music", typeof(AudioClip)) as AudioClip;
 
    		//Narration Lines
 		var narIntroOne = Resources.Load("Improved Intro Voiceover P1", typeof(AudioClip)) as AudioClip;
@@ -88,6 +95,7 @@ public class SoundsController : MonoBehaviour {
 		sounds.Add ("comet", comet);
 //		sounds.Add("space-engine-start", SpaceEngineStart);
         sounds.Add("torch", torch);
+		sounds.Add ("torch-muffled", torchMuffled);
 		sounds.Add("torch-scream", torchScream);
         sounds.Add("vacuum", vacuum);
         sounds.Add("vacuum-start", vacIntro);
@@ -95,6 +103,7 @@ public class SoundsController : MonoBehaviour {
         sounds.Add("wicket-ding", wicketDing);
         sounds.Add("wicket-open", wicketOpen);
         sounds.Add("win-music", winMusic);
+		sounds.Add ("elevator", elevator);
 
 
 		sounds.Add ("intro1", narIntroOne);
@@ -208,6 +217,7 @@ public class SoundsController : MonoBehaviour {
         narrator.Stop();
         oneOffManager.Stop();
         oneOffManager.enabled = false;
+		bgm.Stop ();
     }
 
     public bool IsNarrating() {
