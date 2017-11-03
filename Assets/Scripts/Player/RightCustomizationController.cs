@@ -39,14 +39,11 @@ public class RightCustomizationController : MonoBehaviour {
     void Start ()
     {
         StartCoroutine(SetEyeHeight());
+        sfx = soundManager.GetComponent<SoundsController>();
     }
 
-	void Start () {
-		sfx = soundManager.GetComponent<SoundsController> ();
-	}
-
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
     {
         TriggerChecks();
 
