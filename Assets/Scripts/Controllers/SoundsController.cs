@@ -59,7 +59,7 @@ public class SoundsController : MonoBehaviour {
 		var comet = Resources.Load ("comet v1", typeof(AudioClip)) as AudioClip;
 //        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
-
+		var torchMuffled = Resources.Load("torch scream muffled", typeof(AudioClip)) as AudioClip;
 		var torchScream = Resources.Load("torch scream full", typeof(AudioClip)) as AudioClip;
         var vacuum = Resources.Load("Vaccumn loop", typeof(AudioClip)) as AudioClip;
         var vacIntro = Resources.Load("vacumn intro", typeof(AudioClip)) as AudioClip;
@@ -95,6 +95,7 @@ public class SoundsController : MonoBehaviour {
 		sounds.Add ("comet", comet);
 //		sounds.Add("space-engine-start", SpaceEngineStart);
         sounds.Add("torch", torch);
+		sounds.Add ("torch-muffled", torchMuffled);
 		sounds.Add("torch-scream", torchScream);
         sounds.Add("vacuum", vacuum);
         sounds.Add("vacuum-start", vacIntro);
