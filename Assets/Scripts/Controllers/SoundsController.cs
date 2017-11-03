@@ -41,7 +41,7 @@ public class SoundsController : MonoBehaviour {
         narrator.loop = false;
 		bgm = GetComponents<AudioSource> () [3];
 		bgm.loop = true;
-		bgm.volume = 0.15f;
+		bgm.volume = 0.05f;
 		bgm.Play ();
 
         sfxVol = 0.5f;
@@ -126,10 +126,13 @@ public class SoundsController : MonoBehaviour {
     {
 		if(loop && oneOffManager.enabled)
 		{
-			loopTime -= Time.time;
+			loopTime -= Time.deltaTime;
 			if(loopTime < 0)
 			{
-				AudioSource.PlayClipAtPoint (distantLoop, loopLocation);
+                for (int i = 0; i < 1; i++)
+                {
+                    AudioSource.PlayClipAtPoint(distantLoop, player.transform.position);
+                }
 				loopTime = loopTimer;
 			}
 		}

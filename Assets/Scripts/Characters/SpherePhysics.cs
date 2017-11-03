@@ -203,12 +203,6 @@ public class SpherePhysics : MonoBehaviour, IPhysics {
                 StartCoroutine(wc.Eject(gameObject, other.gameObject));
             }
         }
-        
-
-		else {
-            print(other.name);
-			print ("Could not find Wicket");
-		}
     }
 
     private void OnTriggerStay(Collider other)

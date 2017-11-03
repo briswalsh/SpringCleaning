@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallSpawn : MonoBehaviour
 {
@@ -128,18 +129,21 @@ public class BallSpawn : MonoBehaviour
 
     public void SpawnBall()
     {
-        sfx.PlaySound ("comet");
-        currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
-        currBall.GetComponent<Renderer>().material = sphereColor[state];
-        currBall.GetComponentInChildren<Light>().color = lightColor[state];
-		currBall.GetComponent<SphereDeath> ().state = state;
-        StartCoroutine(EnableRenderer(3));
-        TurnOnWalls();
+        if (win == false && ballCount > 0)
+        {
+            sfx.PlaySound("comet");
+            currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
+            currBall.GetComponent<Renderer>().material = sphereColor[state];
+            currBall.GetComponentInChildren<Light>().color = lightColor[state];
+            currBall.GetComponent<SphereDeath>().state = state;
+            StartCoroutine(EnableRenderer(3));
+            TurnOnWalls();
+        }
     }
 
     public IEnumerator SpawnBall(float delay)
     {
-        if (win == false && ballCount > 0)
+        if (win == false && ballCount > 1)
         {
             yield return new WaitForSeconds(delay);
             SpawnBall();
@@ -241,6 +245,7 @@ public class BallSpawn : MonoBehaviour
             win = true;
             StartCoroutine(DestroyRoomFloor());
             sfx.Narrate("winGame");
+            StartCoroutine(WinGame());
         }
         return true;
     }
@@ -257,6 +262,14 @@ public class BallSpawn : MonoBehaviour
         sfx.StopSoundLoop();
         sfx.PlaySound("torch");
         fire.Immolation();
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    IEnumerator WinGame()
+    {
+        yield return new WaitForSeconds(137);
+        SceneManager.LoadScene("StartMenu");
     }
 
     IEnumerator DelayStartSpawn()

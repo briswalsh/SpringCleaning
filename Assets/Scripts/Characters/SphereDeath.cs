@@ -87,7 +87,6 @@ public class SphereDeath : MonoBehaviour
     {
         if(other.name == "Safe Area")
         {
-            print("My time is nigh");
             deathRow = true;
         }
     }
