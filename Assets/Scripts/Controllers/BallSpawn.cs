@@ -128,10 +128,11 @@ public class BallSpawn : MonoBehaviour
 
     public void SpawnBall()
     {
-        //sfx.PlaySound ("pneumatic");
+        sfx.PlaySound ("comet");
         currBall = Instantiate(ball, origin, new Quaternion(), movable.transform);
         currBall.GetComponent<Renderer>().material = sphereColor[state];
         currBall.GetComponentInChildren<Light>().color = lightColor[state];
+		currBall.GetComponent<SphereDeath> ().state = state;
         StartCoroutine(EnableRenderer(3));
         TurnOnWalls();
     }
