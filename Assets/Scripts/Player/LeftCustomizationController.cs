@@ -173,7 +173,6 @@ public class LeftCustomizationController : MonoBehaviour {
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
         {
-            print(currentLeftMallet);
             transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
 			sfx.Narrate ("intro2");
             rightDominant = false;
@@ -282,7 +281,6 @@ public class LeftCustomizationController : MonoBehaviour {
 	IEnumerator SetEyeHeight() {
 		yield return new WaitForSeconds (0.25f);
 		eyeHeight = eye.transform.position.y;
-		print (eyeHeight);
 		if (eyeHeight > lgHeight) {
 			currentLeftMallet = 2;
 		} else if (eyeHeight > midHeight) {

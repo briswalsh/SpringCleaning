@@ -164,8 +164,7 @@ public class RightCustomizationController : MonoBehaviour {
 
         if (rightPalmClench > 0.2f && rightFingerClench > 0.2f)
         {
-            print("player has chosen right hand");
-            print(currentRightMallet);
+//            print("player has chosen right hand");
             transform.GetChild(currentRightMallet).gameObject.SetActive(true);
 			sfx.Narrate ("intro2");
             lenSet = true;
@@ -176,7 +175,7 @@ public class RightCustomizationController : MonoBehaviour {
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
         {
-            print("player has chosen left hand");
+//            print("player has chosen left hand");
             rightDominant = false;
             handSet = true;
             lenSet = true;
@@ -290,10 +289,7 @@ public class RightCustomizationController : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.25f);
         eyeHeight = eye.transform.position.y;
-        print(eyeHeight);
 
-        print(eyeHeight > lgHeight);
-        print(eyeHeight > midHeight);
         if (eyeHeight > lgHeight)
         {
             currentRightMallet = 2;

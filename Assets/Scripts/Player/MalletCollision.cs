@@ -124,7 +124,6 @@ public class MalletCollision : MonoBehaviour {
                 speed = slow;
             }*/
         }
-        print("speed: " + speed);
         return speed;
     }
 }
