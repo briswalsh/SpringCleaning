@@ -4264,6 +4264,16 @@ Prefab:
       propertyPath: eye
       value: 
       objectReference: {fileID: 995165229}
+    - target: {fileID: 114513573582584532, guid: 604162dbc8315324590b3ae7c8fcd3cf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114220558154863150, guid: 604162dbc8315324590b3ae7c8fcd3cf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 604162dbc8315324590b3ae7c8fcd3cf, type: 2}
   m_IsPrefabParent: 0

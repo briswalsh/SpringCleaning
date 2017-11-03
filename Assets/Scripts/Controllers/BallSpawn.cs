@@ -138,7 +138,7 @@ public class BallSpawn : MonoBehaviour
 
     public IEnumerator SpawnBall(float delay)
     {
-        if (currBall == null && win == false && ballCount > 0)
+        if (win == false && ballCount > 0)
         {
             yield return new WaitForSeconds(delay);
             SpawnBall();
@@ -194,6 +194,7 @@ public class BallSpawn : MonoBehaviour
         if (state != 3)
         {
             sfx.PlayDirectionalSound("wicket-ding", wicketOrder[state].transform.position);
+            StartCoroutine(SpawnBall(0.5f));
         }
         if (state == 1)
         {
