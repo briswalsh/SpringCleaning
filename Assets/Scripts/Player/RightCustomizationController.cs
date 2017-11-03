@@ -32,12 +32,19 @@ public class RightCustomizationController : MonoBehaviour {
     private bool leftPalmPressed = false;
     private bool leftPalmDown = false;
 
+	public GameObject soundManager;
+	private SoundsController sfx;
+
     // Use this for initialization
     void Start ()
     {
         StartCoroutine(SetEyeHeight());
     }
-	
+
+	void Start () {
+		sfx = soundManager.GetComponent<SoundsController> ();
+	}
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -163,7 +170,7 @@ public class RightCustomizationController : MonoBehaviour {
             print("player has chosen right hand");
             print(currentRightMallet);
             transform.GetChild(currentRightMallet).gameObject.SetActive(true);
-
+			sfx.Narrate ("intro2");
             lenSet = true;
             rightDominant = true;
             handSet = true;
