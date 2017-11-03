@@ -21,6 +21,7 @@ public class SceneControl : MonoBehaviour {
         solid = black.color;
         transparent = solid;
         transparent.a = 0;
+        black.color = transparent;
 	}
 	
 	// Update is called once per frame
