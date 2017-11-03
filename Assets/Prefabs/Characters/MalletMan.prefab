@@ -1480,8 +1480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 1063842903008544}
   eyeHeight: 0
-  lgHeight: 3.6
-  midHeight: 3.3
+  lgHeight: 3
+  midHeight: 2.85
   isActive: 1
   rightDominant: 0
   soundManager: {fileID: 0}
@@ -1584,8 +1584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 1063842903008544}
   eyeHeight: 0
-  lgHeight: 3.2
-  midHeight: 2.6
+  lgHeight: 3
+  midHeight: 2.85
   isActive: 1
   rightDominant: 0
   soundManager: {fileID: 0}
