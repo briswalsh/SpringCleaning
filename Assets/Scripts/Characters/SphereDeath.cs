@@ -18,6 +18,7 @@ public class SphereDeath : MonoBehaviour
 
     private GameObject movable;
     
+	public int state;
 
     // Use this for initialization
     void Start()
@@ -47,7 +48,12 @@ public class SphereDeath : MonoBehaviour
                 sphereDude.enabled = false;
                 GameObject myFire = Instantiate(fire);
                 myFire.transform.position = firePosn;
-				sfx.PlayDirectionalSound ("torch", transform.position);
+				if (state == 2) {
+					sfx.PlayDirectionalSound ("torch-scream", transform.position);
+				} else {
+					sfx.PlayDirectionalSound ("torch", transform.position);
+				}
+
                 StartCoroutine(movable.GetComponent<BallSpawn>().SpawnBall(0.5f));
             }
             else
