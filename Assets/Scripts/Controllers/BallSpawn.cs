@@ -269,6 +269,7 @@ public class BallSpawn : MonoBehaviour
         yield return new WaitForSeconds(delay);
         currBall.GetComponent<MeshRenderer>().enabled = true;
         currBall.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
+        currBall.GetComponent<SphereCollider>().enabled = true;
 
     }
 
