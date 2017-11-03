@@ -24174,7 +24174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movable: {fileID: 0}
   ball: {fileID: 1676124220112412, guid: bd83990db2cd9854381ea59be10c2553, type: 2}
-  origin: {x: 0, y: 1, z: 0}
+  origin: {x: 0, y: 1.7, z: 0}
   spotlights:
   - {fileID: 0}
   - {fileID: 0}
