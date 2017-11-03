@@ -41,7 +41,7 @@ public class SoundsController : MonoBehaviour {
         narrator.loop = false;
 		bgm = GetComponents<AudioSource> () [3];
 		bgm.loop = true;
-		bgm.volume = 0.15f;
+		bgm.volume = 0.10f;
 		bgm.Play ();
 
         sfxVol = 0.5f;

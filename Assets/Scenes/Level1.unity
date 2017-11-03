@@ -9907,11 +9907,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114664120380963820, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
-        type: 2}
-      propertyPath: soundManager
-      value: 
-      objectReference: {fileID: 321846986}
     - target: {fileID: 114735319996330092, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
         type: 2}
       propertyPath: spotlights.Array.data[0]
@@ -9972,10 +9967,15 @@ Prefab:
       propertyPath: vacuumParticles
       value: 
       objectReference: {fileID: 427169689}
+    - target: {fileID: 114664120380963820, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
+        type: 2}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 321846986}
     - target: {fileID: 114735319996330092, guid: 6e0a198d6057d7b43892cfe8fa97c2bc,
         type: 2}
-      propertyPath: origin.y
-      value: 1
+      propertyPath: ballCount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e0a198d6057d7b43892cfe8fa97c2bc, type: 2}
@@ -10962,7 +10962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1228257803
 MonoBehaviour:
   m_ObjectHideFlags: 0
