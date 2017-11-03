@@ -1478,8 +1478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cac586010db7ee4ba5c5a28e44caf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eye: {fileID: 1063842903008544}
+  eyeHeight: 0
+  lgHeight: 3.6
+  midHeight: 3.3
   isActive: 1
   rightDominant: 0
+  soundManager: {fileID: 0}
 --- !u!114 &114281617411972116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1577,8 +1582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a4bf8062e877948b987273b7079824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eye: {fileID: 1063842903008544}
+  eyeHeight: 0
+  lgHeight: 3.2
+  midHeight: 2.6
   isActive: 1
   rightDominant: 0
+  soundManager: {fileID: 0}
 --- !u!114 &114559526328959166
 MonoBehaviour:
   m_ObjectHideFlags: 1
