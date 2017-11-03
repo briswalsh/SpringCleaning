@@ -50,6 +50,7 @@ public class SoundsController : MonoBehaviour {
 //        var gravityDown = Resources.Load("Gravity Down", typeof(AudioClip)) as AudioClip;
         var impact = Resources.Load("Impact", typeof(AudioClip)) as AudioClip;
         var pneumatic = Resources.Load("pneumatics_up-loud", typeof(AudioClip)) as AudioClip;
+		var comet = Resources.Load ("comet v1", typeof(AudioClip)) as AudioClip;
 //        var SpaceEngineStart = Resources.Load("SpaceEngine_Start_00", typeof(AudioClip)) as AudioClip;
         var torch = Resources.Load("torch", typeof(AudioClip)) as AudioClip;
 
@@ -84,6 +85,7 @@ public class SoundsController : MonoBehaviour {
 //        sounds.Add("gravity-down", gravityDown);
         sounds.Add("impact", impact);
         sounds.Add("pneumatic", pneumatic);
+		sounds.Add ("comet", comet);
 //		sounds.Add("space-engine-start", SpaceEngineStart);
         sounds.Add("torch", torch);
 		sounds.Add("torch-scream", torchScream);

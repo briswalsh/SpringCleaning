@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dd78ba9917a1952428ddcf9fc61890c2
-timeCreated: 1509062065
+timeCreated: 1509671263
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -1324,7 +1324,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: Main_Control
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
