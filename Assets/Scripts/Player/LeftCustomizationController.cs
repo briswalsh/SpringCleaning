@@ -173,6 +173,7 @@ public class LeftCustomizationController : MonoBehaviour {
         
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
         {
+            print(currentLeftMallet);
             transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
 			sfx.Narrate ("intro2");
             rightDominant = false;

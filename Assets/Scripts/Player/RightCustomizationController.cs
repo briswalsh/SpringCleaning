@@ -36,9 +36,9 @@ public class RightCustomizationController : MonoBehaviour {
 	private SoundsController sfx;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
-
+        StartCoroutine(SetEyeHeight());
     }
 
 	void Start () {
@@ -168,6 +168,7 @@ public class RightCustomizationController : MonoBehaviour {
         if (rightPalmClench > 0.2f && rightFingerClench > 0.2f)
         {
             print("player has chosen right hand");
+            print(currentRightMallet);
             transform.GetChild(currentRightMallet).gameObject.SetActive(true);
 			sfx.Narrate ("intro2");
             lenSet = true;
@@ -293,17 +294,20 @@ public class RightCustomizationController : MonoBehaviour {
         yield return new WaitForSeconds(0.25f);
         eyeHeight = eye.transform.position.y;
         print(eyeHeight);
+
+        print(eyeHeight > lgHeight);
+        print(eyeHeight > midHeight);
         if (eyeHeight > lgHeight)
         {
-            currentLeftMallet = 2;
+            currentRightMallet = 2;
         }
         else if (eyeHeight > midHeight)
         {
-            currentLeftMallet = 1;
+            currentRightMallet = 1;
         }
         else
         {
-            currentLeftMallet = 0;
+            currentRightMallet = 0;
         }
     }
 }
