@@ -32,10 +32,14 @@ public class LeftCustomizationController : MonoBehaviour {
     private bool leftPalmPressed = false;
     private bool leftPalmDown = false;
 
+	public GameObject soundManager;
+	private SoundsController sfx;
+
     // Use this for initialization
     void Start ()
     {
 		StartCoroutine (SetEyeHeight());
+		sfx = soundManager.GetComponent<SoundsController> ();
     }
 	
 	// Update is called once per frame
@@ -162,7 +166,7 @@ public class LeftCustomizationController : MonoBehaviour {
         {
             rightDominant = true;
             handSet = true;
-			transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
+			//transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
             lenSet = true;
             rotSet = true;
         }
@@ -170,7 +174,7 @@ public class LeftCustomizationController : MonoBehaviour {
         if (leftPalmClench > 0.2f && leftFingerClench > 0.2f)
         {
             transform.GetChild(currentLeftMallet).gameObject.SetActive(true);
-
+			sfx.Narrate ("intro2");
             rightDominant = false;
             handSet = true;
             lenSet = true;
