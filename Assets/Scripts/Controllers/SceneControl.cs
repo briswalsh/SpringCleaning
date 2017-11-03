@@ -27,7 +27,14 @@ public class SceneControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two) ||
-            OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+            OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four) ||
+            (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0) ||
+            (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch) > 0)||
+            (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0) ||
+            (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch) > 0) ||
+            OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick) ||
+            OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick) ||
+            OVRInput.GetDown(OVRInput.Button.Start))
         {
             transition = true;
         }
