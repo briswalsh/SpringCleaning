@@ -62,7 +62,7 @@ public class SoundsController : MonoBehaviour {
         var winMusic = Resources.Load("WinMusic", typeof(AudioClip)) as AudioClip;
 
    		//Narration Lines
-		var narIntroOne = Resources.Load("Improved Combined Intro Voiceover Less Delay", typeof(AudioClip)) as AudioClip;
+		var narIntroOne = Resources.Load("Improved Intro Voiceover P1", typeof(AudioClip)) as AudioClip;
 		var narIntroTwo = Resources.Load("Improved Intro Voiceover P2", typeof(AudioClip)) as AudioClip;
 		var narFirstFail= Resources.Load("Voiceover Narration 7 Missed Hit WarningB", typeof(AudioClip)) as AudioClip;
  //		var narFailOne = Resources.Load("", typeof(AudioClip)) as AudioClip;
